@@ -1,69 +1,148 @@
 "use client";
 
+import { Check } from "lucide-react";
+
 export default function Stepper({
   step = 1,
   onChange,
   clickable = true,
   steps = ["Seleccionar", "Datos", "Confirmar"],
 }) {
+  const progress =
+    steps.length > 1
+      ? ((step - 1) / (steps.length - 1)) * 100
+      : 0;
+
   return (
-    <div className="flex items-center justify-center w-full mb-8">
-      {steps.map((label, i) => {
-        const num = i + 1;
-        const isActive = step === num;
-        const isCompleted = step > num;
+    <div className="w-full py-8">
+      <div className="relative">
+        {/* Línea base */}
+        <div
+          className="
+            absolute
+            top-5
+            left-0
+            right-0
+            h-[3px]
+            bg-slate-200
+            rounded-full
+          "
+        />
 
-        return (
-          <div key={num} className="flex items-center">
-            {/* CÍRCULO */}
-            <div
-              onClick={() => clickable && onChange?.(num)}
-              className={`
-                w-10 h-10 flex items-center justify-center rounded-full font-bold text-base text-white
-                transition-all
-                ${clickable ? "cursor-pointer" : "cursor-default"}
-                ${
-                  isCompleted
-                    ? "bg-[#b09600]" // oro oscuro
-                    : isActive
-                      ? "bg-[#fae100] scale-110 shadow-sm" // amarillo brillante
-                      : "bg-[#4b5563]" // gris oscuro
-                }
-              `}
-            >
-              {isCompleted ? "✓" : num}
-            </div>
+        {/* Línea progreso */}
+        <div
+          className="
+            absolute
+            top-5
+            left-0
+            h-[3px]
+            bg-[#fae100]
+            rounded-full
+            transition-all
+            duration-500
+            ease-out
+          "
+          style={{
+            width: `${progress}%`,
+          }}
+        />
 
-            {/* LABEL */}
-            <div className="hidden sm:block ml-3 mr-4">
-              <span
-                className={`text-[15px] ${
-                  isActive
-                    ? "font-bold text-slate-900"
-                    : "text-slate-400"
-                }`}
-              >
-                {label}
-              </span>
-            </div>
+        {/* Steps */}
+        <div className="relative flex justify-between">
+          {steps.map((label, i) => {
+            const num = i + 1;
 
-            {/* LINEA */}
-            {i < steps.length - 1 && (
+            const isActive = step === num;
+            const isCompleted = step > num;
+
+            return (
               <div
-                className={`
-                  h-[2px] w-12 sm:w-16 md:w-24 ml-2 mr-6
-                  transition-colors
-                  ${
-                    isCompleted
-                      ? "bg-[#b09600]"
-                      : "bg-slate-300"
+                key={num}
+                className="
+                  flex-1
+                  flex
+                  flex-col
+                  items-center
+                  min-w-0
+                "
+              >
+                <button
+                  type="button"
+                  disabled={!clickable}
+                  onClick={() =>
+                    clickable && onChange?.(num)
                   }
-                `}
-              />
-            )}
-          </div>
-        );
-      })}
+                  className={`
+                    relative z-10
+                    w-10 h-10
+                    shrink-0
+                    rounded-full
+                    flex items-center justify-center
+                    text-sm font-bold
+                    transition-all duration-300
+
+                    ${
+                      clickable
+                        ? "cursor-pointer"
+                        : "cursor-default"
+                    }
+
+                    ${
+                      isCompleted
+                        ? "bg-[#b09600] text-white"
+                        : isActive
+                        ? `
+                          bg-[#fae100]
+                          text-slate-900
+                          scale-110
+                          ring-4
+                          ring-yellow-100
+                        `
+                        : `
+                          bg-white
+                          border-2
+                          border-slate-300
+                          text-slate-500
+                        `
+                    }
+                  `}
+                >
+                  {isCompleted ? (
+                    <Check
+                      className="w-5 h-5"
+                      strokeWidth={3}
+                    />
+                  ) : (
+                    num
+                  )}
+                </button>
+
+                <span
+                  className={`
+                    mt-3
+                    px-2
+                    max-w-[140px]
+                    text-center
+                    leading-tight
+                    text-xs sm:text-sm
+                    transition-colors
+
+                    ${
+                      isActive
+                        ? "font-semibold text-slate-900"
+                        : isCompleted
+                        ? "text-slate-700"
+                        : "text-slate-400"
+                    }
+                  `}
+                >
+                  {label}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }

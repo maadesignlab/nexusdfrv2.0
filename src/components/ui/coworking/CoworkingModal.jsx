@@ -1,105 +1,245 @@
 "use client";
 
-function CoworkingModal({ space, onClose, onStartBooking }) {
-  if (!space) return null;
+import {
+  MapPin,
+  Users,
+  Building2,
+  Clock3,
+  CheckCircle2,
+  XCircle,
+} from "lucide-react";
 
-  const horariosHoy = ["12:00h", "13:00h", "17:00h"];
-  const ocupados = space.horariosOcupados || [];
-  const normalize = (h) => h.replace("h", "");
+function CoworkingModal({
+  space,
+  onClose,
+  onStartBooking,
+}) {
+  if (!space) return null;
 
   return (
     <div
-      className="fixed inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center z-50 px-4"
+      className="
+        fixed inset-0 z-50
+        bg-black/40
+        backdrop-blur-[2px]
+        flex items-center justify-center
+        px-4
+      "
       onClick={onClose}
     >
       <div
-        className="relative bg-[#f4f7f9] w-full max-w-3xl rounded-[20px] p-8 md:p-10 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
+        className="
+          relative
+          w-full max-w-3xl
+          bg-[#f4f7f9]
+          rounded-[24px]
+          p-8 md:p-10
+          shadow-2xl
+        "
       >
         {/* CLOSE */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 text-2xl font-bold opacity-70 hover:opacity-100 text-slate-800"
+          className="
+            absolute top-6 right-6
+            text-2xl font-bold
+            text-slate-600
+            hover:text-slate-900
+            transition-colors
+          "
         >
           ×
         </button>
 
         {/* HEADER */}
         <div className="mb-8">
-          <h2 className="text-[28px] font-bold text-slate-900 tracking-tight">
+          <div className="flex items-center gap-3 mb-3">
+            {space.ocupado ? (
+              <>
+                <XCircle className="w-5 h-5 text-red-500" />
+                <span className="font-semibold text-red-500">
+                  Ocupado actualmente
+                </span>
+              </>
+            ) : (
+              <>
+                <CheckCircle2 className="w-5 h-5 text-green-600" />
+                <span className="font-semibold text-green-600">
+                  Disponible
+                </span>
+              </>
+            )}
+          </div>
+
+          <h2
+            className="
+              text-3xl
+              font-bold
+              text-slate-900
+              tracking-tight
+            "
+          >
             {space.nombre}
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-x-12 gap-y-8">
-          
-          {/* LEFT COL: INFO */}
-          <div className="flex flex-col gap-3">
-            <InfoItem label="Tipo" value={space.tipo} />
-            <InfoItem label="Capacidad" value={`${space.capacidad} personas`} />
-            <InfoItem label="Ubicación" value={space.ubicacion} />
-            <div className="flex items-center gap-2 border border-slate-400 rounded-xl px-4 py-3.5 bg-transparent">
-              <span className="font-bold text-slate-900">Estado:</span>
-              <span className={`font-bold ${space.ocupado ? 'text-red-500' : 'text-green-500'}`}>
-                {space.ocupado ? 'Ocupado ahora' : 'Disponible'}
-              </span>
+        {/* CONTENT */}
+        <div className="grid md:grid-cols-[320px_1fr] gap-10">
+          {/* INFO */}
+          <div className="space-y-4">
+            <div
+              className="
+                bg-white
+                border border-slate-200
+                rounded-2xl
+                p-5
+                space-y-5
+              "
+            >
+              <InfoRow
+                icon={<Building2 size={18} />}
+                label="Tipo"
+                value={space.tipo}
+              />
+
+              <InfoRow
+                icon={<Users size={18} />}
+                label="Capacidad"
+                value={`${space.capacidad} persona${
+                  space.capacidad > 1 ? "s" : ""
+                }`}
+              />
+
+              <InfoRow
+                icon={<MapPin size={18} />}
+                label="Ubicación"
+                value={space.ubicacion}
+              />
             </div>
           </div>
 
-          {/* RIGHT COL: HORARIOS */}
-          <div className="flex flex-col">
-            <h3 className="font-bold text-xl text-slate-900 mb-4 tracking-tight">
-              Próximos horarios disponibles
-            </h3>
-            <p className="font-bold text-slate-900 mb-3 text-sm">Hoy</p>
+          {/* RESERVA */}
+          <div className="flex flex-col justify-between">
+            <div>
+              <h3
+                className="
+                  text-xl
+                  font-bold
+                  text-slate-900
+                  mb-2
+                "
+              >
+                Reserva este espacio
+              </h3>
 
-            <div className="flex flex-col gap-3 flex-1">
-              {horariosHoy.map((hora) => {
-                const isAvailable = !ocupados.includes(normalize(hora));
+              <p className="text-slate-500 leading-relaxed">
+                Selecciona fecha, horario y duración
+                en el siguiente paso para completar
+                tu reserva.
+              </p>
 
-                return (
-                  <div
-                    key={hora}
-                    className="flex justify-between items-center border border-slate-400 rounded-xl px-4 py-3 bg-transparent"
-                  >
-                    <span className="text-slate-800 text-[15px]">{hora}</span>
-                    
-                    {isAvailable ? (
-                      <button
-                        onClick={() => onStartBooking(hora)}
-                        className="bg-[#0f172a] text-white text-sm font-bold px-6 py-2 rounded-full hover:bg-black transition-colors"
-                      >
-                        Reservar
-                      </button>
-                    ) : (
-                      <div className="bg-[#8b8b8b] text-white/90 text-sm font-bold px-4 py-2 rounded-full">
-                        No disponible
-                      </div>
-                    )}
+              <div
+                className="
+                  mt-6
+                  rounded-2xl
+                  border border-slate-200
+                  bg-white
+                  p-5
+                "
+              >
+                <div className="space-y-5">
+                  <div className="flex items-center gap-3">
+                    <Clock3
+                      size={18}
+                      className="text-slate-500"
+                    />
+
+                    <div>
+                      <p className="text-sm text-slate-500">
+                        Horario de atención
+                      </p>
+
+                      <p className="font-semibold text-slate-900">
+                        08:00 - 20:00
+                      </p>
+                    </div>
                   </div>
-                );
-              })}
+
+                  <div>
+                    <p className="text-sm text-slate-500">
+                      Duración máxima
+                    </p>
+
+                    <p className="font-semibold text-slate-900">
+                      8 horas
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="text-sm text-slate-500">
+                      Estado actual
+                    </p>
+
+                    <p
+                      className={`font-semibold ${
+                        space.ocupado
+                          ? "text-red-500"
+                          : "text-green-600"
+                      }`}
+                    >
+                      {space.ocupado
+                        ? "Ocupado"
+                        : "Disponible"}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <button
-              onClick={() => onStartBooking(null)}
-              className="mt-6 w-full bg-[#0f172a] text-white font-bold py-3.5 rounded-2xl hover:bg-black transition-colors text-[15px]"
+              onClick={onStartBooking}
+              className="
+                mt-8
+                w-full
+                h-14
+                rounded-2xl
+                bg-[#0f172a]
+                text-white
+                font-semibold
+                hover:bg-black
+                transition-colors
+              "
             >
-              Reservar en otro horario o fecha
+              Reservar espacio
             </button>
           </div>
-
         </div>
       </div>
     </div>
   );
 }
 
-function InfoItem({ label, value }) {
+function InfoRow({
+  icon,
+  label,
+  value,
+}) {
   return (
-    <div className="flex items-center gap-2 border border-slate-400 rounded-xl px-4 py-3.5 bg-transparent">
-      <span className="font-bold text-slate-900">{label}:</span>
-      <span className="text-slate-800 lowercase">{value}</span>
+    <div className="flex items-center gap-3">
+      <div className="text-slate-500">
+        {icon}
+      </div>
+
+      <div>
+        <p className="text-xs text-slate-500">
+          {label}
+        </p>
+
+        <p className="font-medium text-slate-900">
+          {value}
+        </p>
+      </div>
     </div>
   );
 }

@@ -7,7 +7,9 @@ import BookImage from "./BookImage";
 function BookCard({ libro }) {
   const router = useRouter();
   const { addToCart } = useCart();
-
+  
+  console.log(libro);
+  
   const handleAddToCart = (e) => {
     e.stopPropagation();
 
@@ -33,20 +35,33 @@ function BookCard({ libro }) {
       "
     >
       {/* BADGE */}
-      {libro.masVendido && (
-        <span
-          className="
-            absolute top-3 left-3 z-10
-            px-2.5 py-1
-            rounded-full
-            text-[11px] font-bold
-            bg-yellow-300 text-slate-950
-            shadow-sm
-          "
-        >
-          Más vendido
-        </span>
-      )}
+      <div className="absolute top-3 left-3 z-10 flex flex-col gap-2">
+        {libro.destacado && (
+          <span
+            className="
+              px-2.5 py-1
+              rounded-full
+              text-[11px] font-bold
+              bg-blue-500 text-white
+            "
+          >
+            Destacado
+          </span>
+        )}
+
+        {libro.masVendido && (
+          <span
+            className="
+              px-2.5 py-1
+              rounded-full
+              text-[11px] font-bold
+              bg-yellow-300 text-slate-950
+            "
+          >
+            Top ventas
+          </span>
+        )}
+      </div>
 
       {/* IMAGE */}
       <div

@@ -1,86 +1,180 @@
-function CoworkingSiteCard({ space, onClick }) {
+"use client";
+
+import {
+  MapPin,
+  Users,
+  Building2,
+  ArrowRight,
+} from "lucide-react";
+
+function CoworkingSiteCard({
+  space,
+  onClick,
+}) {
   if (!space) return null;
 
-  const estaOcupado = space.ocupado;
+  const estaOcupado =
+    space.ocupado;
 
   return (
     <article
       onClick={onClick}
       className="
-        relative glass-card p-5 border border-slate-200 rounded-2xl
-        flex flex-col gap-4
-        cursor-pointer
-        transition-all duration-200
-        hover:-translate-y-1 hover:shadow-xl
         group
+        relative
+        flex flex-col
+        p-5
+        rounded-2xl
+        border border-slate-200
+        bg-white
+        cursor-pointer
+
+        transition-all duration-300
+        hover:-translate-y-1
+        hover:shadow-xl
+        hover:border-slate-300
       "
     >
-      {/* STATUS BADGE (top-right) */}
-      <span
-        className={`
-          absolute top-4 right-4
-          text-xs font-semibold px-3 py-1 rounded-full
-          ${estaOcupado
-            ? "bg-red-100 text-red-600"
-            : "bg-green-100 text-green-600"}
-        `}
-      >
-        {estaOcupado ? "Ocupado" : "Disponible"}
-      </span>
+      {/* STATUS */}
+      <div className="mb-5">
+        <span
+          className={`
+            inline-flex
+            items-center
+            gap-2
+            px-3 py-1
+            rounded-full
+            text-xs
+            font-semibold
 
-      {/* HEADER */}
-      <div className="flex flex-col gap-1">
-        <h3 className="text-lg font-semibold">
-          {space.nombre}
-        </h3>
+            ${
+              estaOcupado
+                ? "bg-red-50 text-red-600"
+                : "bg-green-50 text-green-600"
+            }
+          `}
+        >
+          <span
+            className={`
+              w-2 h-2 rounded-full
 
-        <span className="text-xs text-text-secondary capitalize">
-          {space.ubicacion}
+              ${
+                estaOcupado
+                  ? "bg-red-500"
+                  : "bg-green-500"
+              }
+            `}
+          />
+
+          {estaOcupado
+            ? "Ocupado"
+            : "Disponible"}
         </span>
       </div>
 
-      {/* TIPO */}
-      <span className="
-        text-xs font-medium
-        px-3 py-1 rounded-full w-fit
-        bg-brand-100 text-brand-700
-      ">
-        {space.tipo}
-      </span>
+      {/* TITLE */}
+      <div className="mb-5">
+        <h3
+          className="
+            text-lg
+            font-semibold
+            text-slate-900
+            leading-tight
+          "
+        >
+          {space.nombre}
+        </h3>
+
+        <div
+          className="
+            mt-2
+            flex items-center gap-2
+            text-sm text-slate-500
+          "
+        >
+          <MapPin
+            size={14}
+          />
+
+          <span>
+            {space.ubicacion}
+          </span>
+        </div>
+      </div>
 
       {/* INFO */}
-      <ul className="text-sm text-text-primary space-y-1">
-        <li>👥 {space.capacidad} personas</li>
-      </ul>
+      <div className="space-y-3">
+        <div
+          className="
+            flex items-center gap-3
+            text-sm
+          "
+        >
+          <Building2
+            size={16}
+            className="text-slate-400"
+          />
 
-      {/* DIVIDER */}
-      <div className="h-px bg-border-default" />
+          <span className="text-slate-700">
+            {space.tipo}
+          </span>
+        </div>
+
+        <div
+          className="
+            flex items-center gap-3
+            text-sm
+          "
+        >
+          <Users
+            size={16}
+            className="text-slate-400"
+          />
+
+          <span className="text-slate-700">
+            {space.capacidad} persona
+            {space.capacidad > 1
+              ? "s"
+              : ""}
+          </span>
+        </div>
+      </div>
 
       {/* CTA */}
-      <button
-        className={`
-          mt-auto text-sm font-semibold py-2 rounded-md transition
-          ${estaOcupado
-            ? "bg-gray-200 text-gray-500 cursor-not-allowed"
-            : "btn-primary"}
-        `}
-        onClick={(e) => {
-          e.stopPropagation();
-          if (!estaOcupado) onClick?.();
-        }}
-        disabled={estaOcupado}
+      <div
+        className="
+          mt-6
+          pt-4
+          border-t border-slate-100
+        "
       >
-        {estaOcupado ? "No disponible" : "Reservar"}
-      </button>
+        <div
+          className="
+            flex items-center justify-between
+            text-sm font-medium
+          "
+        >
+          <span
+            className={
+              estaOcupado
+                ? "text-slate-400"
+                : "text-slate-900"
+            }
+          >
+            {estaOcupado
+              ? "Ver información"
+              : "Reservar espacio"}
+          </span>
 
-      {/* HOVER OVERLAY (micro UX 🔥) */}
-      <div className="
-        absolute inset-0
-        bg-black/0 group-hover:bg-black/5
-        transition
-        rounded-xl
-        pointer-events-none
-      " />
+          <ArrowRight
+            size={16}
+            className="
+              transition-transform
+              group-hover:translate-x-1
+            "
+          />
+        </div>
+      </div>
     </article>
   );
 }

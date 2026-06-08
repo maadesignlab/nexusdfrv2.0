@@ -6,8 +6,10 @@ import CoworkingSiteCard from "@/components/ui/coworking/CoworkingSiteCard";
 import BookingFlow from "@/components/ui/coworking/CoworkingModalBooking";
 import { motion, AnimatePresence } from "framer-motion";
 
-function CoworkingClient({ spaces = [] }) {
-
+function CoworkingClient({
+  spaces = [],
+  userId,
+}) {
   const [selectedSpace, setSelectedSpace] = useState(null);
   const [isBooking, setIsBooking] = useState(false);
   const [estadoFiltro, setEstadoFiltro] = useState("Todos");
@@ -17,39 +19,55 @@ function CoworkingClient({ spaces = [] }) {
     setIsBooking(false);
   };
 
-  // 🔥 FILTRADO + STATS + AGRUPACIÓN (todo en uno)
   const { grouped, stats } = useMemo(() => {
-
     const filtered =
       estadoFiltro === "Todos"
         ? spaces
-        : spaces.filter(s =>
-          estadoFiltro === "Disponible" ? !s.ocupado : s.ocupado
-        );
+        : spaces.filter((s) =>
+            estadoFiltro === "Disponible"
+              ? !s.ocupado
+              : s.ocupado
+          );
 
     const grouped = filtered.reduce((acc, space) => {
       const key = space.ubicacion || "otros";
-      if (!acc[key]) acc[key] = [];
+
+      if (!acc[key]) {
+        acc[key] = [];
+      }
+
       acc[key].push(space);
+
       return acc;
     }, {});
 
     const stats = spaces.reduce(
-      (acc, s) => {
+      (acc, space) => {
         acc.total++;
-        s.ocupado ? acc.ocupados++ : acc.disponibles++;
+
+        if (space.ocupado) {
+          acc.ocupados++;
+        } else {
+          acc.disponibles++;
+        }
+
         return acc;
       },
-      { total: 0, disponibles: 0, ocupados: 0 }
+      {
+        total: 0,
+        disponibles: 0,
+        ocupados: 0,
+      }
     );
 
-    return { grouped, stats };
-
+    return {
+      grouped,
+      stats,
+    };
   }, [spaces, estadoFiltro]);
 
   return (
     <main className="max-w-7xl mx-auto px-6 py-8">
-
       {/* HEADER */}
       <div className="mb-6 space-y-6">
         <h1 className="text-3xl font-bold">
@@ -57,23 +75,47 @@ function CoworkingClient({ spaces = [] }) {
         </h1>
 
         {/* STATS */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 ">
-          <StatCard title="Espacios totales" value={stats.total} />
-          <StatCard title="Disponibles" value={stats.disponibles} />
-          <StatCard title="Ocupados" value={stats.ocupados} />
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+          <StatCard
+            title="Espacios totales"
+            value={stats.total}
+          />
+
+          <StatCard
+            title="Disponibles"
+            value={stats.disponibles}
+          />
+
+          <StatCard
+            title="Ocupados"
+            value={stats.ocupados}
+          />
         </div>
 
         {/* FILTROS */}
-        <div className="flex gap-4">
-          {["Todos", "Disponible", "Ocupado"].map((estado) => (
+        <div className="flex gap-4 flex-wrap">
+          {[
+            "Todos",
+            "Disponible",
+            "Ocupado",
+          ].map((estado) => (
             <button
               key={estado}
-              onClick={() => setEstadoFiltro(estado)}
+              onClick={() =>
+                setEstadoFiltro(estado)
+              }
               className={`
-                px-4 py-2 rounded-full text-sm font-medium transition
-                ${estadoFiltro === estado
-                  ? "bg-slate-900 text-white"
-                  : "bg-slate-100 hover:bg-slate-200"}
+                px-4 py-2
+                rounded-full
+                text-sm
+                font-medium
+                transition
+
+                ${
+                  estadoFiltro === estado
+                    ? "bg-slate-900 text-white"
+                    : "bg-slate-100 hover:bg-slate-200"
+                }
               `}
             >
               {estado}
@@ -82,32 +124,43 @@ function CoworkingClient({ spaces = [] }) {
         </div>
       </div>
 
-      {/* 🔥 RENDER DINÁMICO POR PISO */}
-      {Object.entries(grouped).reverse().map(([piso, spaces]) => (
-        <Section key={piso} title={piso}>
-          <Grid spaces={spaces} onClick={setSelectedSpace} />
-        </Section>
-      ))}
+      {/* ESPACIOS AGRUPADOS */}
+      {Object.entries(grouped)
+        .reverse()
+        .map(([piso, groupedSpaces]) => (
+          <Section
+            key={piso}
+            title={piso}
+          >
+            <Grid
+              spaces={groupedSpaces}
+              onClick={setSelectedSpace}
+            />
+          </Section>
+        ))}
 
-      {/* MODAL */}
+      {/* MODALES */}
       {selectedSpace &&
         (!isBooking ? (
           <CoworkingModal
             space={selectedSpace}
             onClose={closeModal}
-            onStartBooking={() => setIsBooking(true)}
+            onStartBooking={() => {
+              setIsBooking(true);
+            }}
           />
         ) : (
           <BookingFlow
             space={selectedSpace}
             onClose={closeModal}
+            userId={userId}
           />
         ))}
     </main>
   );
 }
 
-/* ================= COMPONENTES ================= */
+/* ================= GRID ================= */
 
 function Grid({ spaces, onClick }) {
   return (
@@ -116,12 +169,20 @@ function Grid({ spaces, onClick }) {
         {spaces.map((space) => (
           <motion.div
             key={space.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
           >
             <CoworkingSiteCard
               space={space}
-              onClick={() => onClick(space)}
+              onClick={() =>
+                onClick(space)
+              }
             />
           </motion.div>
         ))}
@@ -130,20 +191,63 @@ function Grid({ spaces, onClick }) {
   );
 }
 
-function Section({ title, children }) {
+/* ================= SECTION ================= */
+
+function Section({
+  title,
+  children,
+}) {
   return (
-    <div className="bg-slate-50 border border-slate-200 rounded-xl p-6 space-y-6 mb-6">
-      <h3 className="text-xl font-semibold capitalize">{title}</h3>
+    <section
+      className="
+        bg-slate-50
+        border border-slate-200
+        rounded-xl
+        p-6
+        space-y-6
+        mb-6
+      "
+    >
+      <h3
+        className="
+          text-xl
+          font-semibold
+          capitalize
+        "
+      >
+        {title}
+      </h3>
+
       {children}
-    </div>
+    </section>
   );
 }
 
-function StatCard({ title, value }) {
+/* ================= STATS ================= */
+
+function StatCard({
+  title,
+  value,
+}) {
   return (
-    <div className="flex justify-between items-center px-6 py-2 border-[1.0px] border-black rounded-[10px] bg-white/80 hover:shadow-lg">
-      <span className="text-sm">{title}</span>
-      <span className="text-2xl font-bold">{value}</span>
+    <div
+      className="
+        flex justify-between items-center
+        px-6 py-3
+        border border-black
+        rounded-[10px]
+        bg-white/80
+        hover:shadow-lg
+        transition-shadow
+      "
+    >
+      <span className="text-sm">
+        {title}
+      </span>
+
+      <span className="text-2xl font-bold">
+        {value}
+      </span>
     </div>
   );
 }

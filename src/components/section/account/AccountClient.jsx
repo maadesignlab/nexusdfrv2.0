@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useAuth } from "@/context/AuthContext";
-import { storeService } from "@/services/storeService";
 import { User, Calendar, ShoppingBag, Settings, LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
+import {
+  getUserReservationsAction,
+} from "@/app/actions/reservationActions";
 
 // ==========================================
 // COMPONENTES STUB
@@ -93,39 +94,138 @@ function HistoryItem({ compra }) {
   );
 }
 
-export default function AccountClient() {
-  const { user, logout } = useAuth();
+function ReservationItem({
+  reservation,
+}) {
+  const start = new Date(
+    reservation.start_at
+  );
+
+  const end = new Date(
+    reservation.end_at
+  );
+
+  return (
+    <div
+      className="
+        bg-white
+        border border-slate-200
+        rounded-xl
+        p-5
+        shadow-sm
+      "
+    >
+      <div className="flex justify-between items-start">
+        <div>
+          <h3 className="font-bold text-lg">
+            {reservation.space_name}
+          </h3>
+
+          <p className="text-sm text-slate-500">
+            {reservation.space_location}
+          </p>
+        </div>
+
+        <span
+          className="
+            px-3 py-1
+            rounded-full
+            text-xs
+            font-semibold
+            bg-green-100
+            text-green-700
+          "
+        >
+          Activa
+        </span>
+      </div>
+
+      <div className="mt-4 space-y-1">
+        <p className="text-sm text-slate-600">
+          Fecha:
+        </p>
+
+        <p className="font-medium">
+          {start.toLocaleDateString(
+            "es-CO"
+          )}
+        </p>
+
+        <p className="text-sm text-slate-600 mt-2">
+          Horario:
+        </p>
+
+        <p className="font-medium">
+          {start.toLocaleTimeString(
+            "es-CO",
+            {
+              hour: "2-digit",
+              minute: "2-digit",
+            }
+          )}
+          {" - "}
+          {end.toLocaleTimeString(
+            "es-CO",
+            {
+              hour: "2-digit",
+              minute: "2-digit",
+            }
+          )}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+export default function AccountClient({ user, userId }) {
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
+
   const [purchases, setPurchases] = useState([]);
-  const [activeTab, setActiveTab] = useState("perfil");
+
+  const [reservations, setReservations] = useState([]);
 
   useEffect(() => {
-    const loadPurchases = async () => {
-      if (!user?.id) return;
-      setLoading(true);
-      try {
-        const compras = await storeService.getPurchases(user.id);
-        setPurchases(compras);
-      } catch (error) {
-        console.error("Error al cargar compras:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    loadPurchases();
-  }, [user]);
+    if (!userId) return;
+
+    const loadReservations =
+      async () => {
+        try {
+          const data =
+            await getUserReservationsAction(
+              userId
+            );
+
+          setReservations(data);
+        } catch (error) {
+          console.error(
+            "Error cargando reservas:",
+            error
+          );
+        }
+      };
+
+    loadReservations();
+  }, [userId]);
+
+  const [activeTab, setActiveTab] = useState("perfil");
 
   const userProfile = {
-    nombre: user?.nombre || "Usuario Nexus",
-    email: user?.correo || user?.email || "usuario@nexus.com.co",
-    rol: user?.rol || "Miembro",
+    nombre:
+      user?.name ||
+      "Usuario Nexus",
+
+    email:
+      user?.email ||
+      "usuario@nexus.com.co",
+
+    rol: "Miembro",
   };
 
   const handleLogout = () => {
-    logout();
-    router.push("/");
+    window.location.href =
+      "/auth/logout";
   };
 
   const renderTabContent = () => {
@@ -177,16 +277,32 @@ export default function AccountClient() {
       case "historial-reservas":
         return (
           <div className="space-y-6">
-            <div className="text-center py-12">
-              <div className="w-16 h-16 mx-auto mb-4 bg-brand-50 rounded-full flex items-center justify-center">
-                <svg className="w-8 h-8 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-text-primary mb-2">Historial de Reservas</h3>
-              <p className="text-text-secondary mb-6">Aquí podrás ver todas tus reservas.</p>
+            <h2 className="text-2xl font-bold">
+              Mis Reservas
+            </h2>
 
-            </div>
+            {reservations.length > 0 ? (
+              reservations.map((reservation) => (
+                <ReservationItem
+                  key={reservation.id}
+                  reservation={reservation}
+                />
+              ))
+            ) : (
+              <div
+                className="
+                  text-center
+                  py-12
+                  border border-dashed
+                  border-slate-300
+                  rounded-xl
+                "
+              >
+                <p className="text-slate-500">
+                  No tienes reservas registradas.
+                </p>
+              </div>
+            )}
           </div>
         );
 

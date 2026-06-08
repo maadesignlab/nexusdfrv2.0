@@ -1,62 +1,112 @@
-import { apiEndpoints } from "@/lib/apiEndpoints";
+import {
+  getPublications,
+  getPublicationById,
+  getTop10Books,
+  getTop10Ids,
+} from "@/lib/data/publications";
+
+import { getCategories } from "@/lib/data/categories";
+
+import { getCoworkingSpaces } from "@/lib/data/coworking";
+
+function mapPublication(
+  book,
+  categoryMap = {},
+  top10Ids = []
+) {
+  return {
+    ...book,
+
+    titulo: book.title,
+    imagen: book.cover_url,
+    precio: Number(book.price),
+
+    sinopsis: book.description,
+
+    categoria: book.category_name || categoryMap[book.category_id] || "",
+    autor: book.author_name || "",
+
+    anio: book.published_year,
+
+    destacado: book.featured,
+    ventas: book.sold,
+
+    masVendido: top10Ids.includes(book.id),
+  };
+}
+
+function mapCoworkingSpace(space) {
+  return {
+    ...space,
+
+    nombre: space.name,
+    ubicacion: space.location,
+    capacidad: space.capacity,
+    tipo: space.space_type,
+
+    ocupado: !space.available,
+  };
+}
 
 export const storeService = {
-
-  // 🔹 DATA COMPLETA (dashboard, etc)
-  async getInitialData(userId = 1) {
-    const [librosRes, topRes, coworkingRes, purchasesRes] =
-      await Promise.allSettled([
-        apiEndpoints.getProductos(),
-        apiEndpoints.getTop10(),
-        apiEndpoints.getCoworkingSpaces(),
-        apiEndpoints.getPurchasedItems(userId)
+  async getInitialData() {
+    const [libros, top10, coworking, categories, top10Ids] =
+      await Promise.all([
+        getPublications(),
+        getTop10Books(),
+        getCoworkingSpaces(),
+        getCategories(),
+        getTop10Ids(),
       ]);
 
+    const categoryMap = Object.fromEntries(
+      categories.map((c) => [c.id, c.name])
+    );
+
     return {
-      libros: librosRes.status === "fulfilled" ? librosRes.value : [],
-      top10: topRes.status === "fulfilled" ? topRes.value : [],
-      coworking: coworkingRes.status === "fulfilled" ? coworkingRes.value : [],
-      purchases:
-        purchasesRes.status === "fulfilled" &&
-        purchasesRes.value?.compras
-          ? purchasesRes.value.compras
-          : []
+      libros: libros.map((b) =>
+        mapPublication(b, categoryMap, top10Ids)
+      ),
+
+      top10: top10.map((b) =>
+        mapPublication(b, categoryMap, top10Ids)
+      ),
+
+      coworking: coworking.map(mapCoworkingSpace),
+
+      purchases: [],
     };
   },
 
-  // 🔥 NUEVO MÉTODO CLAVE (para Library)
   async getLibros(filters = {}) {
+    const [books, top10Ids] = await Promise.all([
+      filters.top === "top10"
+        ? getTop10Books()
+        : getPublications(),
+      getTop10Ids(),
+    ]);
 
-    // TOP 10
-    if (filters.top === "top10") {
-      return await apiEndpoints.getTop10();
-    }
+    return books.map((book) =>
+      mapPublication(book, {}, top10Ids)
+    );
+  },
 
-    // limpiar filtros vacíos
-    const cleanFilters = Object.fromEntries(
-      Object.entries(filters).filter(([_, v]) => v)
+  async getLibroById(id) {
+    const [book, categories] = await Promise.all([
+      getPublicationById(id),
+      getCategories(),
+    ]);
+
+    if (!book) return null;
+
+    const categoryMap = Object.fromEntries(
+      categories.map((c) => [c.id, c.name])
     );
 
-    const hasFilters = Object.keys(cleanFilters).length > 0;
-
-    // sin filtros → catálogo completo
-    if (!hasFilters) {
-      return await apiEndpoints.getProductos();
-    }
-
-    return await apiEndpoints.getLibrosFiltrados(cleanFilters);
+    return mapPublication(book, categoryMap);
   },
 
-  // 🔹 DETALLE DE LIBRO
-  async getLibroById(id) {
-    return await apiEndpoints.getLibroPorId(id);
-  },
-
-  // 🔹 HISTORIAL DE COMPRAS
-  async getPurchases(userId) {
-    const res = await apiEndpoints.getPurchasedItems(userId);
-    if (res && res.compras) return res.compras;
-    if (Array.isArray(res)) return res;
+  async getPurchases() {
     return [];
-  }
+  },
 };
