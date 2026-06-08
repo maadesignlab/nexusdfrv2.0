@@ -12,7 +12,15 @@ import HeaderMobile from "./HeaderMobile";
 
 function Header({ user }) {
   const router = useRouter();
-  const { cart } = useCart();
+
+  const {
+    cart,
+    mounted,
+    increaseQty,
+    decreaseQty,
+    removeFromCart,
+    clearCart,
+  } = useCart();
 
   const [openCart, setOpenCart] = useState(false);
   const [openAccount, setOpenAccount] = useState(false);
@@ -20,11 +28,6 @@ function Header({ user }) {
 
   const cartRef = useRef(null);
   const accountRef = useRef(null);
-
-  const totalItems = cart.reduce(
-    (acc, item) => acc + item.cantidad,
-    0
-  );
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -55,9 +58,15 @@ function Header({ user }) {
       );
   }, []);
 
+  const totalItems = cart.reduce(
+    (acc, item) => acc + item.cantidad,
+    0
+  );
+
   return (
     <header className="sticky top-0 z-50 bg-white/70 backdrop-blur-md border-b">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        {/* LOGO */}
         <button
           type="button"
           onClick={() =>
@@ -71,6 +80,7 @@ function Header({ user }) {
           />
         </button>
 
+        {/* DESKTOP */}
         <nav className="hidden md:flex items-center gap-6 text-sm">
           {!user ? (
             <a href="/auth/login?returnTo=/dashboard">
@@ -86,12 +96,20 @@ function Header({ user }) {
                 Coworking
               </Link>
 
-              <HeaderCart
-                cartRef={cartRef}
-                openCart={openCart}
-                setOpenCart={setOpenCart}
-                totalItems={totalItems}
-              />
+              {mounted && (
+                <HeaderCart
+                  cartRef={cartRef}
+                  openCart={openCart}
+                  setOpenCart={setOpenCart}
+                  totalItems={totalItems}
+
+                  cart={cart}
+                  increaseQty={increaseQty}
+                  decreaseQty={decreaseQty}
+                  removeFromCart={removeFromCart}
+                  clearCart={clearCart}
+                />
+              )}
 
               <HeaderUser
                 accountRef={accountRef}
@@ -103,6 +121,7 @@ function Header({ user }) {
           )}
         </nav>
 
+        {/* MOBILE */}
         <button
           type="button"
           onClick={() =>
@@ -117,7 +136,7 @@ function Header({ user }) {
       <HeaderMobile
         open={openMobile}
         user={user}
-        totalItems={totalItems}
+        totalItems={mounted ? totalItems : 0}
         onClose={() =>
           setOpenMobile(false)
         }

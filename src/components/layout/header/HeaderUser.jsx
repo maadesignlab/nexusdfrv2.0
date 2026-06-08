@@ -11,25 +11,28 @@ function HeaderUser({
 }) {
   const router = useRouter();
 
+  const userName =
+    user?.name ?? "Usuario";
+
+  const userEmail =
+    user?.email ?? "";
+
   return (
-    <div ref={accountRef} className="relative">
+    <div
+      ref={accountRef}
+      className="relative"
+    >
       {/* TRIGGER */}
       <button
+        type="button"
         onClick={() =>
-          setOpenAccount(!openAccount)
+          setOpenAccount(
+            !openAccount
+          )
         }
-        className="
-          flex items-center
-          px-5 py-1.5
-          rounded-full
-          border border-[#8a8465]
-          bg-[#eaede9]
-          hover:bg-[#e0e4df]
-          text-black font-bold text-sm
-          transition
-        "
+        className="flex items-center px-5 py-1.5 rounded-full border border-[#8a8465] bg-[#eaede9] hover:bg-[#e0e4df] text-black font-bold text-sm transition"
       >
-        Hola, {user?.nombre || user?.name || "Usuario"}
+        Hola, {userName}
       </button>
 
       {/* DROPDOWN */}
@@ -37,33 +40,37 @@ function HeaderUser({
         <div
           className="
             absolute right-0 mt-3 w-56
-            bg-white border border-border-default
-            rounded-xl shadow-xl
+            bg-white
+            border border-slate-200
+            rounded-xl
+            shadow-xl
             p-2
             z-50
           "
         >
-          {/* HEADER USER */}
-          <div className="px-3 py-2 border-b border-border-default">
+          {/* USER INFO */}
+          <div className="px-3 py-2 border-b border-slate-200">
             <p className="text-sm font-semibold truncate">
-              {user?.nombre ||
-                user?.name ||
-                "Usuario"}
+              {userName}
             </p>
 
-            <p className="text-xs text-text-secondary truncate">
-              {user?.correo ||
-                user?.email ||
-                ""}
+            <p className="text-xs text-slate-500 truncate">
+              {userEmail}
             </p>
           </div>
 
           {/* MENU */}
           <div className="py-2 flex flex-col">
             <button
+              type="button"
               onClick={() => {
-                router.push("/account");
-                setOpenAccount(false);
+                router.push(
+                  "/account"
+                );
+
+                setOpenAccount(
+                  false
+                );
               }}
               className="
                 flex items-center gap-2
