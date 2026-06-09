@@ -1,20 +1,29 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import {
+  useRouter,
+  usePathname,
+} from "next/navigation";
 
+import { locales } from "@/lib/i18n";
 import { useCart } from "@/context/CartContext";
 
 import HeaderCart from "./HeaderCart";
 import HeaderUser from "./HeaderUser";
 import HeaderMobile from "./HeaderMobile";
 
-function Header({ user }) {
+function Header({
+  user,
+  locale,
+  t,
+}) {
   const router = useRouter();
+  const pathname = usePathname();
 
   const {
-    cart,
+    cart = [],
     mounted,
     increaseQty,
     decreaseQty,
@@ -22,25 +31,46 @@ function Header({ user }) {
     clearCart,
   } = useCart();
 
-  const [openCart, setOpenCart] = useState(false);
-  const [openAccount, setOpenAccount] = useState(false);
-  const [openMobile, setOpenMobile] = useState(false);
+  const [openCart, setOpenCart] =
+    useState(false);
+
+  const [openAccount, setOpenAccount] =
+    useState(false);
+
+  const [openMobile, setOpenMobile] =
+    useState(false);
 
   const cartRef = useRef(null);
   const accountRef = useRef(null);
 
+  const totalItems = useMemo(
+    () =>
+      cart.reduce(
+        (acc, item) =>
+          acc + item.cantidad,
+        0
+      ),
+    [cart]
+  );
+
   useEffect(() => {
-    const handleClickOutside = (e) => {
+    const handleClickOutside = (
+      e
+    ) => {
       if (
         cartRef.current &&
-        !cartRef.current.contains(e.target)
+        !cartRef.current.contains(
+          e.target
+        )
       ) {
         setOpenCart(false);
       }
 
       if (
         accountRef.current &&
-        !accountRef.current.contains(e.target)
+        !accountRef.current.contains(
+          e.target
+        )
       ) {
         setOpenAccount(false);
       }
@@ -51,49 +81,71 @@ function Header({ user }) {
       handleClickOutside
     );
 
-    return () =>
+    return () => {
       document.removeEventListener(
         "mousedown",
         handleClickOutside
       );
+    };
   }, []);
 
-  const totalItems = cart.reduce(
-    (acc, item) => acc + item.cantidad,
-    0
-  );
+  const handleLocaleChange = (
+    e
+  ) => {
+    const newLocale =
+      e.target.value;
+
+    document.cookie =
+      `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`;
+
+    const segments =
+      pathname.split("/");
+
+    segments[1] = newLocale;
+
+    router.push(
+      segments.join("/")
+    );
+  };
+
+  const localeSelectClasses =
+    "h-9 px-2 rounded-md bg-gray-100 text-sm";
 
   return (
     <header className="sticky top-0 z-50 bg-white/70 backdrop-blur-md border-b">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
         {/* LOGO */}
-        <button
-          type="button"
-          onClick={() =>
-            router.push("/dashboard")
-          }
+        <Link
+          href={`/${locale}/dashboard`}
         >
           <img
             src="/img/nexus.svg"
             alt="Nexus"
             className="w-20"
           />
-        </button>
+        </Link>
 
         {/* DESKTOP */}
         <nav className="hidden md:flex items-center gap-6 text-sm">
           {!user ? (
-            <a href="/auth/login?returnTo=/dashboard">
-              Login
+            <a
+              href={`/auth/login?returnTo=/${locale}/dashboard`}
+            >
+              {t.login}
             </a>
           ) : (
             <>
-              <Link href="/library">
-                Librería
+              <Link
+                href={`/${locale}/library`}
+              >
+                {t.navigation.library}
               </Link>
 
-              <Link href="/coworking">
-                Coworking
+              <Link
+                href={`/${locale}/coworking`}
+              >
+                {t.navigation.coworking}
               </Link>
 
               {mounted && (
@@ -102,12 +154,12 @@ function Header({ user }) {
                   openCart={openCart}
                   setOpenCart={setOpenCart}
                   totalItems={totalItems}
-
                   cart={cart}
                   increaseQty={increaseQty}
                   decreaseQty={decreaseQty}
                   removeFromCart={removeFromCart}
                   clearCart={clearCart}
+                  t={t}
                 />
               )}
 
@@ -116,16 +168,36 @@ function Header({ user }) {
                 openAccount={openAccount}
                 setOpenAccount={setOpenAccount}
                 user={user}
+                locale={locale}
+                t={t}
               />
             </>
           )}
+
+          {/* LANGUAGE */}
+          <select
+            value={locale}
+            onChange={handleLocaleChange}
+            className={localeSelectClasses}
+          >
+            {locales.map((lang) => (
+              <option
+                key={lang}
+                value={lang}
+              >
+                {lang.toUpperCase()}
+              </option>
+            ))}
+          </select>
         </nav>
 
-        {/* MOBILE */}
+        {/* MOBILE MENU */}
         <button
           type="button"
           onClick={() =>
-            setOpenMobile(!openMobile)
+            setOpenMobile(
+              (prev) => !prev
+            )
           }
           className="md:hidden"
         >
@@ -136,7 +208,12 @@ function Header({ user }) {
       <HeaderMobile
         open={openMobile}
         user={user}
-        totalItems={mounted ? totalItems : 0}
+        locale={locale}
+        totalItems={
+          mounted
+            ? totalItems
+            : 0
+        }
         onClose={() =>
           setOpenMobile(false)
         }

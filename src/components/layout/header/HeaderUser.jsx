@@ -8,6 +8,8 @@ function HeaderUser({
   openAccount,
   setOpenAccount,
   user,
+  locale,
+  t
 }) {
   const router = useRouter();
 
@@ -32,7 +34,7 @@ function HeaderUser({
         }
         className="flex items-center px-5 py-1.5 rounded-full border border-[#8a8465] bg-[#eaede9] hover:bg-[#e0e4df] text-black font-bold text-sm transition"
       >
-        Hola, {userName}
+        {t.user.greeting}, {userName}
       </button>
 
       {/* DROPDOWN */}
@@ -65,7 +67,7 @@ function HeaderUser({
               type="button"
               onClick={() => {
                 router.push(
-                  "/account"
+                  `/${locale}/account`
                 );
 
                 setOpenAccount(
@@ -82,11 +84,13 @@ function HeaderUser({
               "
             >
               <User size={16} />
-              Mi cuenta
+              {t.user.account}
             </button>
 
             <a
-              href="/auth/logout"
+              href={`/auth/logout?returnTo=${encodeURIComponent(
+                `${window.location.origin}/${locale}`
+              )}`}
               className="
                 flex items-center gap-2
                 px-3 py-2
@@ -98,7 +102,7 @@ function HeaderUser({
               "
             >
               <LogOut size={16} />
-              Cerrar sesión
+              {t.user.logout}
             </a>
           </div>
         </div>

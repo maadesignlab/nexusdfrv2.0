@@ -1,0 +1,160 @@
+{
+  "landing": {
+    "hero": {
+      "title": "Welcome to Nexus",
+      "description": "Your all-in-one academic portal. Access books, coworking spaces, reservations, and account management from a single place.",
+      "cta": "Explore Nexus"
+    },
+    "services": {
+      "title": "Our Services",
+      "description": "Discover how Nexus can enhance your academic experience with our integrated services.",
+      "library": {
+        "title": "Library",
+        "description": "Explore books, magazines, categories, and bestsellers."
+      },
+      "coworking": {
+        "title": "Coworking",
+        "description": "Check available spaces and make reservations."
+      },
+      "events": {
+        "title": "Events",
+        "description": "Discover talks, workshops, and activities that boost your growth and creativity."
+      }
+    },
+    "pricing": {
+      "title": "Pricing",
+      "description": "Discover our plans and pricing tailored to your needs.",
+      "summarytitle": "Plan Summary",
+
+      "labels": {
+        "books": "Available Books",
+        "quality": "Content Quality",
+        "format": "Format",
+        "coworking": "Coworking Access"
+      },
+
+      "plans": {
+        "basic": {
+          "title": "Basic Plan",
+          "description": "Ideal for students who need occasional access to academic resources.",
+          "price": "$9.99",
+          "period": "/month",
+          "books": "50",
+          "quality": "Standard",
+          "format": "Digital",
+          "coworking": "2 hours per week"
+        },
+
+        "medium": {
+          "title": "Academic Plan",
+          "description": "Perfect for active students who regularly use the library and study spaces.",
+          "price": "$19.99",
+          "period": "/month",
+          "books": "250",
+          "quality": "Premium",
+          "format": "Digital and PDF",
+          "coworking": "10 hours per week"
+        },
+
+        "premium": {
+          "title": "Nexus Premium Plan",
+          "description": "Full access to all academic resources, collaborative spaces, and exclusive benefits.",
+          "price": "$39.99",
+          "period": "/month",
+          "books": "Unlimited",
+          "quality": "Premium+",
+          "format": "Digital, PDF and exclusive resources",
+          "coworking": "Unlimited access"
+        }
+      }
+    }
+  },
+
+  "header": {
+    "login": "Sign in",
+
+    "navigation": {
+      "library": "Library",
+      "coworking": "Coworking"
+    },
+
+    "user": {
+      "greeting": "Hello",
+      "account": "My account",
+      "logout": "Sign out"
+    },
+
+    "cart": {
+      "title": "Cart",
+      "empty": "Your cart is empty",
+      "checkout": "Checkout",
+      "clear": "Clear cart"
+    },
+
+    "mobile": {
+      "menu": "Menu"
+    }
+  },
+
+  "footer": {
+    "brand": {
+      "description": "Nexus supports the university community with digital resources and coworking spaces designed for the future."
+    },
+
+    "product": {
+      "title": "Product",
+      "library": "Library",
+      "coworking": "Coworking",
+      "cart": "Cart"
+    },
+
+    "contact": {
+      "title": "Contact",
+      "support": "Technical support",
+      "privacy": "Privacy",
+      "instagram": "Instagram"
+    },
+
+    "awards": {
+      "title": "Awards",
+      "awwwards": "Awwwards Honors",
+      "featured": "FEATURED ON",
+      "productHunt": "PRODUCT HUNT"
+    }
+  },
+
+  "dashboard": {
+    "badge": "Dashboard",
+    "title": "Welcome to Nexus",
+    "subtitle": "Manage your academic experience from a single place.",
+
+    "heroTitle": "Your complete academic ecosystem",
+
+    "heroDescription": "Quickly access books, coworking spaces, reservations, and account management.",
+
+    "booksAvailable": "Available books",
+    "spacesAvailable": "Available spaces",
+    "fiscalYear": "Fiscal year",
+
+    "libraryTitle": "Library",
+    "libraryDescription": "Explore books, magazines, categories and best sellers.",
+    "libraryAction": "Go to library",
+
+    "coworkingTitle": "Coworking",
+    "coworkingDescription": "Check available spaces and make reservations.",
+    "coworkingAction": "View spaces",
+
+    "accountTitle": "My account",
+    "accountDescription": "Manage your profile, history and preferences.",
+    "accountAction": "View account"
+  },
+
+  "library": {
+    "card": {
+      "featured": "Featured",
+      "bestSeller": "Best Seller",
+      "viewDetail": "View Detail",
+      "addToCart": "Add to Cart"
+    }
+  }
+}

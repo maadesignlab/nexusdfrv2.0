@@ -1,0 +1,160 @@
+{
+  "landing": {
+    "hero": {
+      "title": "Benvenuto su Nexus",
+      "description": "Il tuo portale accademico tutto in uno. Accedi a libri, spazi di coworking, prenotazioni e gestione dell'account da un unico luogo.",
+      "cta": "Esplora Nexus"
+    },
+    "services": {
+      "title": "I nostri servizi",
+      "description": "Scopri come Nexus può migliorare la tua esperienza accademica con i nostri servizi integrati.",
+      "library": {
+        "title": "Libreria",
+        "description": "Esplora libri, riviste, categorie e bestseller."
+      },
+      "coworking": {
+        "title": "Coworking",
+        "description": "Consulta gli spazi disponibili ed effettua prenotazioni."
+      },
+      "events": {
+        "title": "Eventi",
+        "description": "Scopri conferenze, workshop e attività che favoriscono la tua crescita e creatività."
+      }
+    },
+    "pricing": {
+      "title": "Prezzi",
+      "description": "Scopri i nostri piani e prezzi pensati per le tue esigenze.",
+      "summarytitle": "Riepilogo del piano",
+
+      "labels": {
+        "books": "Libri disponibili",
+        "quality": "Qualità dei contenuti",
+        "format": "Formato",
+        "coworking": "Accesso al coworking"
+      },
+
+      "plans": {
+        "basic": {
+          "title": "Piano Base",
+          "description": "Ideale per studenti che necessitano di un accesso occasionale alle risorse accademiche.",
+          "price": "$9.99",
+          "period": "/mese",
+          "books": "50",
+          "quality": "Standard",
+          "format": "Digitale",
+          "coworking": "2 ore a settimana"
+        },
+
+        "medium": {
+          "title": "Piano Accademico",
+          "description": "Perfetto per studenti attivi che utilizzano regolarmente biblioteca e spazi di studio.",
+          "price": "$19.99",
+          "period": "/mese",
+          "books": "250",
+          "quality": "Premium",
+          "format": "Digitale e PDF",
+          "coworking": "10 ore a settimana"
+        },
+
+        "premium": {
+          "title": "Piano Nexus Premium",
+          "description": "Accesso completo a tutte le risorse accademiche, spazi collaborativi e vantaggi esclusivi.",
+          "price": "$39.99",
+          "period": "/mese",
+          "books": "Illimitati",
+          "quality": "Premium+",
+          "format": "Digitale, PDF e risorse esclusive",
+          "coworking": "Accesso illimitato"
+        }
+      }
+    }
+  },
+
+  "header": {
+    "login": "Accedi",
+
+    "navigation": {
+      "library": "Libreria",
+      "coworking": "Coworking"
+    },
+
+    "user": {
+      "greeting": "Ciao",
+      "account": "Il mio account",
+      "logout": "Disconnetti"
+    },
+
+    "cart": {
+      "title": "Carrello",
+      "empty": "Il tuo carrello è vuoto",
+      "checkout": "Completa l'acquisto",
+      "clear": "Svuota carrello"
+    },
+
+    "mobile": {
+      "menu": "Menu"
+    }
+  },
+
+  "footer": {
+    "brand": {
+      "description": "Nexus supporta la comunità universitaria con risorse digitali e spazi di coworking progettati per il futuro."
+    },
+
+    "product": {
+      "title": "Prodotto",
+      "library": "Libreria",
+      "coworking": "Coworking",
+      "cart": "Carrello"
+    },
+
+    "contact": {
+      "title": "Contatto",
+      "support": "Supporto tecnico",
+      "privacy": "Privacy",
+      "instagram": "Instagram"
+    },
+
+    "awards": {
+      "title": "Riconoscimenti",
+      "awwwards": "Awwwards Honors",
+      "featured": "IN EVIDENZA SU",
+      "productHunt": "PRODUCT HUNT"
+    }
+  },
+
+  "dashboard": {
+    "badge": "Dashboard",
+    "title": "Benvenuto in Nexus",
+    "subtitle": "Gestisci la tua esperienza accademica da un unico posto.",
+
+    "heroTitle": "Tutto il tuo ecosistema accademico",
+
+    "heroDescription": "Accedi rapidamente a libri, spazi di coworking, prenotazioni e gestione del tuo account.",
+
+    "booksAvailable": "Libri disponibili",
+    "spacesAvailable": "Spazi disponibili",
+    "fiscalYear": "Anno fiscale",
+
+    "libraryTitle": "Libreria",
+    "libraryDescription": "Esplora libri, riviste, categorie e bestseller.",
+    "libraryAction": "Vai alla libreria",
+
+    "coworkingTitle": "Coworking",
+    "coworkingDescription": "Consulta gli spazi disponibili ed effettua prenotazioni.",
+    "coworkingAction": "Visualizza spazi",
+
+    "accountTitle": "Il mio account",
+    "accountDescription": "Gestisci il tuo profilo, la cronologia e le preferenze.",
+    "accountAction": "Visualizza account"
+  },
+
+  "library": {
+    "card": {
+      "featured": "In primo piano",
+      "bestSeller": "Bestseller",
+      "viewDetail": "Visualizza dettagli",
+      "addToCart": "Aggiungi al carrello"
+    }
+  }
+}

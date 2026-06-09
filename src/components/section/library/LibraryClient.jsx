@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import BookCard from "@/components/ui/library/BookCard";
 import LibraryFilters from "@/components/section/library/LibraryFilters";
 
-export default function LibraryClient({ libros }) {
+export default function LibraryClient({ libros, t, locale }) {
   const [openFilters, setOpenFilters] = useState(false);
 
   return (
@@ -60,7 +60,7 @@ export default function LibraryClient({ libros }) {
                     transition={{ duration: 0.3 }}
                     className="h-full"
                   >
-                    <BookCard libro={item} />
+                    <BookCard libro={item} t={t.card} locale={locale} />
                   </motion.div>
                 ))
               ) : (

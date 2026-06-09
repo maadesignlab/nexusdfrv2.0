@@ -14,6 +14,7 @@ function HeaderCart({
   decreaseQty,
   removeFromCart,
   clearCart,
+  t
 }) {
   const router = useRouter();
 
@@ -37,7 +38,7 @@ function HeaderCart({
         }
         className="relative py-1 hover:underline"
       >
-        Carrito
+        {t.cart.title}
 
         {totalItems > 0 && (
           <span
@@ -67,7 +68,7 @@ function HeaderCart({
         >
           {cart.length === 0 ? (
             <p className="text-center text-sm text-text-secondary py-6">
-              Tu carrito está vacío
+              {t.cart.empty}
             </p>
           ) : (
             <>

@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 
 export default function DashboardClient({
+  t,
   totalLibros = 0,
   espaciosDisponibles = 0,
 }) {
@@ -10,27 +11,24 @@ export default function DashboardClient({
 
   const cards = [
     {
-      title: "Librería",
-      description:
-        "Explora libros, revistas, categorías y más vendidos.",
+      title: t.libraryTitle,
+      description: t.libraryDescription,
       icon: "📚",
-      action: "Ir a librería",
+      action: t.libraryAction,
       href: "/library",
     },
     {
-      title: "Coworking",
-      description:
-        "Consulta espacios disponibles y realiza reservas.",
+      title: t.coworkingTitle,
+      description: t.coworkingDescription,
       icon: "🏢",
-      action: "Ver espacios",
+      action: t.coworkingAction,
       href: "/coworking",
     },
     {
-      title: "Mi cuenta",
-      description:
-        "Administra tu perfil, historial y preferencias.",
+      title: t.accountTitle,
+      description: t.accountDescription,
       icon: "👤",
-      action: "Ver cuenta",
+      action: t.accountAction,
       href: "/account",
     },
   ];
@@ -44,38 +42,37 @@ export default function DashboardClient({
         </span>
 
         <h1 className="mt-2 text-4xl font-bold text-slate-950">
-          Bienvenido a Nexus
+          {t.title}
         </h1>
 
         <p className="mt-3 max-w-2xl text-slate-600">
-          Gestiona tu experiencia académica desde un único lugar.
+          {t.subtitle}
         </p>
       </header>
 
       {/* HERO */}
       <section className="bg-[#fcfcf9] border border-slate-200 rounded-2xl p-8 mb-10 shadow-sm">
         <h2 className="text-2xl font-bold text-slate-950">
-          Todo tu ecosistema académico
+           {t.heroTitle}
         </h2>
 
         <p className="mt-3 max-w-2xl text-slate-600">
-          Accede rápidamente a libros, espacios de coworking,
-          reservas y gestión de tu cuenta.
+          {t.heroDescription}
         </p>
 
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           <StatCard
-            label="Libros disponibles"
+            label={t.booksAvailable}
             value={totalLibros}
           />
 
           <StatCard
-            label="Espacios libres"
+            label={t.spacesAvailable}
             value={espaciosDisponibles}
           />
 
           <StatCard
-            label="Año fiscal"
+            label={t.fiscalYear}
             value="2026"
           />
         </div>

@@ -4,11 +4,9 @@ import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import BookImage from "./BookImage";
 
-function BookCard({ libro }) {
+function BookCard({ libro, t, locale }) {
   const router = useRouter();
   const { addToCart } = useCart();
-  
-  console.log(libro);
   
   const handleAddToCart = (e) => {
     e.stopPropagation();
@@ -45,7 +43,7 @@ function BookCard({ libro }) {
               bg-blue-500 text-white
             "
           >
-            Destacado
+            {t.featured}
           </span>
         )}
 
@@ -58,14 +56,14 @@ function BookCard({ libro }) {
               bg-yellow-300 text-slate-950
             "
           >
-            Top ventas
+            {t.bestSeller}
           </span>
         )}
       </div>
 
       {/* IMAGE */}
       <div
-        onClick={() => router.push(`/library/${libro.id}`)}
+        onClick={() => router.push(`/${locale}/library/${libro.id}`)}
         className="
           relative w-full
           h-[210px]
@@ -117,7 +115,7 @@ function BookCard({ libro }) {
         <div className="mt-auto pt-4 space-y-2">
           {/* BUTTON DETAIL */}
           <button
-            onClick={() => router.push(`/library/${libro.id}`)}
+            onClick={() => router.push(`/${locale}/library/${libro.id}`)}
             className="
               btn-primary
               w-full py-2
@@ -125,7 +123,7 @@ function BookCard({ libro }) {
               rounded-xl
             "
           >
-            Ver detalle
+            {t.viewDetail}
           </button>
 
           {/* BUTTON CART */}
@@ -138,7 +136,7 @@ function BookCard({ libro }) {
               rounded-xl
             "
           >
-            Añadir al carrito
+            {t.addToCart}
           </button>
         </div>
       </div>

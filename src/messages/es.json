@@ -1,0 +1,178 @@
+{
+
+  "landing": {
+    "hero": {
+      "title": "Bienvenido a Nexus",
+      "description": "Tu portal académico todo en uno. Accede a libros, espacios de coworking, reservas y gestión de tu cuenta desde un único lugar.",
+      "cta": "Explora Nexus"
+    },
+    "services": {
+      "title": "Nuestros servicios",
+      "description": "Descubre cómo Nexus puede mejorar tu experiencia académica con nuestros servicios integrados.",
+      "library": {
+        "title": "Librería",
+        "description": "Explora libros, revistas, categorías y más vendidos."
+      },
+      "coworking": {
+        "title": "Coworking",
+        "description": "Consulta espacios disponibles y realiza reservas."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "Descubre charlas, talleres y actividades que impulsan tu desarrollo y creatividad."
+      }
+    },
+    "pricing": {
+      "title": "Precios",
+      "description": "Descubre nuestros planes y precios adaptados a tus necesidades.",
+      "summarytitle": "Resumen del plan",
+
+      "labels": {
+        "books": "Libros disponibles",
+        "quality": "Calidad del contenido",
+        "format": "Formato",
+        "coworking": "Acceso a coworking"
+      },
+
+      "plans": {
+        "basic": {
+          "title": "Plan Básico",
+          "description": "Ideal para estudiantes que necesitan acceso ocasional a recursos académicos.",
+          "price": "$9.99",
+          "period": "/mes",
+          "books": "50",
+          "quality": "Estándar",
+          "format": "Digital",
+          "coworking": "2 horas por semana"
+        },
+
+        "medium": {
+          "title": "Plan Académico",
+          "description": "Perfecto para estudiantes activos que utilizan regularmente la biblioteca y los espacios de estudio.",
+          "price": "$19.99",
+          "period": "/mes",
+          "books": "250",
+          "quality": "Premium",
+          "format": "Digital y PDF",
+          "coworking": "10 horas por semana"
+        },
+
+        "premium": {
+          "title": "Plan Nexus Premium",
+          "description": "Acceso completo a todos los recursos académicos, espacios colaborativos y beneficios exclusivos.",
+          "price": "$39.99",
+          "period": "/mes",
+          "books": "Ilimitados",
+          "quality": "Premium+",
+          "format": "Digital, PDF y recursos exclusivos",
+          "coworking": "Acceso ilimitado"
+        }
+      }
+    }
+  },
+
+  "header": {
+    "login": "Iniciar sesión",
+
+    "navigation": {
+      "library": "Librería",
+      "coworking": "Coworking"
+    },
+
+    "user": {
+      "greeting": "Hola",
+      "account": "Mi cuenta",
+      "logout": "Cerrar sesión"
+    },
+
+    "cart": {
+      "title": "Carrito",
+      "empty": "Tu carrito está vacío",
+      "checkout": "Finalizar compra",
+      "clear": "Vaciar carrito"
+    },
+
+    "mobile": {
+      "menu": "Menú"
+    }
+  },
+
+  "footer": {
+    "brand": {
+      "description": "Nexus apoya a la comunidad universitaria con recursos digitales y espacios de coworking diseñados para el futuro."
+    },
+
+    "product": {
+      "title": "Producto",
+      "library": "Librería",
+      "coworking": "Coworking",
+      "cart": "Carrito"
+    },
+
+    "contact": {
+      "title": "Contacto",
+      "support": "Soporte técnico",
+      "privacy": "Privacidad",
+      "instagram": "Instagram"
+    },
+
+    "awards": {
+      "title": "Reconocimientos",
+      "awwwards": "Awwwards Honors",
+      "featured": "DESTACADO EN",
+      "productHunt": "PRODUCT HUNT"
+    }
+  },
+
+  "dashboard": {
+    "badge": "Dashboard",
+    "title": "Bienvenido a Nexus",
+    "subtitle": "Gestiona tu experiencia académica desde un único lugar.",
+
+    "heroTitle": "Todo tu ecosistema académico",
+    "heroDescription": "Accede rápidamente a libros, espacios de coworking, reservas y gestión de tu cuenta.",
+
+    "booksAvailable": "Libros disponibles",
+    "spacesAvailable": "Espacios libres",
+    "fiscalYear": "Año fiscal",
+
+    "libraryTitle": "Librería",
+    "libraryDescription": "Explora libros, revistas, categorías y más vendidos.",
+    "libraryAction": "Ir a librería",
+
+    "coworkingTitle": "Coworking",
+    "coworkingDescription": "Consulta espacios disponibles y realiza reservas.",
+    "coworkingAction": "Ver espacios",
+
+    "accountTitle": "Mi cuenta",
+    "accountDescription": "Administra tu perfil, historial y preferencias.",
+    "accountAction": "Ver cuenta"
+  },
+
+  "library": {
+    "card": {
+      "featured": "Destacado",
+      "bestSeller": "Top ventas",
+      "viewDetail": "Ver detalle",
+      "addToCart": "Añadir al carrito"
+    },
+    "detail": {
+      "featured": "Destacado",
+      "bestSeller": "Top ventas",
+      "viewDetail": "Ver detalle",
+      "addToCart": "Añadir al carrito"
+    }
+  },
+
+  "coworking": {
+
+  },
+
+  "cart": {
+
+  },
+
+  "account": {
+
+  }
+}
