@@ -150,6 +150,22 @@
   },
 
   "library": {
+    "categories": {
+      "clasico": "Classic",
+      "drama": "Drama",
+      "arte-cultura": "Art & Culture",
+      "estilo-vida": "Lifestyle",
+      "ficcion": "Fiction",
+      "economia": "Economy"
+    },
+      "filters": {
+      "title": "Filters",
+      "featured": "Featured",
+      "categoriesLabel": "Categories",
+      "top10": "🔥 Top 10 más vendidos",
+      "year": "Year",
+      "clear": "Clean filters"
+    },
     "card": {
       "featured": "Featured",
       "bestSeller": "Best Seller",

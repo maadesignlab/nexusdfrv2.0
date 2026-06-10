@@ -1,53 +1,75 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import {
+  useRouter,
+  useSearchParams,
+  usePathname,
+} from "next/navigation";
 
-function LibraryFilters() {
+function LibraryFilters({
+  categories = [],
+  years = [],
+  categoryLabels = {},
+  t = {},
+}) {
   const router = useRouter();
-  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const searchParams =
+    useSearchParams();
 
-  // 🔹 estado desde URL
-  const filtros = {
-    categoria: searchParams.get("categoria") || "",
-    año: searchParams.get("año") || "",
-    top: searchParams.get("top") || "",
-  };
+  const filters = {
+  category:
+    searchParams.get("category") || "",
 
-  const categorias = [
-    "Drama",
-    "Ficción",
-    "Clásico",
-    "Economía",
-    "Arte y Cultura",
-    "Estilo de vida",
-  ];
+  year:
+    searchParams.get("year") || "",
 
-  const años = ["2002", "2006", "2023", "2024"];
+  featured:
+    searchParams.get("featured") || "",
+};
 
-  // 🔹 actualizar filtros en URL
-  const updateFilter = (key, value) => {
-    const params = new URLSearchParams(searchParams.toString());
+  const updateFilter = (
+  key,
+  value
+) => {
+  const params =
+    new URLSearchParams(
+      searchParams.toString()
+    );
 
-    if (params.get(key) === value) {
-      params.delete(key);
-    } else {
-      params.set(key, value);
+  const isSameValue =
+    params.get(key) === value;
+
+  if (isSameValue) {
+    params.delete(key);
+  } else {
+    params.set(key, value);
+  }
+
+  /* if (key === "featured") {
+    params.delete("category");
+    params.delete("year");
+  } */
+
+  const query =
+    params.toString();
+
+  router.push(
+    query
+      ? `${pathname}?${query}`
+      : pathname,
+    {
+      scroll: false,
     }
+  );
+};
 
-    // si no es top, quitar top
-    if (key !== "top") {
-      params.delete("top");
-    }
-
-    router.push(`/library?${params.toString()}`, { scroll: false });
-  };
-
-  // 🔹 limpiar filtros
   const clearFilters = () => {
-    router.push("/library", { scroll: false });
+    router.push(pathname, {
+      scroll: false,
+    });
   };
 
-  // 🎨 estilos
   const baseBtn =
     "w-full text-left px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 border";
 
@@ -59,85 +81,134 @@ function LibraryFilters() {
 
   return (
     <aside className="w-full h-full flex flex-col">
-
       {/* HEADER */}
       <div className="pb-6 border-b border-border-default">
         <h3 className="text-lg font-extrabold tracking-tight">
-          Filtros
+          {t.title}
         </h3>
       </div>
 
-      {/* CONTENIDO */}
+      {/* CONTENT */}
       <div className="flex-1 overflow-y-auto py-6 pr-2 scrollbar-custom">
-
-        {/* 🔥 DESTACADOS */}
+        {/* FEATURED */}
         <div className="mb-8">
           <h4 className="text-[11px] font-bold uppercase tracking-widest text-text-primary/50 mb-4">
-            Destacados
-          </h4>
-
-          <button
-            className={`${baseBtn} ${
-              filtros.top === "top10" ? activeBtn : inactiveBtn
-            }`}
-            onClick={() => updateFilter("top", "top10")}
-          >
-            🔥 Top 10 más vendidos
-          </button>
-        </div>
-
-        {/* 📚 CATEGORÍAS */}
-        <div className="mb-8">
-          <h4 className="text-[11px] font-bold uppercase tracking-widest text-text-primary/50 mb-4">
-            Categoría
+            {t.featured}
           </h4>
 
           <div className="space-y-2">
-            {categorias.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => updateFilter("categoria", cat)}
-                className={`${baseBtn} ${
-                  filtros.categoria === cat ? activeBtn : inactiveBtn
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+            <button
+              onClick={() =>
+                updateFilter(
+                  "featured",
+                  "featured"
+                )
+              }
+              className={`${baseBtn} ${
+                filters.featured ===
+                "featured"
+                  ? activeBtn
+                  : inactiveBtn
+              }`}
+            >
+              {t.featuredBooks}
+            </button>
+
+            <button
+              onClick={() =>
+                updateFilter(
+                  "featured",
+                  "bestSeller"
+                )
+              }
+              className={`${baseBtn} ${
+                filters.featured ===
+                "bestSeller"
+                  ? activeBtn
+                  : inactiveBtn
+              }`}
+            >
+              {t.bestSellerBooks}
+            </button>
           </div>
         </div>
 
-        {/* 📅 AÑO */}
+        {/* CATEGORIES */}
         <div className="mb-8">
           <h4 className="text-[11px] font-bold uppercase tracking-widest text-text-primary/50 mb-4">
-            Año
+            {t.categoriesLabel}
           </h4>
 
           <div className="space-y-2">
-            {años.map((año) => (
-              <button
-                key={año}
-                onClick={() => updateFilter("año", año)}
-                className={`${baseBtn} ${
-                  filtros.año === año ? activeBtn : inactiveBtn
-                }`}
-              >
-                {año}
-              </button>
-            ))}
+            {categories.map(
+              (category) => (
+                <button
+                  key={category.slug}
+                  onClick={() =>
+                    updateFilter(
+                      "category",
+                      category.slug
+                    )
+                  }
+                  className={`${baseBtn} ${
+                    filters.category ===
+                    category.slug
+                      ? activeBtn
+                      : inactiveBtn
+                  }`}
+                >
+                  {categoryLabels[
+                    category.slug
+                  ] ??
+                    category.name}
+                </button>
+              )
+            )}
           </div>
         </div>
 
-        {/* 🧹 LIMPIAR */}
+        {/* YEAR */}
+        <div className="mb-8">
+          <h4 className="text-[11px] font-bold uppercase tracking-widest text-text-primary/50 mb-4">
+            {t.year}
+          </h4>
+
+          <div className="space-y-2">
+            {years.map(
+              (year) => (
+                <button
+                  key={year}
+                  onClick={() =>
+                    updateFilter(
+                      "year",
+                      String(year)
+                    )
+                  }
+                  className={`${baseBtn} ${
+                    filters.year ===
+                    year
+                      ? activeBtn
+                      : inactiveBtn
+                  }`}
+                >
+                  {year}
+                </button>
+              )
+            )}
+          </div>
+        </div>
+
+        {/* CLEAR */}
         <div className="pt-4 border-t border-border-default">
           <button
-            onClick={clearFilters}
+            onClick={
+              clearFilters
+            }
             className="w-full text-sm font-semibold text-brand-600 hover:underline"
           >
-            Limpiar filtros
+            {t.clear}
           </button>
         </div>
-
       </div>
     </aside>
   );

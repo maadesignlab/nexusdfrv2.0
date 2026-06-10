@@ -150,6 +150,24 @@
   },
 
   "library": {
+    "categories": {
+      "clasico": "Clásico",
+      "drama": "Drama",
+      "arte-cultura": "Arte y Cultura",
+      "estilo-vida": "Estilo de vida",
+      "ficcion": "Ficción",
+      "economia": "Economía"
+    },
+    "filters": {
+      "title": "Filtros",
+      "featured": "Destacados",
+      "featuredBooks": "Destacados",
+      "bestSellerBooks": "Más vendidos",
+      "categoriesLabel": "Categorías",
+      "top10": "Top 10 más vendidos",
+      "year": "Año",
+      "clear": "Limpiar filtros"
+    },
     "card": {
       "featured": "Destacado",
       "bestSeller": "Top ventas",

@@ -4,20 +4,40 @@ import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import BookImage from "./BookImage";
 
-function BookCard({ libro, t, locale }) {
+function BookCard({
+  libro,
+  t = {},
+  categories = {},
+  locale,
+}) {
   const router = useRouter();
+
   const { addToCart } = useCart();
-  
+
   const handleAddToCart = (e) => {
     e.stopPropagation();
 
-    const itemParaCarrito = {
+    addToCart({
       ...libro,
       bookId: libro.id,
-    };
-
-    addToCart(itemParaCarrito);
+    });
   };
+
+  const categoryLabel =
+    categories[
+      libro?.categoria?.slug
+    ] ??
+    libro?.categoria?.name ??
+    "";
+
+  console.log({
+  categoria: libro.categoria,
+  slug: libro?.categoria?.slug,
+  translated:
+    categories[
+      libro?.categoria?.slug
+    ],
+});
 
   return (
     <article
@@ -32,15 +52,17 @@ function BookCard({ libro, t, locale }) {
         hover:border-brand-500/40
       "
     >
-      {/* BADGE */}
+      {/* BADGES */}
       <div className="absolute top-3 left-3 z-10 flex flex-col gap-2">
         {libro.destacado && (
           <span
             className="
               px-2.5 py-1
               rounded-full
-              text-[11px] font-bold
-              bg-blue-500 text-white
+              text-[11px]
+              font-bold
+              bg-blue-500
+              text-white
             "
           >
             {t.featured}
@@ -52,8 +74,10 @@ function BookCard({ libro, t, locale }) {
             className="
               px-2.5 py-1
               rounded-full
-              text-[11px] font-bold
-              bg-yellow-300 text-slate-950
+              text-[11px]
+              font-bold
+              bg-yellow-300
+              text-slate-950
             "
           >
             {t.bestSeller}
@@ -63,12 +87,17 @@ function BookCard({ libro, t, locale }) {
 
       {/* IMAGE */}
       <div
-        onClick={() => router.push(`/${locale}/library/${libro.id}`)}
+        onClick={() =>
+          router.push(
+            `/${locale}/library/${libro.id}`
+          )
+        }
         className="
           relative w-full
           h-[210px]
           mb-4
-          rounded-xl overflow-hidden
+          rounded-xl
+          overflow-hidden
           cursor-pointer
           bg-slate-50
         "
@@ -102,8 +131,16 @@ function BookCard({ libro, t, locale }) {
         </p>
 
         {/* CATEGORY */}
-        <p className="mt-0.5 text-[11px] font-medium text-brand-700 line-clamp-1">
-          {libro.categoria}
+        <p
+          className="
+            mt-0.5
+            text-[11px]
+            font-medium
+            text-brand-700
+            line-clamp-1
+          "
+        >
+          {categoryLabel}
         </p>
 
         {/* PRICE */}
@@ -113,26 +150,32 @@ function BookCard({ libro, t, locale }) {
 
         {/* ACTIONS */}
         <div className="mt-auto pt-4 space-y-2">
-          {/* BUTTON DETAIL */}
           <button
-            onClick={() => router.push(`/${locale}/library/${libro.id}`)}
+            onClick={() =>
+              router.push(
+                `/${locale}/library/${libro.id}`
+              )
+            }
             className="
               btn-primary
-              w-full py-2
-              text-xs font-bold
+              w-full
+              py-2
+              text-xs
+              font-bold
               rounded-xl
             "
           >
             {t.viewDetail}
           </button>
 
-          {/* BUTTON CART */}
           <button
             onClick={handleAddToCart}
             className="
               btn-primary
-              w-full py-2
-              text-xs font-bold
+              w-full
+              py-2
+              text-xs
+              font-bold
               rounded-xl
             "
           >

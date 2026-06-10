@@ -11,8 +11,15 @@ export default async function LibraryPage({
   const query =
     await searchParams;
 
-  const libros =
-    await storeService.getLibros(query);
+  const [
+    libros,
+    categories,
+    years,
+  ] = await Promise.all([
+    storeService.getLibros(query),
+    storeService.getCategories(),
+    storeService.getPublicationYears(),
+  ]);
 
   const translations =
     await getTranslations(locale);
@@ -20,6 +27,8 @@ export default async function LibraryPage({
   return (
     <LibraryClient
       libros={libros}
+      categories={categories}
+      years={years}
       t={translations.library}
       locale={locale}
     />

@@ -1,10 +1,72 @@
 import { sql } from "@/lib/db";
 
-export async function getPublications() {
+export async function getPublications(filters = {}) {
+  const { category, year } = filters;
+
+  if (category && year) {
+    return await sql`
+      SELECT
+        p.*,
+        c.name AS category_name,
+        c.slug AS category_slug,
+        a.name AS author_name
+      FROM publications p
+      LEFT JOIN categories c
+        ON p.category_id = c.id
+      LEFT JOIN publication_authors pa
+        ON p.id = pa.publication_id
+      LEFT JOIN authors a
+        ON pa.author_id = a.id
+      WHERE
+        c.slug = ${category}
+        AND p.published_year = ${Number(year)}
+      ORDER BY p.title
+    `;
+  }
+
+  if (category) {
+    return await sql`
+      SELECT
+        p.*,
+        c.name AS category_name,
+        c.slug AS category_slug,
+        a.name AS author_name
+      FROM publications p
+      LEFT JOIN categories c
+        ON p.category_id = c.id
+      LEFT JOIN publication_authors pa
+        ON p.id = pa.publication_id
+      LEFT JOIN authors a
+        ON pa.author_id = a.id
+      WHERE c.slug = ${category}
+      ORDER BY p.title
+    `;
+  }
+
+  if (year) {
+    return await sql`
+      SELECT
+        p.*,
+        c.name AS category_name,
+        c.slug AS category_slug,
+        a.name AS author_name
+      FROM publications p
+      LEFT JOIN categories c
+        ON p.category_id = c.id
+      LEFT JOIN publication_authors pa
+        ON p.id = pa.publication_id
+      LEFT JOIN authors a
+        ON pa.author_id = a.id
+      WHERE p.published_year = ${Number(year)}
+      ORDER BY p.title
+    `;
+  }
+
   return await sql`
     SELECT
       p.*,
       c.name AS category_name,
+      c.slug AS category_slug,
       a.name AS author_name
     FROM publications p
     LEFT JOIN categories c
@@ -13,7 +75,7 @@ export async function getPublications() {
       ON p.id = pa.publication_id
     LEFT JOIN authors a
       ON pa.author_id = a.id
-    ORDER BY p.title;
+    ORDER BY p.title
   `;
 }
 
@@ -22,6 +84,7 @@ export async function getPublicationById(id) {
     SELECT
       p.*,
       c.name AS category_name,
+      c.slug AS category_slug,
       a.name AS author_name
     FROM publications p
     LEFT JOIN categories c
@@ -36,11 +99,95 @@ export async function getPublicationById(id) {
   return result[0];
 }
 
-export async function getTop10Books() {
+export async function getTop10Books(
+  filters = {}
+) {
+  const { category, year } = filters;
+
+  if (category && year) {
+    return await sql`
+      SELECT
+        p.*,
+        c.name AS category_name,
+        c.slug AS category_slug,
+        a.name AS author_name
+      FROM publications p
+      LEFT JOIN categories c
+        ON p.category_id = c.id
+      LEFT JOIN publication_authors pa
+        ON p.id = pa.publication_id
+      LEFT JOIN authors a
+        ON pa.author_id = a.id
+      WHERE
+        p.id IN (
+          SELECT id
+          FROM publications
+          ORDER BY sold DESC
+          LIMIT 10
+        )
+        AND c.slug = ${category}
+        AND p.published_year = ${Number(year)}
+      ORDER BY p.sold DESC
+    `;
+  }
+
+  if (category) {
+    return await sql`
+      SELECT
+        p.*,
+        c.name AS category_name,
+        c.slug AS category_slug,
+        a.name AS author_name
+      FROM publications p
+      LEFT JOIN categories c
+        ON p.category_id = c.id
+      LEFT JOIN publication_authors pa
+        ON p.id = pa.publication_id
+      LEFT JOIN authors a
+        ON pa.author_id = a.id
+      WHERE
+        p.id IN (
+          SELECT id
+          FROM publications
+          ORDER BY sold DESC
+          LIMIT 10
+        )
+        AND c.slug = ${category}
+      ORDER BY p.sold DESC
+    `;
+  }
+
+  if (year) {
+    return await sql`
+      SELECT
+        p.*,
+        c.name AS category_name,
+        c.slug AS category_slug,
+        a.name AS author_name
+      FROM publications p
+      LEFT JOIN categories c
+        ON p.category_id = c.id
+      LEFT JOIN publication_authors pa
+        ON p.id = pa.publication_id
+      LEFT JOIN authors a
+        ON pa.author_id = a.id
+      WHERE
+        p.id IN (
+          SELECT id
+          FROM publications
+          ORDER BY sold DESC
+          LIMIT 10
+        )
+        AND p.published_year = ${Number(year)}
+      ORDER BY p.sold DESC
+    `;
+  }
+
   return await sql`
     SELECT
       p.*,
       c.name AS category_name,
+      c.slug AS category_slug,
       a.name AS author_name
     FROM publications p
     LEFT JOIN categories c
@@ -49,8 +196,106 @@ export async function getTop10Books() {
       ON p.id = pa.publication_id
     LEFT JOIN authors a
       ON pa.author_id = a.id
+    WHERE
+      p.id IN (
+        SELECT id
+        FROM publications
+        ORDER BY sold DESC
+        LIMIT 10
+      )
     ORDER BY p.sold DESC
-    LIMIT 10;
+  `;
+}
+
+export async function getFeaturedBooks(
+  filters = {}
+) {
+  const { category, year } =
+    filters;
+
+  if (category && year) {
+    return await sql`
+      SELECT
+        p.*,
+        c.name AS category_name,
+        c.slug AS category_slug,
+        a.name AS author_name
+      FROM publications p
+      LEFT JOIN categories c
+        ON p.category_id = c.id
+      LEFT JOIN publication_authors pa
+        ON p.id = pa.publication_id
+      LEFT JOIN authors a
+        ON pa.author_id = a.id
+      WHERE
+        p.featured = true
+        AND c.slug = ${category}
+        AND p.published_year = ${Number(
+          year
+        )}
+      ORDER BY p.title
+    `;
+  }
+
+  if (category) {
+    return await sql`
+      SELECT
+        p.*,
+        c.name AS category_name,
+        c.slug AS category_slug,
+        a.name AS author_name
+      FROM publications p
+      LEFT JOIN categories c
+        ON p.category_id = c.id
+      LEFT JOIN publication_authors pa
+        ON p.id = pa.publication_id
+      LEFT JOIN authors a
+        ON pa.author_id = a.id
+      WHERE
+        p.featured = true
+        AND c.slug = ${category}
+      ORDER BY p.title
+    `;
+  }
+
+  if (year) {
+    return await sql`
+      SELECT
+        p.*,
+        c.name AS category_name,
+        c.slug AS category_slug,
+        a.name AS author_name
+      FROM publications p
+      LEFT JOIN categories c
+        ON p.category_id = c.id
+      LEFT JOIN publication_authors pa
+        ON p.id = pa.publication_id
+      LEFT JOIN authors a
+        ON pa.author_id = a.id
+      WHERE
+        p.featured = true
+        AND p.published_year = ${Number(
+          year
+        )}
+      ORDER BY p.title
+    `;
+  }
+
+  return await sql`
+    SELECT
+      p.*,
+      c.name AS category_name,
+      c.slug AS category_slug,
+      a.name AS author_name
+    FROM publications p
+    LEFT JOIN categories c
+      ON p.category_id = c.id
+    LEFT JOIN publication_authors pa
+      ON p.id = pa.publication_id
+    LEFT JOIN authors a
+      ON pa.author_id = a.id
+    WHERE p.featured = true
+    ORDER BY p.title
   `;
 }
 
@@ -63,4 +308,13 @@ export async function getTop10Ids() {
   `;
 
   return result.map((row) => row.id);
+}
+
+export async function getPublicationYears() {
+  return await sql`
+    SELECT DISTINCT published_year
+    FROM publications
+    WHERE published_year IS NOT NULL
+    ORDER BY published_year DESC
+  `;
 }
