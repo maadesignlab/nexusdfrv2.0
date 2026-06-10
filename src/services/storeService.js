@@ -31,11 +31,15 @@ function mapPublication(
   return {
     ...book,
 
-    titulo: book.title,
+    titulo:
+      book.translated_title ||
+      book.title,
     imagen: book.cover_url,
     precio: Number(book.price),
 
-    sinopsis: book.description,
+    sinopsis:
+      book.translated_description ||
+      book.description,
 
     categoria: {
       name:
@@ -127,7 +131,10 @@ export const storeService = {
     };
   },
 
-  async getLibros(filters = {}) {
+  async getLibros(
+    filters = {},
+    locale = "es"
+  ) {
     const [
       books,
       top10Ids,
@@ -135,14 +142,19 @@ export const storeService = {
     ] = await Promise.all([
       filters.featured ===
       "bestSeller"
-        ? getTop10Books(filters)
+        ? getTop10Books(
+            filters,
+            locale
+          )
         : filters.featured ===
             "featured"
           ? getFeaturedBooks(
-              filters
+              filters,
+              locale
             )
           : getPublications(
-              filters
+              filters,
+              locale
             ),
 
       getTop10Ids(),
@@ -159,12 +171,18 @@ export const storeService = {
     );
   },
 
-  async getLibroById(id) {
+  async getLibroById(
+    id,
+    locale = "es"
+  ) {
     const [
       book,
       { categoryMap },
     ] = await Promise.all([
-      getPublicationById(id),
+      getPublicationById(
+        id,
+        locale
+      ),
       getCategoryMap(),
     ]);
 

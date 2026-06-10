@@ -173,6 +173,15 @@
       "bestSeller": "Meilleures ventes",
       "viewDetail": "Voir le détail",
       "addToCart": "Ajouter au panier"
+    },
+    "detail": {
+      "loading": "Chargement...",
+      "bookDetail": "Détail du livre",
+      "featured": "À la une",
+      "bestSeller": "Meilleure vente",
+      "price": "Prix",
+      "synopsis": "Synopsis",
+      "addToCart": "Ajouter au panier"
     }
   }
 }

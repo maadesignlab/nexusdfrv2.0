@@ -16,7 +16,10 @@ export default async function LibraryPage({
     categories,
     years,
   ] = await Promise.all([
-    storeService.getLibros(query),
+    storeService.getLibros(
+      query,
+      locale
+    ),
     storeService.getCategories(),
     storeService.getPublicationYears(),
   ]);

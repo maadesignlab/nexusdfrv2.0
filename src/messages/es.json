@@ -175,9 +175,12 @@
       "addToCart": "Añadir al carrito"
     },
     "detail": {
+      "loading": "Cargando...",
+      "bookDetail": "Detalle del libro",
       "featured": "Destacado",
       "bestSeller": "Top ventas",
-      "viewDetail": "Ver detalle",
+      "price": "Precio",
+      "synopsis": "Sinopsis",
       "addToCart": "Añadir al carrito"
     }
   },

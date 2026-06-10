@@ -173,6 +173,15 @@
       "bestSeller": "Best Seller",
       "viewDetail": "View Detail",
       "addToCart": "Add to Cart"
+    },
+    "detail": {
+      "loading": "Loading...",
+      "bookDetail": "Book Detail",
+      "featured": "Featured",
+      "bestSeller": "Best Seller",
+      "price": "Price",
+      "synopsis": "Synopsis",
+      "addToCart": "Add to Cart"
     }
   }
 }

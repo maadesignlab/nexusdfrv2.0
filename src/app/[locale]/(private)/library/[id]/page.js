@@ -1,11 +1,36 @@
 import { storeService } from "@/services/storeService";
+import { getTranslations } from "@/lib/translations";
+
 import BookDetailClient from "@/components/section/library/BookDetailClient";
 
-export default async function BookDetailPage({ params }) {
+export default async function BookDetailPage({
+  params,
+}) {
+  const { locale, id } =
+    await params;
 
-  const { id } = await params; // 🔥 CLAVE
+  const [book, translations] =
+    await Promise.all([
+      storeService.getLibroById(
+        id,
+        locale
+      ),
+      getTranslations(locale),
+    ]);
 
-  const book = await storeService.getLibroById(id);
+console.log(book);
 
-  return <BookDetailClient book={book} />;
+  return (
+    <BookDetailClient
+      book={book}
+      t={
+        translations.library
+          .detail
+      }
+      categories={
+        translations.library
+          .categories
+      }
+    />
+  );
 }

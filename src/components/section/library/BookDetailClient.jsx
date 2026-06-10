@@ -18,8 +18,7 @@ function BookDetailClient({
     return (
       <main className="min-h-[60vh] flex items-center justify-center">
         <p className="text-slate-500">
-          {t.loading ??
-            "Cargando..."}
+          {t.loading}
         </p>
       </main>
     );
@@ -47,8 +46,7 @@ function BookDetailClient({
       {/* HEADER */}
       <div className="mb-7">
         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-yellow-500 mb-2">
-          {t.bookDetail ??
-            "Detalle del libro"}
+          {t.bookDetail}
         </p>
 
         <h1 className="max-w-3xl text-2xl sm:text-3xl font-bold text-slate-950 leading-tight">
@@ -164,8 +162,7 @@ function BookDetailClient({
             {/* PRICE */}
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
-                {t.price ??
-                  "Precio"}
+                {t.price}
               </p>
 
               <p className="mt-2 text-3xl font-bold text-slate-950">
@@ -177,8 +174,7 @@ function BookDetailClient({
             {/* SYNOPSIS */}
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400 mb-2">
-                {t.synopsis ??
-                  "Sinopsis"}
+                {t.synopsis}
               </p>
 
               <p className="text-sm sm:text-base leading-7 text-slate-600">
@@ -210,7 +206,10 @@ function BookDetailClient({
                 type="button"
                 onClick={() =>
                   setCantidad((c) =>
-                    Math.max(1, c - 1)
+                    Math.max(
+                      1,
+                      c - 1
+                    )
                   )
                 }
                 className="

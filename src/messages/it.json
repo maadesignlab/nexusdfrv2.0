@@ -173,6 +173,15 @@
       "bestSeller": "Bestseller",
       "viewDetail": "Visualizza dettagli",
       "addToCart": "Aggiungi al carrello"
+    },
+    "detail": {
+      "loading": "Caricamento...",
+      "bookDetail": "Dettaglio del libro",
+      "featured": "In evidenza",
+      "bestSeller": "Più venduto",
+      "price": "Prezzo",
+      "synopsis": "Sinossi",
+      "addToCart": "Aggiungi al carrello"
     }
   }
 }

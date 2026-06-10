@@ -173,6 +173,15 @@
       "bestSeller": "Bestseller",
       "viewDetail": "Details ansehen",
       "addToCart": "Zum Warenkorb hinzufügen"
+    },
+    "detail": {
+      "loading": "Wird geladen...",
+      "bookDetail": "Buchdetails",
+      "featured": "Empfohlen",
+      "bestSeller": "Bestseller",
+      "price": "Preis",
+      "synopsis": "Zusammenfassung",
+      "addToCart": "In den Warenkorb"
     }
   }
 }
