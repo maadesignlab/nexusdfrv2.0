@@ -158,13 +158,15 @@
       "ficcion": "Fiction",
       "economia": "Economy"
     },
-      "filters": {
+    "filters": {
       "title": "Filters",
       "featured": "Featured",
+      "featuredBooks": "Featured",
+      "bestSellerBooks": "Best Sellers",
       "categoriesLabel": "Categories",
-      "top10": "🔥 Top 10 más vendidos",
+      "top10": "Top 10 Best Sellers",
       "year": "Year",
-      "clear": "Clean filters"
+      "clear": "Clear filters"
     },
     "card": {
       "featured": "Featured",

@@ -150,6 +150,24 @@
   },
 
   "library": {
+    "categories": {
+      "clasico": "Classico",
+      "drama": "Dramma",
+      "arte-cultura": "Arte e Cultura",
+      "estilo-vida": "Stile di vita",
+      "ficcion": "Narrativa",
+      "economia": "Economia"
+    },
+    "filters": {
+      "title": "Filtri",
+      "featured": "In evidenza",
+      "featuredBooks": "In evidenza",
+      "bestSellerBooks": "Più venduti",
+      "categoriesLabel": "Categorie",
+      "top10": "Top 10 più venduti",
+      "year": "Anno",
+      "clear": "Cancella filtri"
+    },
     "card": {
       "featured": "In primo piano",
       "bestSeller": "Bestseller",

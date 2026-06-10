@@ -150,6 +150,24 @@
   },
 
   "library": {
+    "categories": {
+      "clasico": "Klassiker",
+      "drama": "Drama",
+      "arte-cultura": "Kunst und Kultur",
+      "estilo-vida": "Lebensstil",
+      "ficcion": "Belletristik",
+      "economia": "Wirtschaft"
+    },
+    "filters": {
+      "title": "Filter",
+      "featured": "Empfohlen",
+      "featuredBooks": "Empfohlen",
+      "bestSellerBooks": "Bestseller",
+      "categoriesLabel": "Kategorien",
+      "top10": "Top 10 Bestseller",
+      "year": "Jahr",
+      "clear": "Filter zurücksetzen"
+    },
     "card": {
       "featured": "Hervorgehoben",
       "bestSeller": "Bestseller",
