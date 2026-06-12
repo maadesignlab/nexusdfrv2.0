@@ -183,5 +183,152 @@
       "synopsis": "Synopsis",
       "addToCart": "Add to Cart"
     }
+  },
+
+  "coworking": {
+    "header": {
+      "title": "Coworking Spaces"
+    },
+    "stats": {
+      "total": "Total Spaces",
+      "available": "Available",
+      "occupied": "Occupied"
+    },
+    "filters": {
+      "all": "All",
+      "available": "Available",
+      "occupied": "Occupied"
+    },
+    "locations": {
+      "Piso 1": "Floor 1",
+      "Piso 2": "Floor 2"
+    },
+    "types": {
+      "Cabina": "Booth",
+      "Reunión": "Meeting",
+      "Silencioso": "Quiet",
+      "Abierto": "Open"
+    },
+    "card": {
+      "available": "Available",
+      "occupied": "Occupied",
+      "person": "person",
+      "people": "people",
+      "viewInfo": "View information",
+      "bookSpace": "Book space"
+    },
+    "modal": {
+      "occupiedNow": "Currently occupied",
+      "available": "Available",
+      "type": "Type",
+      "capacity": "Capacity",
+      "location": "Location",
+      "person": "person",
+      "people": "people",
+      "reserveTitle": "Reserve this space",
+      "reserveDescription": "Select a date, time slot and duration in the next step to complete your reservation.",
+      "openingHours": "Opening hours",
+      "maxDuration": "Maximum duration",
+      "currentStatus": "Current status",
+      "reserveSpace": "Book space",
+      "hoursUnit": "hours",
+      "hourUnit": "hour"
+    },
+    "booking": {
+      "header": {
+        "reserveAt": "Reservation for"
+      },
+      "schedule": {
+        "date": "Date",
+        "startTime": "Start Time",
+        "duration": "Reservation Duration",
+        "hour": "hour",
+        "hours": "hours",
+        "durationHint": "You can reserve between 1 and 8 hours.",
+        "maxDurationMessage": "For the selected time slot you can reserve up to {hours} hours.",
+        "scheduleExceeded": "The reservation exceeds opening hours (08:00 - 20:00).",
+        "cancel": "Cancel",
+        "next": "Next"
+      },
+      "contact": {
+        "phonePlaceholder": "Mobile Phone",
+        "notesPlaceholder": "Notes",
+        "back": "Back",
+        "review": "Review"
+      },
+      "review": {
+        "space": "Space",
+        "date": "Date",
+        "time": "Time",
+        "duration": "Duration",
+        "phone": "Mobile Phone",
+        "notes": "Notes",
+        "emptyNotes": "—",
+        "hour": "hour",
+        "hours": "hours",
+        "back": "Back",
+        "confirm": "Confirm Reservation"
+      },
+      "success": {
+        "title": "Reservation Confirmed!",
+        "message": "Your reservation for {space} on {date} at {time} has been created.",
+        "backHome": "Back to Home"
+      },
+      "loading": {
+        "processing": "Processing reservation..."
+      },
+      "errors": {
+        "createReservation": "Unable to create the reservation."
+      }
+    }
+  },
+
+  "account": {
+    "sidebar": {
+      "profile": "Profile",
+      "activity": "ACTIVITY",
+      "reservations": "Reservations",
+      "orders": "Purchases",
+      "settings": "SETTINGS",
+      "preferences": "Preferences",
+      "logout": "Logout"
+    },
+    "profile": {
+      "defaultUser": "Nexus User",
+      "role": "Member",
+      "borrowedBook": "Borrowed Book",
+      "nextCoworking": "Next Coworking"
+    },
+    "orders": {
+      "title": "My Purchases",
+      "empty": "You don't have any purchases yet.",
+      "order": "Order",
+      "total": "Total",
+      "status": {
+        "PENDING": "Pending",
+        "COMPLETED": "Completed",
+        "CANCELLED": "Cancelled"
+      }
+    },
+    "reservations": {
+      "title": "My Reservations",
+      "empty": "You don't have any reservations.",
+      "date": "Date",
+      "schedule": "Schedule",
+      "status": {
+        "ACTIVE": "Active",
+        "COMPLETED": "Completed",
+        "CANCELLED": "Cancelled"
+      }
+    },
+    "locations": {
+      "Piso 1": "Floor 1",
+      "Piso 2": "Floor 2"
+    },
+    "preferences": {
+      "title": "Account Preferences",
+      "notifications": "Notifications",
+      "loanReminders": "Loan Reminders"
+    }
   }
 }

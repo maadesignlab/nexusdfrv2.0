@@ -1,5 +1,5 @@
 export default function ReservationItem({
-  reservation,
+  reservation, t,
 }) {
   const start = new Date(
     reservation.start_at
@@ -18,43 +18,43 @@ export default function ReservationItem({
           </h3>
 
           <p className="text-sm text-slate-500">
-            {
-              reservation.space_location
-            }
+            {t.locations?.[
+                reservation.space_location
+              ] ??
+                reservation.space_location}
           </p>
         </div>
 
         <span className="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">
-          Activa
+          {
+            t.reservations.status?.ACTIVE ??
+            "Active"
+          }
         </span>
       </div>
 
       <div className="mt-4 space-y-1">
         <p className="text-sm text-slate-600">
-          Fecha
+          {t.reservations.date}
         </p>
 
         <p className="font-medium">
-          {start.toLocaleDateString(
-            "es-CO"
-          )}
+          {start.toLocaleDateString()}
         </p>
 
         <p className="text-sm text-slate-600 mt-2">
-          Horario
+          {t.reservations.schedule}
         </p>
 
         <p className="font-medium">
-          {start.toLocaleTimeString(
-            "es-CO",
+          {start.toLocaleTimeString([],
             {
               hour: "2-digit",
               minute: "2-digit",
             }
           )}
           {" - "}
-          {end.toLocaleTimeString(
-            "es-CO",
+          {end.toLocaleTimeString([],
             {
               hour: "2-digit",
               minute: "2-digit",

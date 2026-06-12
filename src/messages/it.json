@@ -183,5 +183,152 @@
       "synopsis": "Sinossi",
       "addToCart": "Aggiungi al carrello"
     }
+  },
+  
+  "coworking": {
+    "header": {
+      "title": "Spazi di Coworking"
+    },
+    "stats": {
+      "total": "Spazi Totali",
+      "available": "Disponibili",
+      "occupied": "Occupati"
+    },
+    "filters": {
+      "all": "Tutti",
+      "available": "Disponibile",
+      "occupied": "Occupato"
+    },
+    "locations": {
+      "Piso 1": "Piano 1",
+      "Piso 2": "Piano 2"
+    },
+    "types": {
+      "Cabina": "Cabina",
+      "Reunión": "Riunione",
+      "Silencioso": "Silenzioso",
+      "Abierto": "Aperto"
+    },
+    "card": {
+      "available": "Disponibile",
+      "occupied": "Occupato",
+      "person": "persona",
+      "people": "persone",
+      "viewInfo": "Visualizza Informazioni",
+      "bookSpace": "Prenota Spazio"
+    },
+    "modal": {
+      "occupiedNow": "Attualmente Occupato",
+      "available": "Disponibile",
+      "type": "Tipo",
+      "capacity": "Capacità",
+      "location": "Posizione",
+      "person": "persona",
+      "people": "persone",
+      "reserveTitle": "Prenota Questo Spazio",
+      "reserveDescription": "Seleziona data, orario e durata nel passaggio successivo per completare la prenotazione.",
+      "openingHours": "Orario di Apertura",
+      "maxDuration": "Durata Massima",
+      "currentStatus": "Stato Attuale",
+      "reserveSpace": "Prenota Spazio",
+      "hoursUnit": "ore",
+      "hourUnit": "ora"
+    },
+    "booking": {
+      "header": {
+        "reserveAt": "Prenotazione per"
+      },
+      "schedule": {
+        "date": "Data",
+        "startTime": "Ora di inizio",
+        "duration": "Durata della prenotazione",
+        "hour": "ora",
+        "hours": "ore",
+        "durationHint": "Puoi prenotare da 1 a 8 ore.",
+        "maxDurationMessage": "Per la fascia oraria selezionata puoi prenotare fino a {hours} ore.",
+        "scheduleExceeded": "La prenotazione supera l'orario di apertura (08:00 - 20:00).",
+        "cancel": "Annulla",
+        "next": "Avanti"
+      },
+      "contact": {
+        "phonePlaceholder": "Cellulare",
+        "notesPlaceholder": "Note",
+        "back": "Indietro",
+        "review": "Rivedi"
+      },
+      "review": {
+        "space": "Spazio",
+        "date": "Data",
+        "time": "Ora",
+        "duration": "Durata",
+        "phone": "Cellulare",
+        "notes": "Note",
+        "emptyNotes": "—",
+        "hour": "ora",
+        "hours": "ore",
+        "back": "Indietro",
+        "confirm": "Conferma prenotazione"
+      },
+      "success": {
+        "title": "Prenotazione confermata!",
+        "message": "La tua prenotazione per {space} il {date} alle {time} è stata creata.",
+        "backHome": "Torna alla home"
+      },
+      "loading": {
+        "processing": "Elaborazione della prenotazione..."
+      },
+      "errors": {
+        "createReservation": "Impossibile creare la prenotazione."
+      }
+    }
+  },
+
+  "account": {
+    "sidebar": {
+      "profile": "Il Mio Profilo",
+      "activity": "ATTIVITÀ",
+      "reservations": "Le Mie Prenotazioni",
+      "orders": "I Miei Acquisti",
+      "settings": "IMPOSTAZIONI",
+      "preferences": "Preferenze",
+      "logout": "Disconnetti"
+    },
+    "profile": {
+      "defaultUser": "Utente Nexus",
+      "role": "Membro",
+      "borrowedBook": "Libro in prestito",
+      "nextCoworking": "Prossimo coworking"
+    },
+    "orders": {
+      "title": "I Miei Acquisti",
+      "empty": "Non hai ancora acquisti registrati.",
+      "order": "Orden",
+      "total": "Total",
+      "status": {
+        "PENDING": "In attesa",
+        "COMPLETED": "Completata",
+        "CANCELLED": "Annullata"
+      }
+    },
+    "reservations": {
+      "title": "Le Mie Prenotazioni",
+      "empty": "Non hai prenotazioni registrate.",
+      "date": "Data",
+      "schedule": "Orario",
+      "status": {
+        "ACTIVE": "Attiva",
+        "COMPLETED": "Completata",
+        "CANCELLED": "Annullata"
+      }
+    },
+    "locations": {
+      "Piso 1": "Piano 1",
+      "Piso 2": "Piano 2"
+    },
+    "preferences": {
+      "title": "Preferenze dell'Account",
+      "notifications": "Notifiche",
+      "loanReminders": "Promemoria prestiti"
+    }
   }
 }

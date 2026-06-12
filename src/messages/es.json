@@ -186,14 +186,175 @@
   },
 
   "coworking": {
-
-  },
-
-  "cart": {
-
+    "header": {
+      "title": "Espacios de Coworking"
+    },
+    "stats": {
+      "total": "Espacios totales",
+      "available": "Disponibles",
+      "occupied": "Ocupados"
+    },
+    "filters": {
+      "all": "Todos",
+      "available": "Disponible",
+      "occupied": "Ocupado"
+    },
+    "locations": {
+      "Piso 1": "Piso 1",
+      "Piso 2": "Piso 2"
+    },
+    "types": {
+      "Cabina": "Cabina",
+      "Reunión": "Reunión",
+      "Silencioso": "Silencioso",
+      "Abierto": "Abierto"
+    },
+    "card": {
+      "available": "Disponible",
+      "occupied": "Ocupado",
+      "person": "persona",
+      "people": "personas",
+      "viewInfo": "Ver información",
+      "bookSpace": "Reservar espacio"
+    },
+    "modal": {
+      "occupiedNow": "Ocupado actualmente",
+      "available": "Disponible",
+      "type": "Tipo",
+      "capacity": "Capacidad",
+      "location": "Ubicación",
+      "person": "persona",
+      "people": "personas",
+      "reserveTitle": "Reserva este espacio",
+      "reserveDescription": "Selecciona fecha, horario y duración en el siguiente paso para completar tu reserva.",
+      "openingHours": "Horario de atención",
+      "maxDuration": "Duración máxima",
+      "currentStatus": "Estado actual",
+      "reserveSpace": "Reservar espacio",
+      "hoursUnit": "horas",
+      "hourUnit": "hora"
+    },
+    "booking": {
+      "header": {
+        "reserveAt": "Reserva en"
+      },
+      "schedule": {
+        "date": "Fecha",
+        "startTime": "Hora de inicio",
+        "duration": "Duración de la reserva",
+        "hour": "hora",
+        "hours": "horas",
+        "durationHint": "Puedes reservar entre 1 y 8 horas.",
+        "maxDurationMessage": "Para el horario seleccionado puedes reservar máximo {hours} horas.",
+        "scheduleExceeded": "La reserva excede el horario de atención (08:00 - 20:00).",
+        "cancel": "Cancelar",
+        "next": "Siguiente"
+      },
+      "contact": {
+        "phonePlaceholder": "Celular",
+        "notesPlaceholder": "Notas",
+        "back": "Atrás",
+        "review": "Revisar"
+      },
+      "review": {
+        "space": "Espacio",
+        "date": "Fecha",
+        "time": "Hora",
+        "duration": "Duración",
+        "phone": "Celular",
+        "notes": "Notas",
+        "emptyNotes": "—",
+        "hour": "hora",
+        "hours": "horas",
+        "back": "Atrás",
+        "confirm": "Confirmar Reserva"
+      },
+      "success": {
+        "title": "¡Reserva Confirmada!",
+        "message": "Tu reserva para {space} el {date} a las {time} ha sido creada.",
+        "backHome": "Volver al inicio"
+      },
+      "loading": {
+        "processing": "Procesando reserva..."
+      },
+      "errors": {
+        "createReservation": "No fue posible crear la reserva."
+      }
+    }
   },
 
   "account": {
+    "sidebar": {
+      "profile": "Mi Perfil",
+      "activity": "ACTIVIDAD",
+      "reservations": "Mis Reservas",
+      "orders": "Mis Compras",
+      "settings": "AJUSTES",
+      "preferences": "Preferencias",
+      "logout": "Salir"
+    },
+    "profile": {
+      "defaultUser": "Usuario Nexus",
+      "role": "Miembro",
+      "borrowedBook": "Libro en préstamo",
+      "nextCoworking": "Próximo coworking"
+    },
+    "orders": {
+      "title": "Mis Compras",
+      "empty": "Aún no tienes compras registradas.",
+      "order": "Orden",
+      "total": "Total",
+      "status": {
+        "PENDING": "Pendiente",
+        "COMPLETED": "Completada",
+        "CANCELLED": "Cancelada"
+      }
+    },
+   "reservations": {
+      "title": "Mis Reservas",
+      "empty": "No tienes reservas registradas.",
+      "date": "Fecha",
+      "schedule": "Horario",
+      "status": {
+        "ACTIVE": "Activa",
+        "COMPLETED": "Completada",
+        "CANCELLED": "Cancelada"
+      }
+    },
+    "locations": {
+      "Piso 1": "Piso 1",
+      "Piso 2": "Piso 2"
+    },
+    "preferences": {
+      "title": "Preferencias de Cuenta",
+      "notifications": "Notificaciones",
+      "loanReminders": "Recordatorios de préstamos"
+    }
+  },
 
+  "cart": {
+    "empty": {
+      "title": "Tu carrito está vacío",
+      "description": "Explora la librería y añade tus libros o revistas favoritas para continuar con la compra.",
+      "explore": "Explorar librería"
+    },
+    "header": {
+      "badge": "Resumen de compra",
+      "title": "Carrito",
+      "description": "Revisa los productos seleccionados antes de finalizar tu compra.",
+      "continueShopping": "Seguir comprando"
+    },
+    "item": {
+      "book": "Libro",
+      "cafeteria": "Cafetería",
+      "quantity": "Cantidad",
+      "subtotal": "Subtotal",
+      "remove": "Eliminar",
+      "removeFromCart": "Eliminar {title} del carrito"
+    },
+    "summary": {
+      "total": "Total",
+      "checkout": "Finalizar compra"
+    }
   }
 }

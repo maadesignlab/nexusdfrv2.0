@@ -1,12 +1,12 @@
 import OrderItem from "../items/OrderItem";
 
 export default function PurchasesTab({
-  orders,
+  orders, t, locale
 }) {
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-bold">
-        Mis Compras
+        {t.orders.title}
       </h2>
 
       {orders?.length > 0 ? (
@@ -14,6 +14,8 @@ export default function PurchasesTab({
           <OrderItem
             key={order.id}
             order={order}
+            t={t}
+            locale={locale}
           />
         ))
       ) : (
@@ -27,7 +29,7 @@ export default function PurchasesTab({
           "
         >
           <p className="text-slate-500">
-            Aún no tienes compras registradas.
+            {t.orders.empty}
           </p>
         </div>
       )}

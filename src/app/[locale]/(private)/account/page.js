@@ -3,10 +3,18 @@ import { auth0 } from "@/lib/auth0";
 import { getUserByAuth0Sub } from "@/lib/data/users";
 import { getOrdersByUser } from "@/lib/data/orders";
 import { getReservationsByUser } from "@/lib/data/reservations";
+import { getTranslations } from "@/lib/translations";
 
 import AccountClient from "@/components/section/account/AccountClient";
 
-export default async function AccountPage() {
+export default async function AccountPage({
+  params,
+}) {
+  const { locale } = await params;
+
+  const translations =
+    getTranslations(locale);
+
   const session =
     await auth0.getSession();
 
@@ -28,6 +36,8 @@ export default async function AccountPage() {
       user={session.user}
       orders={orders}
       reservations={reservations}
+      t={translations.account}
+      locale={locale}
     />
   );
 }

@@ -1,3 +1,5 @@
+
+
 const CLOSE_HOUR = 20;
 
 const HORARIOS = [
@@ -21,7 +23,9 @@ export default function BookingStepSchedule({
   onChange,
   onCancel,
   onNext,
+  t,
 }) {
+  
   const startHour = bookingData.hora
     ? Number(bookingData.hora.split(":")[0])
     : null;
@@ -54,9 +58,8 @@ export default function BookingStepSchedule({
       {/* FECHA */}
       <div className="space-y-2">
         <label className="text-sm font-semibold">
-          Fecha
+          {t.booking.schedule.date}
         </label>
-
         <input
           type="date"
           value={bookingData.fecha}
@@ -77,7 +80,7 @@ export default function BookingStepSchedule({
       {/* HORA */}
       <div className="space-y-3">
         <label className="text-sm font-semibold">
-          Hora de inicio
+          {t.booking.schedule.startTime}
         </label>
 
         <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
@@ -136,7 +139,7 @@ export default function BookingStepSchedule({
       {/* DURACIÓN */}
       <div className="space-y-3">
         <label className="text-sm font-semibold">
-          Duración de la reserva
+          {t.booking.schedule.duration}
         </label>
 
         <div className="flex items-center gap-4">
@@ -176,10 +179,9 @@ export default function BookingStepSchedule({
             </span>
 
             <span className="ml-2 text-slate-500">
-              hora
               {bookingData.duracion > 1
-                ? "s"
-                : ""}
+                ? t.booking.schedule.hours
+                : t.booking.schedule.hour}
             </span>
           </div>
 
@@ -212,7 +214,7 @@ export default function BookingStepSchedule({
         </div>
 
         <p className="text-xs text-slate-500">
-          Puedes reservar entre 1 y 8 horas.
+          {t.booking.schedule.durationHint}
         </p>
 
         {bookingData.hora &&
@@ -226,13 +228,11 @@ export default function BookingStepSchedule({
                 text-sm text-amber-700
               "
             >
-              Para el horario seleccionado
-              puedes reservar máximo{" "}
-              {maxDuration} hora
-              {maxDuration > 1
-                ? "s"
-                : ""}
-              .
+              {t.booking.schedule.maxDurationMessage
+              .replace(
+                "{hours}",
+                maxDuration
+              )}
             </div>
           )}
 
@@ -247,8 +247,7 @@ export default function BookingStepSchedule({
                 text-sm text-red-600
               "
             >
-              La reserva excede el horario
-              de atención (08:00 - 20:00).
+              {t.booking.schedule.scheduleExceeded}
             </div>
           )}
       </div>
@@ -264,7 +263,7 @@ export default function BookingStepSchedule({
             rounded-2xl
           "
         >
-          Cancelar
+          {t.booking.schedule.cancel}
         </button>
 
         <button
@@ -282,7 +281,7 @@ export default function BookingStepSchedule({
             disabled:opacity-50
           "
         >
-          Siguiente
+          {t.booking.schedule.next}
         </button>
       </div>
     </div>

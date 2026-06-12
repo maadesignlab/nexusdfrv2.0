@@ -13,9 +13,11 @@ export default function AccountClient({
   user,
   orders,
   reservations,
+  t,
+  locale,
 }) {
   const [activeTab, setActiveTab] =
-    useState("perfil");
+    useState("profile");
 
   const handleLogout = () => {
     window.location.href =
@@ -24,37 +26,37 @@ export default function AccountClient({
 
   const renderTab = () => {
     switch (activeTab) {
-      case "perfil":
-        return <ProfileTab user={user} />;
+      case "profile":
+        return <ProfileTab user={user} t={t} />;
 
-      case "historial-compras":
+      case "orders":
         return (
           <PurchasesTab
             orders={orders}
+            t={t}
           />
         );
 
-      case "historial-reservas":
+      case "reservations":
         return (
           <ReservationsTab
             reservations={reservations}
+            t={t}
+            locale={locale}
           />
         );
 
-      case "preferencias":
-        return <PreferencesTab />;
+      case "preferences":
+        return (
+          <PreferencesTab
+            t={t}  
+          />
+        );
 
       default:
         return null;
     }
   };
-
-  console.log("AccountSidebar", AccountSidebar);
-console.log("ProfileTab", ProfileTab);
-console.log("PurchasesTab", PurchasesTab);
-console.log("ReservationsTab", ReservationsTab);
-console.log("PreferencesTab", PreferencesTab);
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-[260px_1fr] max-w-6xl mx-auto w-full px-4 md:px-6 py-8 gap-8">
       <aside className="bg-[#fcfcf9] border border-slate-200 rounded-2xl p-4 shadow-sm h-fit">
@@ -62,6 +64,7 @@ console.log("PreferencesTab", PreferencesTab);
           activeTab={activeTab}
           onTabChange={setActiveTab}
           onLogout={handleLogout}
+          t={t}
         />
       </aside>
 

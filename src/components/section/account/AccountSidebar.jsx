@@ -12,69 +12,70 @@ export default function AccountSidebar({
   activeTab,
   onTabChange,
   onLogout,
+  t,
 }) {
   return (
     <div className="flex flex-col gap-2">
       <button
-        onClick={() => onTabChange("perfil")}
+        onClick={() => onTabChange("profile")}
         className={`flex items-center gap-3 px-4 py-3 border rounded-xl font-medium transition-colors ${
-          activeTab === "perfil"
+          activeTab === "profile"
             ? "bg-[#1e2939] text-white"
             : "hover:bg-slate-100 text-slate-700"
         }`}
       >
         <User size={18} />
-        Mi Perfil
+        {t.sidebar.profile}
       </button>
 
       <div className="pt-4 pb-1 px-2 text-[10px] font-bold text-slate-400 tracking-wider">
-        ACTIVIDAD
+        {t.sidebar.activity}
       </div>
 
       <button
         onClick={() =>
-          onTabChange("historial-reservas")
+          onTabChange("reservations")
         }
         className={`flex items-center gap-3 px-4 py-3 border rounded-xl font-medium transition-colors ${
-          activeTab === "historial-reservas"
+          activeTab === "reservations"
             ? "bg-[#1e2939] text-white border-transparent"
             : "bg-white border-slate-200 hover:bg-slate-50 text-slate-700"
         }`}
       >
         <Calendar size={18} />
-        Mis Reservas
+        {t.sidebar.reservations}
       </button>
 
       <button
         onClick={() =>
-          onTabChange("historial-compras")
+          onTabChange("orders")
         }
         className={`flex items-center gap-3 px-4 py-3 border rounded-xl font-medium transition-colors ${
-          activeTab === "historial-compras"
+          activeTab === "orders"
             ? "bg-[#1e2939] text-white border-transparent"
             : "bg-white border-slate-200 hover:bg-slate-50 text-slate-700"
         }`}
       >
         <ShoppingBag size={18} />
-        Mis Compras
+        {t.sidebar.orders}
       </button>
 
       <div className="pt-4 pb-1 px-2 text-[10px] font-bold text-slate-400 tracking-wider">
-        AJUSTES
+        {t.sidebar.settings}
       </div>
 
       <button
         onClick={() =>
-          onTabChange("preferencias")
+          onTabChange("preferences")
         }
         className={`flex items-center gap-3 px-4 py-3 border rounded-xl font-medium transition-colors ${
-          activeTab === "preferencias"
+          activeTab === "preferences"
             ? "bg-[#1e2939] text-white border-transparent"
             : "bg-white border-slate-200 hover:bg-slate-50 text-slate-700"
         }`}
       >
         <Settings size={18} />
-        Preferencias
+        {t.sidebar.preferences}
       </button>
 
       <div className="border-t border-slate-300 my-2" />
@@ -84,7 +85,7 @@ export default function AccountSidebar({
         className="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-red-500 hover:bg-red-50 transition-colors"
       >
         <LogOut size={18} />
-        Salir
+        {t.sidebar.logout}
       </button>
     </div>
   );

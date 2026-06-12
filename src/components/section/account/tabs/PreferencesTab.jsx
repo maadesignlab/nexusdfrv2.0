@@ -1,21 +1,21 @@
-export default function PreferencesTab() {
+export default function PreferencesTab({t}) {
   return (
     <div className="space-y-8">
       <div>
         <h3 className="text-lg font-semibold mb-6">
-          Preferencias de Cuenta
+          {t.preferences.title}
         </h3>
 
         <div className="space-y-6">
           <div className="bg-white border border-slate-200 rounded-xl p-6">
             <h4 className="text-sm font-semibold mb-4">
-              Notificaciones
+              {t.preferences.notifications}
             </h4>
 
             <div className="space-y-3">
               <label className="flex items-center justify-between">
                 <span className="text-sm">
-                  Recordatorios de préstamos
+                  {t.preferences.loanReminders}
                 </span>
 
                 <input

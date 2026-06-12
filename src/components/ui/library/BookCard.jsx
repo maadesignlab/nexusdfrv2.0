@@ -30,15 +30,6 @@ function BookCard({
     libro?.categoria?.name ??
     "";
 
-  console.log({
-  categoria: libro.categoria,
-  slug: libro?.categoria?.slug,
-  translated:
-    categories[
-      libro?.categoria?.slug
-    ],
-});
-
   return (
     <article
       className="

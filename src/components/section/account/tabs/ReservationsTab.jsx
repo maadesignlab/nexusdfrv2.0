@@ -1,12 +1,12 @@
 import ReservationItem from "../items/ReservationItem";
 
 export default function ReservationsTab({
-  reservations,
+  reservations, t, locale
 }) {
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-bold">
-        Mis Reservas
+        {t.reservations.title}
       </h2>
 
       {reservations?.length > 0 ? (
@@ -15,6 +15,8 @@ export default function ReservationsTab({
             <ReservationItem
               key={reservation.id}
               reservation={reservation}
+              t={t}
+              locale={locale}
             />
           )
         )
@@ -29,7 +31,7 @@ export default function ReservationsTab({
           "
         >
           <p className="text-slate-500">
-            No tienes reservas registradas.
+            {t.reservations.empty}
           </p>
         </div>
       )}

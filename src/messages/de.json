@@ -183,5 +183,150 @@
       "synopsis": "Zusammenfassung",
       "addToCart": "In den Warenkorb"
     }
+  },
+
+  "coworking": {
+    "header": {
+      "title": "Coworking-Bereiche"
+    },
+    "stats": {
+      "total": "Gesamtplätze",
+      "available": "Verfügbar",
+      "occupied": "Belegt"
+    },
+    "filters": {
+      "all": "Alle",
+      "available": "Verfügbar",
+      "occupied": "Belegt"
+    },
+    "locations": {
+      "Piso 1": "Etage 1",
+      "Piso 2": "Etage 2"
+    },
+    "types": {
+      "Cabina": "Kabine",
+      "Reunión": "Besprechung",
+      "Silencioso": "Ruhig",
+      "Abierto": "Offen"
+    },
+    "card": {
+      "available": "Verfügbar",
+      "occupied": "Belegt",
+      "person": "Person",
+      "people": "Personen",
+      "viewInfo": "Informationen Anzeigen",
+      "bookSpace": "Platz Reservieren"
+    },
+    "modal": {
+      "occupiedNow": "Derzeit Belegt",
+      "available": "Verfügbar",
+      "type": "Typ",
+      "capacity": "Kapazität",
+      "location": "Standort",
+      "person": "Person",
+      "people": "Personen",
+      "reserveTitle": "Diesen Platz Reservieren",
+      "reserveDescription": "Wählen Sie im nächsten Schritt Datum, Uhrzeit und Dauer aus, um Ihre Reservierung abzuschließen.",
+      "openingHours": "Öffnungszeiten",
+      "maxDuration": "Maximale Dauer",
+      "currentStatus": "Aktueller Status",
+      "reserveSpace": "Platz Reservieren",
+      "hoursUnit": "Stunden",
+      "hourUnit": "Stunde"
+    },
+    "booking": {
+      "header": {
+        "reserveAt": "Reservierung für"
+      },
+      "schedule": {
+        "date": "Datum",
+        "startTime": "Startzeit",
+        "duration": "Reservierungsdauer",
+        "hour": "Stunde",
+        "hours": "Stunden",
+        "durationHint": "Sie können zwischen 1 und 8 Stunden reservieren.",
+        "maxDurationMessage": "Für das ausgewählte Zeitfenster können Sie bis zu {hours} Stunden reservieren.",
+        "scheduleExceeded": "Die Reservierung überschreitet die Öffnungszeiten (08:00 - 20:00).",
+        "cancel": "Abbrechen",
+        "next": "Weiter"
+      },
+      "contact": {
+        "phonePlaceholder": "Mobiltelefon",
+        "notesPlaceholder": "Notizen",
+        "back": "Zurück",
+        "review": "Prüfen"
+      },
+      "review": {
+        "space": "Raum",
+        "date": "Datum",
+        "time": "Uhrzeit",
+        "duration": "Dauer",
+        "phone": "Mobiltelefon",
+        "notes": "Notizen",
+        "emptyNotes": "—",
+        "hour": "Stunde",
+        "hours": "Stunden",
+        "back": "Zurück",
+        "confirm": "Reservierung bestätigen"
+      },
+      "success": {
+        "title": "Reservierung bestätigt!",
+        "message": "Ihre Reservierung für {space} am {date} um {time} wurde erstellt.",
+        "backHome": "Zur Startseite"
+      },
+      "loading": {
+        "processing": "Reservierung wird verarbeitet..."
+      },
+      "errors": {
+        "createReservation": "Die Reservierung konnte nicht erstellt werden."
+      }
+    }
+  },
+
+  "account":{
+    "sidebar": {
+      "profile": "Mein Profil",
+      "activity": "AKTIVITÄT",
+      "reservations": "Meine Reservierungen",
+      "orders": "Meine Einkäufe",
+      "settings": "EINSTELLUNGEN",
+      "preferences": "Präferenzen",
+      "logout": "Abmelden"
+    },
+    "profile": {
+      "defaultUser": "Nexus Benutzer",
+      "role": "Mitglied",
+      "borrowedBook": "Ausgeliehenes Buch",
+      "nextCoworking": "Nächstes Coworking"
+    },
+    "orders": {
+      "title": "Meine Einkäufe",
+      "empty": "Sie haben noch keine Einkäufe.",
+      "status": {
+        "PENDING": "Ausstehend",
+        "COMPLETED": "Abgeschlossen",
+        "CANCELLED": "Storniert"
+      }
+    },
+    "reservations": {
+      "title": "Meine Reservierungen",
+      "empty": "Sie haben keine Reservierungen.",
+      "date": "Datum",
+      "schedule": "Zeitplan",
+      "status": {
+        "ACTIVE": "Aktiv",
+        "COMPLETED": "Abgeschlossen",
+        "CANCELLED": "Storniert"
+      }
+    },
+    "locations": {
+      "Piso 1": "Etage 1",
+      "Piso 2": "Etage 2"
+    },
+    "preferences": {
+      "title": "Kontoeinstellungen",
+      "notifications": "Benachrichtigungen",
+      "loanReminders": "Ausleiherinnerungen"
+    }
   }
 }

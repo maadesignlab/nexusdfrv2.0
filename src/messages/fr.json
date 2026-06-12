@@ -183,5 +183,150 @@
       "synopsis": "Synopsis",
       "addToCart": "Ajouter au panier"
     }
+  },
+
+  "coworking": {
+    "header": {
+      "title": "Espaces de Coworking"
+    },
+    "stats": {
+      "total": "Espaces Totaux",
+      "available": "Disponibles",
+      "occupied": "Occupés"
+    },
+    "filters": {
+      "all": "Tous",
+      "available": "Disponible",
+      "occupied": "Occupé"
+    },
+    "locations": {
+      "Piso 1": "Étage 1",
+      "Piso 2": "Étage 2"
+    },
+    "types": {
+      "Cabina": "Cabine",
+      "Reunión": "Réunion",
+      "Silencioso": "Silencieux",
+      "Abierto": "Ouvert"
+    },
+    "card": {
+      "available": "Disponible",
+      "occupied": "Occupé",
+      "person": "personne",
+      "people": "personnes",
+      "viewInfo": "Voir les Informations",
+      "bookSpace": "Réserver un Espace"
+    },
+    "modal": {
+      "occupiedNow": "Actuellement Occupé",
+      "available": "Disponible",
+      "type": "Type",
+      "capacity": "Capacité",
+      "location": "Emplacement",
+      "person": "personne",
+      "people": "personnes",
+      "reserveTitle": "Réserver Cet Espace",
+      "reserveDescription": "Sélectionnez une date, un horaire et une durée à l’étape suivante pour finaliser votre réservation.",
+      "openingHours": "Heures d’Ouverture",
+      "maxDuration": "Durée Maximale",
+      "currentStatus": "État Actuel",
+      "reserveSpace": "Réserver un Espace",
+      "hoursUnit": "heures",
+      "hourUnit": "heure"
+    },
+    "booking": {
+      "header": {
+        "reserveAt": "Réservation pour"
+      },
+      "schedule": {
+        "date": "Date",
+        "startTime": "Heure de début",
+        "duration": "Durée de la réservation",
+        "hour": "heure",
+        "hours": "heures",
+        "durationHint": "Vous pouvez réserver entre 1 et 8 heures.",
+        "maxDurationMessage": "Pour le créneau sélectionné, vous pouvez réserver jusqu'à {hours} heures.",
+        "scheduleExceeded": "La réservation dépasse les heures d'ouverture (08:00 - 20:00).",
+        "cancel": "Annuler",
+        "next": "Suivant"
+      },
+      "contact": {
+        "phonePlaceholder": "Téléphone portable",
+        "notesPlaceholder": "Notes",
+        "back": "Retour",
+        "review": "Vérifier"
+      },
+      "review": {
+        "space": "Espace",
+        "date": "Date",
+        "time": "Heure",
+        "duration": "Durée",
+        "phone": "Téléphone portable",
+        "notes": "Notes",
+        "emptyNotes": "—",
+        "hour": "heure",
+        "hours": "heures",
+        "back": "Retour",
+        "confirm": "Confirmer la réservation"
+      },
+      "success": {
+        "title": "Réservation confirmée !",
+        "message": "Votre réservation pour {space} le {date} à {time} a été créée.",
+        "backHome": "Retour à l'accueil"
+      },
+      "loading": {
+        "processing": "Traitement de la réservation..."
+      },
+      "errors": {
+        "createReservation": "Impossible de créer la réservation."
+      }
+    }
+  },
+
+  "account":{
+    "sidebar": {
+      "profile": "Mon Profil",
+      "activity": "ACTIVITÉ",
+      "reservations": "Mes Réservations",
+      "orders": "Mes Achats",
+      "settings": "PARAMÈTRES",
+      "preferences": "Préférences",
+      "logout": "Déconnexion"
+    },
+    "profile": {
+      "defaultUser": "Utilisateur Nexus",
+      "role": "Membre",
+      "borrowedBook": "Livre emprunté",
+      "nextCoworking": "Prochain coworking"
+    },
+    "orders": {
+      "title": "Mes Achats",
+      "empty": "Vous n'avez encore aucun achat enregistré.",
+      "status": {
+        "PENDING": "En attente",
+        "COMPLETED": "Terminée",
+        "CANCELLED": "Annulée"
+      }
+    },
+    "reservations": {
+      "title": "Mes Réservations",
+      "empty": "Vous n'avez aucune réservation.",
+      "date": "Date",
+      "schedule": "Horaire",
+      "status": {
+        "ACTIVE": "Active",
+        "COMPLETED": "Terminée",
+        "CANCELLED": "Annulée"
+      }
+    },
+    "locations": {
+      "Piso 1": "Étage 1",
+      "Piso 2": "Étage 2"
+    },
+    "preferences": {
+      "title": "Préférences du Compte",
+      "notifications": "Notifications",
+      "loanReminders": "Rappels de prêts"
+    }
   }
 }

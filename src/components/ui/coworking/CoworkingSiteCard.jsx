@@ -10,6 +10,7 @@ import {
 function CoworkingSiteCard({
   space,
   onClick,
+  t = {},
 }) {
   if (!space) return null;
 
@@ -67,8 +68,8 @@ function CoworkingSiteCard({
           />
 
           {estaOcupado
-            ? "Ocupado"
-            : "Disponible"}
+            ? t.card.occupied
+            : t.card.available}
         </span>
       </div>
 
@@ -97,7 +98,9 @@ function CoworkingSiteCard({
           />
 
           <span>
-            {space.ubicacion}
+            {t.locations?.[
+              space.ubicacion
+            ] ?? space.ubicacion}
           </span>
         </div>
       </div>
@@ -116,7 +119,8 @@ function CoworkingSiteCard({
           />
 
           <span className="text-slate-700">
-            {space.tipo}
+            {t.types?.[space.tipo] ??
+              space.tipo}
           </span>
         </div>
 
@@ -132,10 +136,10 @@ function CoworkingSiteCard({
           />
 
           <span className="text-slate-700">
-            {space.capacidad} persona
+            {space.capacidad}{" "}
             {space.capacidad > 1
-              ? "s"
-              : ""}
+              ? t.card.people
+              : t.card.person}
           </span>
         </div>
       </div>
@@ -162,8 +166,8 @@ function CoworkingSiteCard({
             }
           >
             {estaOcupado
-              ? "Ver información"
-              : "Reservar espacio"}
+              ? t.card.viewInfo
+              : t.card.bookSpace}
           </span>
 
           <ArrowRight

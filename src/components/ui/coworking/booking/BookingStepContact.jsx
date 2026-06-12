@@ -3,13 +3,14 @@ export default function BookingStepContact({
   onChange,
   onBack,
   onNext,
+  t,
 }) {
   return (
     <div className="space-y-6 mt-6">
 
       <input
         type="tel"
-        placeholder="Celular"
+        placeholder={t.booking.contact.phonePlaceholder}
         value={bookingData.celular}
         onChange={(e) =>
           onChange("celular", e.target.value)
@@ -31,7 +32,7 @@ export default function BookingStepContact({
           onClick={onBack}
           className="flex-1 border border-slate-400 py-3.5 rounded-2xl"
         >
-          Atrás
+          {t.booking.contact.back}
         </button>
 
         <button
@@ -39,7 +40,7 @@ export default function BookingStepContact({
           onClick={onNext}
           className="flex-1 bg-[#0f172a] text-white py-3.5 rounded-2xl"
         >
-          Revisar
+          {t.booking.contact.review}
         </button>
       </div>
 

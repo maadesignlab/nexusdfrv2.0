@@ -2,6 +2,7 @@ export default function BookingStepSuccess({
   space,
   bookingData,
   onFinish,
+  t,
 }) {
   return (
     <div className="flex flex-col items-center text-center py-6 space-y-4">
@@ -11,23 +12,21 @@ export default function BookingStepSuccess({
       </div>
 
       <h2 className="text-[28px] font-bold">
-        ¡Reserva Confirmada!
+        {t.booking.success.title}
       </h2>
 
       <p className="text-slate-600">
-        Tu reserva para {space.nombre}
-        el {bookingData.fecha} a las
-        {" "}
-        {bookingData.hora}
-        {" "}
-        ha sido creada.
+        {t.booking.success.message
+          .replace("{space}", space.nombre)
+          .replace("{date}", bookingData.fecha)
+          .replace("{time}", bookingData.hora)}
       </p>
 
       <button
         onClick={onFinish}
         className="bg-[#0f172a] text-white px-12 py-3.5 rounded-2xl"
       >
-        Volver al inicio
+        {t.booking.success.backHome}
       </button>
 
     </div>

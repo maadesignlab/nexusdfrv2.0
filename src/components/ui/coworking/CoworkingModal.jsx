@@ -13,8 +13,11 @@ function CoworkingModal({
   space,
   onClose,
   onStartBooking,
+  t = {},
 }) {
   if (!space) return null;
+
+  const maxHours = 8;
 
   return (
     <div
@@ -59,14 +62,14 @@ function CoworkingModal({
               <>
                 <XCircle className="w-5 h-5 text-red-500" />
                 <span className="font-semibold text-red-500">
-                  Ocupado actualmente
+                  {t.modal.occupiedNow}
                 </span>
               </>
             ) : (
               <>
                 <CheckCircle2 className="w-5 h-5 text-green-600" />
                 <span className="font-semibold text-green-600">
-                  Disponible
+                  {t.modal.available}
                 </span>
               </>
             )}
@@ -99,22 +102,32 @@ function CoworkingModal({
             >
               <InfoRow
                 icon={<Building2 size={18} />}
-                label="Tipo"
-                value={space.tipo}
+                label={t.modal.type}
+                value={
+                  t.types?.[
+                    space.tipo
+                  ] ?? space.tipo
+                }
               />
 
               <InfoRow
                 icon={<Users size={18} />}
-                label="Capacidad"
-                value={`${space.capacidad} persona${
-                  space.capacidad > 1 ? "s" : ""
+                label={t.modal.capacity}
+                value={`${space.capacidad} ${
+                  space.capacidad > 1
+                    ? t.modal.people
+                    : t.modal.person
                 }`}
               />
 
               <InfoRow
                 icon={<MapPin size={18} />}
-                label="Ubicación"
-                value={space.ubicacion}
+                label={t.modal.location}
+                value={
+                  t.locations?.[
+                    space.ubicacion
+                  ] ?? space.ubicacion
+                }
               />
             </div>
           </div>
@@ -130,13 +143,11 @@ function CoworkingModal({
                   mb-2
                 "
               >
-                Reserva este espacio
+                {t.modal.reserveTitle}
               </h3>
 
               <p className="text-slate-500 leading-relaxed">
-                Selecciona fecha, horario y duración
-                en el siguiente paso para completar
-                tu reserva.
+                {t.modal.reserveDescription}
               </p>
 
               <div
@@ -157,7 +168,7 @@ function CoworkingModal({
 
                     <div>
                       <p className="text-sm text-slate-500">
-                        Horario de atención
+                        {t.modal.openingHours}
                       </p>
 
                       <p className="font-semibold text-slate-900">
@@ -168,17 +179,20 @@ function CoworkingModal({
 
                   <div>
                     <p className="text-sm text-slate-500">
-                      Duración máxima
+                      {t.modal.maxDuration}
                     </p>
 
                     <p className="font-semibold text-slate-900">
-                      8 horas
+                      {maxHours}{" "}
+                      {maxHours === 1
+                        ? t.modal.hourUnit
+                        : t.modal.hoursUnit}
                     </p>
                   </div>
 
                   <div>
                     <p className="text-sm text-slate-500">
-                      Estado actual
+                      {t.modal.currentStatus}
                     </p>
 
                     <p
@@ -189,8 +203,8 @@ function CoworkingModal({
                       }`}
                     >
                       {space.ocupado
-                        ? "Ocupado"
-                        : "Disponible"}
+                        ? t.card.occupied
+                        : t.card.available}
                     </p>
                   </div>
                 </div>
@@ -211,7 +225,7 @@ function CoworkingModal({
                 transition-colors
               "
             >
-              Reservar espacio
+              {t.modal.reserveSpace}
             </button>
           </div>
         </div>

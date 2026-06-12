@@ -1,16 +1,17 @@
 export default function ProfileTab({
   user,
+  t
 }) {
   const userProfile = {
     nombre:
       user?.name ??
-      "Usuario Nexus",
+      t.profile.defaultUser,
 
     email:
       user?.email ??
       "usuario@nexus.com.co",
 
-    rol: "Miembro",
+    rol: t.profile.role,
   };
 
   return (
@@ -42,7 +43,7 @@ export default function ProfileTab({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
           <h4 className="text-[10px] font-bold uppercase text-slate-400 mb-2 tracking-wider">
-            Libro en préstamo
+            {t.profile.borrowedBook}
           </h4>
 
           <p className="text-lg font-bold text-black">
@@ -52,7 +53,7 @@ export default function ProfileTab({
 
         <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
           <h4 className="text-[10px] font-bold uppercase text-slate-400 mb-2 tracking-wider">
-            Próximo coworking
+            {t.profile.nextCoworking}
           </h4>
 
           <p className="text-lg font-bold text-black">

@@ -1,8 +1,8 @@
-export default function BookingLoadingOverlay() {
+export default function BookingLoadingOverlay({t}) {
   return (
     <div className="absolute inset-0 bg-black/40 flex items-center justify-center z-50 rounded-[20px]">
       <p className="text-white font-bold">
-        Procesando reserva...
+        {t.booking.loading.processing}
       </p>
     </div>
   );

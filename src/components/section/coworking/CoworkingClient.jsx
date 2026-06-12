@@ -9,10 +9,11 @@ import { motion, AnimatePresence } from "framer-motion";
 function CoworkingClient({
   spaces = [],
   userId,
+  t
 }) {
   const [selectedSpace, setSelectedSpace] = useState(null);
   const [isBooking, setIsBooking] = useState(false);
-  const [estadoFiltro, setEstadoFiltro] = useState("Todos");
+  const [estadoFiltro, setEstadoFiltro] = useState("all");
 
   const closeModal = () => {
     setSelectedSpace(null);
@@ -21,10 +22,11 @@ function CoworkingClient({
 
   const { grouped, stats } = useMemo(() => {
     const filtered =
-      estadoFiltro === "Todos"
+      estadoFiltro === "all"
         ? spaces
         : spaces.filter((s) =>
-            estadoFiltro === "Disponible"
+            estadoFiltro ===
+            "available"
               ? !s.ocupado
               : s.ocupado
           );
@@ -66,43 +68,54 @@ function CoworkingClient({
     };
   }, [spaces, estadoFiltro]);
 
+  const filters = [
+    {
+      value: "all",
+      label: t.filters.all,
+    },
+    {
+      value: "available",
+      label: t.filters.available,
+    },
+    {
+      value: "occupied",
+      label: t.filters.occupied,
+    },
+  ];
+
   return (
     <main className="max-w-7xl mx-auto px-6 py-8">
       {/* HEADER */}
       <div className="mb-6 space-y-6">
         <h1 className="text-3xl font-bold">
-          Espacios de Coworking
+          {t.header.title}
         </h1>
 
         {/* STATS */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
           <StatCard
-            title="Espacios totales"
+            title={t.stats.total}
             value={stats.total}
           />
 
           <StatCard
-            title="Disponibles"
+            title={t.stats.available}
             value={stats.disponibles}
           />
 
           <StatCard
-            title="Ocupados"
+            title={t.stats.occupied}
             value={stats.ocupados}
           />
         </div>
 
         {/* FILTROS */}
         <div className="flex gap-4 flex-wrap">
-          {[
-            "Todos",
-            "Disponible",
-            "Ocupado",
-          ].map((estado) => (
+          {filters.map((filter) => (
             <button
-              key={estado}
+              key={filter.value}
               onClick={() =>
-                setEstadoFiltro(estado)
+                setEstadoFiltro(filter.value)
               }
               className={`
                 px-4 py-2
@@ -112,13 +125,13 @@ function CoworkingClient({
                 transition
 
                 ${
-                  estadoFiltro === estado
+                  estadoFiltro === filter.value
                     ? "bg-slate-900 text-white"
                     : "bg-slate-100 hover:bg-slate-200"
                 }
               `}
             >
-              {estado}
+              {filter.label}
             </button>
           ))}
         </div>
@@ -130,11 +143,15 @@ function CoworkingClient({
         .map(([piso, groupedSpaces]) => (
           <Section
             key={piso}
-            title={piso}
+            title={
+              t.locations?.[piso] ??
+              piso
+            }
           >
             <Grid
               spaces={groupedSpaces}
               onClick={setSelectedSpace}
+              t={t}
             />
           </Section>
         ))}
@@ -148,12 +165,14 @@ function CoworkingClient({
             onStartBooking={() => {
               setIsBooking(true);
             }}
+            t={t}
           />
         ) : (
           <BookingFlow
             space={selectedSpace}
             onClose={closeModal}
             userId={userId}
+            t={t}
           />
         ))}
     </main>
@@ -162,7 +181,7 @@ function CoworkingClient({
 
 /* ================= GRID ================= */
 
-function Grid({ spaces, onClick }) {
+function Grid({ spaces, onClick, t }) {
   return (
     <AnimatePresence>
       <div className="grid gap-6 grid-cols-[repeat(auto-fit,minmax(min(100%,240px),1fr))]">
@@ -183,6 +202,7 @@ function Grid({ spaces, onClick }) {
               onClick={() =>
                 onClick(space)
               }
+              t={t}
             />
           </motion.div>
         ))}

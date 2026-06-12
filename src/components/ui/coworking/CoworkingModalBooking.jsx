@@ -21,6 +21,7 @@ function BookingFlow({
   space,
   onClose,
   userId,
+  t,
 }) {
   const router = useRouter();
 
@@ -94,7 +95,7 @@ function BookingFlow({
 
       alert(
         error.message ||
-          "No fue posible crear la reserva."
+          t.booking.errors.createReservation
       );
     } finally {
       stopLoading();
@@ -113,7 +114,9 @@ function BookingFlow({
       onClick={onClose}
     >
       {isLoading && (
-        <BookingLoadingOverlay />
+        <BookingLoadingOverlay
+          t={t}
+        />
       )}
 
       <div
@@ -131,7 +134,7 @@ function BookingFlow({
       >
         {step < 4 && (
           <BookingHeader
-            title={`Reserva en ${space.nombre}`}
+            title={`${t.booking.header.reserveAt} ${space.nombre}`}
             step={step}
             onClose={onClose}
           />
@@ -148,6 +151,7 @@ function BookingFlow({
             }
             onCancel={onClose}
             onNext={nextStep}
+            t={t}
           />
         )}
 
@@ -161,6 +165,7 @@ function BookingFlow({
             }
             onBack={prevStep}
             onNext={nextStep}
+            t={t}
           />
         )}
 
@@ -174,6 +179,7 @@ function BookingFlow({
             onConfirm={
               handleConfirm
             }
+            t={t}
           />
         )}
 
@@ -190,6 +196,7 @@ function BookingFlow({
                 "/dashboard"
               );
             }}
+            t={t}
           />
         )}
       </div>

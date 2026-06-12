@@ -102,14 +102,14 @@ function CartPage() {
                   {/* INFO */}
                   <div className="flex gap-4 min-w-0">
                     <img
-  src={getImageSrc(item.imagen)}
-  alt={item.titulo}
-  className="
-    h-28 w-20 flex-shrink-0
-    rounded-xl object-cover object-top
-    bg-slate-50
-  "
-/>
+                      src={getImageSrc(item.imagen)}
+                      alt={item.titulo}
+                      className="
+                        h-28 w-20 flex-shrink-0
+                        rounded-xl object-cover object-top
+                        bg-slate-50
+                      "
+                    />
 
                     <div className="flex min-w-0 flex-col justify-center">
                       <span className="mb-1 text-xs text-slate-500">
