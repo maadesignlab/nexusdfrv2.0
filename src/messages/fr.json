@@ -86,9 +86,12 @@
 
     "cart": {
       "title": "Panier",
-      "empty": "Votre panier est vide",
-      "checkout": "Finaliser l'achat",
-      "clear": "Vider le panier"
+      "empty": "Votre panier est vide.",
+      "total": "Total",
+      "clear": "Vider",
+      "viewCart": "Voir le panier",
+      "remove": "Supprimer",
+      "confirmClear": "Vider le panier ?"
     },
 
     "mobile": {
@@ -327,6 +330,83 @@
       "title": "Préférences du Compte",
       "notifications": "Notifications",
       "loanReminders": "Rappels de prêts"
+    }
+  },
+
+  "cart": {
+    "empty": {
+      "title": "Votre panier est vide",
+      "description": "Parcourez la bibliothèque et ajoutez vos livres ou magazines préférés pour poursuivre vos achats.",
+      "explore": "Explorer la bibliothèque"
+    },
+    "header": {
+      "badge": "Résumé de la commande",
+      "title": "Panier",
+      "description": "Vérifiez les produits sélectionnés avant de finaliser votre achat.",
+      "continueShopping": "Continuer les achats"
+    },
+    "item": {
+      "book": "Livre",
+      "cafeteria": "Cafétéria",
+      "quantity": "Quantité",
+      "subtotal": "Sous-total",
+      "remove": "Supprimer",
+      "removeFromCart": "Supprimer {title} du panier"
+    },
+    "summary": {
+      "total": "Total",
+      "checkout": "Finaliser l'achat"
+    }
+  },
+
+  "checkout": {
+    "header": {
+      "badge": "Paiement",
+      "title": "Finalisez votre achat",
+      "description": "Complétez vos informations pour traiter votre commande."
+    },
+
+    "form": {
+      "customerInfo": "Informations de contact",
+      "paymentInfo": "Informations de paiement",
+
+      "fullName": "Nom complet",
+      "email": "Adresse e-mail",
+      "cardNumber": "Numéro de carte",
+
+      "pay": "Payer",
+      "processing": "Traitement..."
+    },
+
+    "payment": {
+      "securePayment": "Paiement sécurisé",
+      "cardHolder": "Titulaire de la carte"
+    },
+
+    "summary": {
+      "title": "Récapitulatif de la commande",
+      "subtotal": "Sous-total",
+      "service": "Service",
+      "total": "Total",
+      "protected": "Paiement protégé et chiffré"
+    },
+
+    "empty": {
+      "message": "Votre panier est vide"
+    },
+
+    "validation": {
+      "requiredName": "Nom requis",
+      "invalidEmail": "E-mail invalide",
+      "invalidCard": "Carte invalide"
+    },
+
+    "success": {
+      "title": "Achat terminé",
+      "description": "Votre commande a été enregistrée avec succès.",
+      "order": "Commande",
+      "viewPurchases": "Voir mes achats",
+      "backLibrary": "Retour à la bibliothèque"
     }
   }
 }

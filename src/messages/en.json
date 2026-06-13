@@ -86,9 +86,12 @@
 
     "cart": {
       "title": "Cart",
-      "empty": "Your cart is empty",
-      "checkout": "Checkout",
-      "clear": "Clear cart"
+      "empty": "Your cart is empty.",
+      "total": "Total",
+      "clear": "Clear",
+      "viewCart": "View Cart",
+      "remove": "Remove",
+      "confirmClear": "Clear cart?"
     },
 
     "mobile": {
@@ -329,6 +332,83 @@
       "title": "Account Preferences",
       "notifications": "Notifications",
       "loanReminders": "Loan Reminders"
+    }
+  },
+
+  "cart": {
+    "empty": {
+      "title": "Your cart is empty",
+      "description": "Browse the library and add your favorite books or magazines to continue shopping.",
+      "explore": "Browse Library"
+    },
+    "header": {
+      "badge": "Purchase Summary",
+      "title": "Cart",
+      "description": "Review your selected products before completing your purchase.",
+      "continueShopping": "Continue Shopping"
+    },
+    "item": {
+      "book": "Book",
+      "cafeteria": "Cafeteria",
+      "quantity": "Quantity",
+      "subtotal": "Subtotal",
+      "remove": "Remove",
+      "removeFromCart": "Remove {title} from cart"
+    },
+    "summary": {
+      "total": "Total",
+      "checkout": "Checkout"
+    }
+  },
+
+  "checkout": {
+    "header": {
+      "badge": "Checkout",
+      "title": "Complete your purchase",
+      "description": "Fill in your details to process your order."
+    },
+
+    "form": {
+      "customerInfo": "Contact information",
+      "paymentInfo": "Payment information",
+
+      "fullName": "Full name",
+      "email": "Email address",
+      "cardNumber": "Card number",
+
+      "pay": "Pay",
+      "processing": "Processing..."
+    },
+
+    "payment": {
+      "securePayment": "Secure payment",
+      "cardHolder": "Cardholder"
+    },
+
+    "summary": {
+      "title": "Order summary",
+      "subtotal": "Subtotal",
+      "service": "Service",
+      "total": "Total",
+      "protected": "Protected and encrypted payment"
+    },
+
+    "empty": {
+      "message": "Your cart is empty"
+    },
+
+    "validation": {
+      "requiredName": "Name is required",
+      "invalidEmail": "Invalid email",
+      "invalidCard": "Invalid card"
+    },
+
+    "success": {
+      "title": "Purchase completed",
+      "description": "Your order has been successfully registered.",
+      "order": "Order",
+      "viewPurchases": "View my purchases",
+      "backLibrary": "Back to library"
     }
   }
 }

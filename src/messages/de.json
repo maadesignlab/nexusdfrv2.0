@@ -86,9 +86,12 @@
 
     "cart": {
       "title": "Warenkorb",
-      "empty": "Ihr Warenkorb ist leer",
-      "checkout": "Zur Kasse",
-      "clear": "Warenkorb leeren"
+      "empty": "Ihr Warenkorb ist leer.",
+      "total": "Gesamt",
+      "clear": "Leeren",
+      "viewCart": "Warenkorb anzeigen",
+      "remove": "Entfernen",
+      "confirmClear": "Warenkorb leeren?"
     },
 
     "mobile": {
@@ -327,6 +330,83 @@
       "title": "Kontoeinstellungen",
       "notifications": "Benachrichtigungen",
       "loanReminders": "Ausleiherinnerungen"
+    }
+  },
+
+  "cart": {
+    "empty": {
+      "title": "Ihr Warenkorb ist leer",
+      "description": "Durchsuchen Sie die Bibliothek und fügen Sie Ihre Lieblingsbücher oder -zeitschriften hinzu, um den Einkauf fortzusetzen.",
+      "explore": "Bibliothek durchsuchen"
+    },
+    "header": {
+      "badge": "Bestellübersicht",
+      "title": "Warenkorb",
+      "description": "Überprüfen Sie Ihre ausgewählten Produkte, bevor Sie den Kauf abschließen.",
+      "continueShopping": "Weiter einkaufen"
+    },
+    "item": {
+      "book": "Buch",
+      "cafeteria": "Cafeteria",
+      "quantity": "Menge",
+      "subtotal": "Zwischensumme",
+      "remove": "Entfernen",
+      "removeFromCart": "{title} aus dem Warenkorb entfernen"
+    },
+    "summary": {
+      "total": "Gesamt",
+      "checkout": "Kauf abschließen"
+    }
+  },
+
+  "checkout": {
+    "header": {
+      "badge": "Kasse",
+      "title": "Schließen Sie Ihren Kauf ab",
+      "description": "Geben Sie Ihre Daten ein, um Ihre Bestellung abzuschließen."
+    },
+
+    "form": {
+      "customerInfo": "Kontaktinformationen",
+      "paymentInfo": "Zahlungsinformationen",
+
+      "fullName": "Vollständiger Name",
+      "email": "E-Mail-Adresse",
+      "cardNumber": "Kartennummer",
+
+      "pay": "Bezahlen",
+      "processing": "Verarbeitung..."
+    },
+
+    "payment": {
+      "securePayment": "Sichere Zahlung",
+      "cardHolder": "Karteninhaber"
+    },
+
+    "summary": {
+      "title": "Bestellübersicht",
+      "subtotal": "Zwischensumme",
+      "service": "Service",
+      "total": "Gesamt",
+      "protected": "Geschützte und verschlüsselte Zahlung"
+    },
+
+    "empty": {
+      "message": "Ihr Warenkorb ist leer"
+    },
+
+    "validation": {
+      "requiredName": "Name erforderlich",
+      "invalidEmail": "Ungültige E-Mail-Adresse",
+      "invalidCard": "Ungültige Karte"
+    },
+
+    "success": {
+      "title": "Kauf abgeschlossen",
+      "description": "Ihre Bestellung wurde erfolgreich registriert.",
+      "order": "Bestellung",
+      "viewPurchases": "Meine Einkäufe ansehen",
+      "backLibrary": "Zur Bibliothek zurückkehren"
     }
   }
 }

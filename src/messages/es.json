@@ -73,25 +73,24 @@
 
   "header": {
     "login": "Iniciar sesión",
-
     "navigation": {
       "library": "Librería",
       "coworking": "Coworking"
     },
-
     "user": {
       "greeting": "Hola",
       "account": "Mi cuenta",
       "logout": "Cerrar sesión"
     },
-
     "cart": {
       "title": "Carrito",
-      "empty": "Tu carrito está vacío",
-      "checkout": "Finalizar compra",
-      "clear": "Vaciar carrito"
+      "empty": "Tu carrito está vacío.",
+      "total": "Total",
+      "clear": "Vaciar",
+      "viewCart": "Ver carrito",
+      "remove": "Eliminar",
+      "confirmClear": "¿Vaciar carrito?"
     },
-
     "mobile": {
       "menu": "Menú"
     }
@@ -101,21 +100,18 @@
     "brand": {
       "description": "Nexus apoya a la comunidad universitaria con recursos digitales y espacios de coworking diseñados para el futuro."
     },
-
     "product": {
       "title": "Producto",
       "library": "Librería",
       "coworking": "Coworking",
       "cart": "Carrito"
     },
-
     "contact": {
       "title": "Contacto",
       "support": "Soporte técnico",
       "privacy": "Privacidad",
       "instagram": "Instagram"
     },
-
     "awards": {
       "title": "Reconocimientos",
       "awwwards": "Awwwards Honors",
@@ -355,6 +351,57 @@
     "summary": {
       "total": "Total",
       "checkout": "Finalizar compra"
+    }
+  },
+
+  "checkout": {
+    "header": {
+      "badge": "Checkout",
+      "title": "Finaliza tu compra",
+      "description": "Completa los datos para procesar tu pedido."
+    },
+
+    "form": {
+      "customerInfo": "Información de contacto",
+      "paymentInfo": "Información de pago",
+
+      "fullName": "Nombre completo",
+      "email": "Correo electrónico",
+      "cardNumber": "Número de tarjeta",
+
+      "pay": "Pagar",
+      "processing": "Procesando..."
+    },
+
+    "payment": {
+      "securePayment": "Pago seguro",
+      "cardHolder": "Titular"
+    },
+
+    "summary": {
+      "title": "Resumen del pedido",
+      "subtotal": "Subtotal",
+      "service": "Servicio",
+      "total": "Total",
+      "protected": "Pago protegido y cifrado"
+    },
+
+    "empty": {
+      "message": "Tu carrito está vacío"
+    },
+
+    "validation": {
+      "requiredName": "Nombre requerido",
+      "invalidEmail": "Correo inválido",
+      "invalidCard": "Tarjeta inválida"
+    },
+
+    "success": {
+      "title": "Compra completada",
+      "description": "Tu pedido fue registrado correctamente.",
+      "order": "Orden",
+      "viewPurchases": "Ver mis compras",
+      "backLibrary": "Volver a la librería"
     }
   }
 }

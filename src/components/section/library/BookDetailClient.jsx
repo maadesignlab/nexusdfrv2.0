@@ -29,6 +29,16 @@ function BookDetailClient({
       {
         ...book,
         bookId: book.id,
+
+        titulo:
+          book.titulo ||
+          book.translated_title ||
+          book.title,
+
+        sinopsis:
+          book.sinopsis ||
+          book.translated_description ||
+          book.description,
       },
       cantidad
     );

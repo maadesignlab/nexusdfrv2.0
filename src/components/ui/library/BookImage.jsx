@@ -35,7 +35,7 @@ function BookImage({
         alt={alt}
         fill
         sizes={config.sizes}
-        priority={priority}
+        loading="lazy"
         className="object-cover transition-transform duration-300 hover:scale-105"
       />
     </div>

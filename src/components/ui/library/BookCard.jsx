@@ -15,13 +15,25 @@ function BookCard({
   const { addToCart } = useCart();
 
   const handleAddToCart = (e) => {
-    e.stopPropagation();
+  e.stopPropagation();
 
-    addToCart({
-      ...libro,
-      bookId: libro.id,
-    });
-  };
+  console.log("LIBRO:", libro);
+
+  addToCart({
+    ...libro,
+    bookId: libro.id,
+
+    titulo:
+      libro.titulo ||
+      libro.translated_title ||
+      libro.title,
+
+    sinopsis:
+      libro.sinopsis ||
+      libro.translated_description ||
+      libro.description,
+  });
+};
 
   const categoryLabel =
     categories[

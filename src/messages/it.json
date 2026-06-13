@@ -86,9 +86,12 @@
 
     "cart": {
       "title": "Carrello",
-      "empty": "Il tuo carrello è vuoto",
-      "checkout": "Completa l'acquisto",
-      "clear": "Svuota carrello"
+      "empty": "Il tuo carrello è vuoto.",
+      "total": "Totale",
+      "clear": "Svuota",
+      "viewCart": "Visualizza carrello",
+      "remove": "Rimuovi",
+      "confirmClear": "Svuotare il carrello?"
     },
 
     "mobile": {
@@ -329,6 +332,83 @@
       "title": "Preferenze dell'Account",
       "notifications": "Notifiche",
       "loanReminders": "Promemoria prestiti"
+    }
+  },
+
+  "cart": {
+    "empty": {
+      "title": "Il tuo carrello è vuoto",
+      "description": "Esplora la libreria e aggiungi i tuoi libri o riviste preferiti per continuare l'acquisto.",
+      "explore": "Esplora la libreria"
+    },
+    "header": {
+      "badge": "Riepilogo acquisto",
+      "title": "Carrello",
+      "description": "Controlla i prodotti selezionati prima di completare l'acquisto.",
+      "continueShopping": "Continua gli acquisti"
+    },
+    "item": {
+      "book": "Libro",
+      "cafeteria": "Caffetteria",
+      "quantity": "Quantità",
+      "subtotal": "Subtotale",
+      "remove": "Rimuovi",
+      "removeFromCart": "Rimuovi {title} dal carrello"
+    },
+    "summary": {
+      "total": "Totale",
+      "checkout": "Completa l'acquisto"
+    }
+  },
+
+  "checkout": {
+    "header": {
+      "badge": "Checkout",
+      "title": "Completa il tuo acquisto",
+      "description": "Inserisci i tuoi dati per elaborare l'ordine."
+    },
+
+    "form": {
+      "customerInfo": "Informazioni di contatto",
+      "paymentInfo": "Informazioni di pagamento",
+
+      "fullName": "Nome completo",
+      "email": "Indirizzo email",
+      "cardNumber": "Numero della carta",
+
+      "pay": "Paga",
+      "processing": "Elaborazione..."
+    },
+
+    "payment": {
+      "securePayment": "Pagamento sicuro",
+      "cardHolder": "Titolare della carta"
+    },
+
+    "summary": {
+      "title": "Riepilogo dell'ordine",
+      "subtotal": "Subtotale",
+      "service": "Servizio",
+      "total": "Totale",
+      "protected": "Pagamento protetto e crittografato"
+    },
+
+    "empty": {
+      "message": "Il tuo carrello è vuoto"
+    },
+
+    "validation": {
+      "requiredName": "Nome obbligatorio",
+      "invalidEmail": "Email non valida",
+      "invalidCard": "Carta non valida"
+    },
+
+    "success": {
+      "title": "Acquisto completato",
+      "description": "Il tuo ordine è stato registrato correttamente.",
+      "order": "Ordine",
+      "viewPurchases": "Visualizza i miei acquisti",
+      "backLibrary": "Torna alla libreria"
     }
   }
 }

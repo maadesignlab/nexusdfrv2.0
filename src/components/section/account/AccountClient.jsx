@@ -15,9 +15,11 @@ export default function AccountClient({
   reservations,
   t,
   locale,
+  initialTab = "profile",
 }) {
+  
   const [activeTab, setActiveTab] =
-    useState("profile");
+  useState(initialTab);
 
   const handleLogout = () => {
     window.location.href =

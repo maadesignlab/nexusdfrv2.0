@@ -160,6 +160,7 @@ function Header({
                   removeFromCart={removeFromCart}
                   clearCart={clearCart}
                   t={t}
+                  locale={locale}
                 />
               )}
 

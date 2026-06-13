@@ -8,13 +8,13 @@ function HeaderCart({
   openCart,
   setOpenCart,
   totalItems,
-
   cart,
   increaseQty,
   decreaseQty,
   removeFromCart,
   clearCart,
-  t
+  t,
+  locale
 }) {
   const router = useRouter();
 
@@ -32,9 +32,10 @@ function HeaderCart({
     >
       {/* BOTÓN */}
       <button
-        type="button"
-        onClick={() =>
-          setOpenCart(!openCart)
+          type="button"
+          aria-label={t.cart.title}
+          onClick={() =>
+            setOpenCart(!openCart)
         }
         className="relative py-1 hover:underline"
       >
@@ -188,7 +189,7 @@ function HeaderCart({
                     onClick={() => {
                       if (
                         confirm(
-                          "¿Vaciar carrito?"
+                          t.cart.confirmClear
                         )
                       ) {
                         clearCart();
@@ -202,7 +203,7 @@ function HeaderCart({
                       transition
                     "
                   >
-                    Vaciar
+                    {t.cart.clear}
                   </button>
 
                   <button
@@ -210,9 +211,7 @@ function HeaderCart({
                     onClick={() => {
                       setOpenCart(false);
 
-                      router.push(
-                        "/cart"
-                      );
+                      router.push(`/${locale}/cart`);
                     }}
                     className="
                       flex-1
@@ -220,7 +219,7 @@ function HeaderCart({
                       py-2
                     "
                   >
-                    Ver carrito
+                    {t.cart.viewCart}
                   </button>
                 </div>
               </div>

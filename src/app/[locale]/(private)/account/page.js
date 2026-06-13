@@ -9,8 +9,13 @@ import AccountClient from "@/components/section/account/AccountClient";
 
 export default async function AccountPage({
   params,
+  searchParams,
 }) {
   const { locale } = await params;
+
+  const initialTab =
+    (await searchParams)?.tab ||
+    "profile";
 
   const translations =
     getTranslations(locale);
@@ -38,6 +43,7 @@ export default async function AccountPage({
       reservations={reservations}
       t={translations.account}
       locale={locale}
+      initialTab={initialTab}
     />
   );
 }
