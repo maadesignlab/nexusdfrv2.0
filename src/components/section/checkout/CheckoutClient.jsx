@@ -190,6 +190,7 @@ function CheckoutClient({
           cart={cart}
           total={total}
           t={t}
+          locale={locale}
         />
 
       </div>

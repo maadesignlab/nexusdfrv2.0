@@ -1,6 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+
+import { formatPrice } from "@/lib/intl";
+
+import ConfirmClearCartModal from "./ConfirmClearCartModal";
 import BookImage from "@/components/ui/library/BookImage";
 
 function HeaderCart({
@@ -14,9 +19,12 @@ function HeaderCart({
   removeFromCart,
   clearCart,
   t,
-  locale
+  locale,
 }) {
   const router = useRouter();
+
+  const [showClearModal, setShowClearModal] =
+    useState(false);
 
   const total = cart.reduce(
     (acc, item) =>
@@ -25,6 +33,28 @@ function HeaderCart({
     0
   );
 
+  const toggleCart = () => {
+    if (openCart) {
+      setShowClearModal(false);
+    }
+
+    setOpenCart(!openCart);
+  };
+
+  const handleClearCart = () => {
+    clearCart();
+
+    setShowClearModal(false);
+    setOpenCart(false);
+  };
+
+  const handleGoToCart = () => {
+    setShowClearModal(false);
+    setOpenCart(false);
+
+    router.push(`/${locale}/cart`);
+  };
+
   return (
     <div
       ref={cartRef}
@@ -32,11 +62,9 @@ function HeaderCart({
     >
       {/* BOTÓN */}
       <button
-          type="button"
-          aria-label={t.cart.title}
-          onClick={() =>
-            setOpenCart(!openCart)
-        }
+        type="button"
+        aria-label={t.cart.title}
+        onClick={toggleCart}
         className="relative py-1 hover:underline"
       >
         {t.cart.title}
@@ -95,8 +123,10 @@ function HeaderCart({
                       </p>
 
                       <p className="text-xs text-text-secondary">
-                        $
-                        {item.precio.toLocaleString()}
+                        {formatPrice(
+                          item.precio,
+                          locale
+                        )}
                       </p>
                     </div>
 
@@ -143,11 +173,11 @@ function HeaderCart({
                     </div>
 
                     <div className="text-sm font-semibold text-right min-w-[70px]">
-                      $
-                      {(
+                      {formatPrice(
                         item.precio *
-                        item.cantidad
-                      ).toLocaleString()}
+                          item.cantidad,
+                        locale
+                      )}
                     </div>
 
                     <button
@@ -163,7 +193,7 @@ function HeaderCart({
                         hover:scale-110
                         transition
                       "
-                      title="Eliminar"
+                      title={t.cart.remove}
                     >
                       🗑
                     </button>
@@ -174,27 +204,23 @@ function HeaderCart({
               <div className="pt-3 border-t border-border-default space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-text-secondary">
-                    Total
+                    {t.cart.total}
                   </span>
 
                   <span className="font-bold text-lg">
-                    $
-                    {total.toLocaleString()}
+                    {formatPrice(
+                      total,
+                      locale
+                    )}
                   </span>
                 </div>
 
                 <div className="flex gap-2">
                   <button
                     type="button"
-                    onClick={() => {
-                      if (
-                        confirm(
-                          t.cart.confirmClear
-                        )
-                      ) {
-                        clearCart();
-                      }
-                    }}
+                    onClick={() =>
+                      setShowClearModal(true)
+                    }
                     className="
                       flex-1 py-2 text-sm
                       border border-border-default
@@ -208,11 +234,7 @@ function HeaderCart({
 
                   <button
                     type="button"
-                    onClick={() => {
-                      setOpenCart(false);
-
-                      router.push(`/${locale}/cart`);
-                    }}
+                    onClick={handleGoToCart}
                     className="
                       flex-1
                       btn-primary
@@ -226,6 +248,17 @@ function HeaderCart({
             </>
           )}
         </div>
+      )}
+
+      {/* MODAL */}
+      {showClearModal && (
+        <ConfirmClearCartModal
+          t={t}
+          onCancel={() =>
+            setShowClearModal(false)
+          }
+          onConfirm={handleClearCart}
+        />
       )}
     </div>
   );

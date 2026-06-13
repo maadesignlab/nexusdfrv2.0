@@ -1,7 +1,7 @@
 import OrderItem from "../items/OrderItem";
 
 export default function PurchasesTab({
-  orders, t, locale
+  orders, t, locale,
 }) {
   return (
     <div className="space-y-6">

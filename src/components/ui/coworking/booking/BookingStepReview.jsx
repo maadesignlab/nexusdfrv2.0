@@ -1,9 +1,11 @@
+import { formatDate, formatTime } from "@/lib/intl";
 export default function BookingStepReview({
   space,
   bookingData,
   onBack,
   onConfirm,
   t,
+  locale,
 }) {
   return (
     <div className="space-y-6 mt-6">
@@ -19,13 +21,23 @@ export default function BookingStepReview({
           <strong>
             {t.booking.review.date}:
           </strong>{" "}
-          {bookingData.fecha}
+          {
+            formatDate(
+              bookingData.fecha,
+              locale
+            )
+          }
         </p>
         <p>
           <strong>
             {t.booking.review.time}:
           </strong>{" "}
-          {bookingData.hora}
+          {
+            formatTime(
+              `${bookingData.fecha}T${bookingData.hora}`,
+              locale
+            )
+          }
         </p>
         <p>
           <strong>

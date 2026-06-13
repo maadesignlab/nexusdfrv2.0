@@ -9,7 +9,8 @@ import { motion, AnimatePresence } from "framer-motion";
 function CoworkingClient({
   spaces = [],
   userId,
-  t
+  t,
+  locale,
 }) {
   const [selectedSpace, setSelectedSpace] = useState(null);
   const [isBooking, setIsBooking] = useState(false);
@@ -173,6 +174,7 @@ function CoworkingClient({
             onClose={closeModal}
             userId={userId}
             t={t}
+            locale={locale}
           />
         ))}
     </main>

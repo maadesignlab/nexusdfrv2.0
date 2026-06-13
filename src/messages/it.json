@@ -72,18 +72,15 @@
 
   "header": {
     "login": "Accedi",
-
     "navigation": {
       "library": "Libreria",
       "coworking": "Coworking"
     },
-
     "user": {
       "greeting": "Ciao",
       "account": "Il mio account",
       "logout": "Disconnetti"
     },
-
     "cart": {
       "title": "Carrello",
       "empty": "Il tuo carrello è vuoto.",
@@ -91,9 +88,13 @@
       "clear": "Svuota",
       "viewCart": "Visualizza carrello",
       "remove": "Rimuovi",
-      "confirmClear": "Svuotare il carrello?"
+      "clearModal": {
+        "title": "Svuota carrello",
+        "description": "Tutti i prodotti verranno rimossi dal carrello.",
+        "cancel": "Annulla",
+        "confirm": "Svuota carrello"
+      }
     },
-
     "mobile": {
       "menu": "Menu"
     }

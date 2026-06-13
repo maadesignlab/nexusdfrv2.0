@@ -31,6 +31,7 @@ console.log(book);
         translations.library
           .categories
       }
+      locale={locale}
     />
   );
 }

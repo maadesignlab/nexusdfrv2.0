@@ -1,3 +1,5 @@
+import { formatPrice } from "@/lib/intl";
+
 import CartItemMini from "./CartItemMini";
 
 export default function CheckoutSummary({
@@ -38,7 +40,7 @@ export default function CheckoutSummary({
           </span>
 
           <span>
-            ${total.toLocaleString()}
+            {formatPrice(total, locale)}
           </span>
         </div>
 
@@ -56,7 +58,7 @@ export default function CheckoutSummary({
           </span>
 
           <span>
-            ${total.toLocaleString()}
+            {formatPrice(total, locale)}
           </span>
         </div>
       </div>

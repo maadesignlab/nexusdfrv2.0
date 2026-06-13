@@ -1,14 +1,18 @@
+import { formatDate, formatTime } from "@/lib/intl";
+
 export default function ReservationItem({
-  reservation, t,
+  reservation, t, locale,
 }) {
-  const start = new Date(
-    reservation.start_at
-  );
+  const statusStyles = {
+    ACTIVE:
+      "bg-green-100 text-green-700",
 
-  const end = new Date(
-    reservation.end_at
-  );
+    COMPLETED:
+      "bg-blue-100 text-blue-700",
 
+    CANCELLED:
+      "bg-red-100 text-red-700",
+  };
   return (
     <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
       <div className="flex justify-between items-start">
@@ -25,10 +29,25 @@ export default function ReservationItem({
           </p>
         </div>
 
-        <span className="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">
+        <span
+          className={`
+            px-3 py-1
+            rounded-full
+            text-xs
+            font-semibold
+            ${
+              statusStyles[
+                reservation.status
+              ] ||
+              "bg-slate-100 text-slate-700"
+            }
+          `}
+        >
           {
-            t.reservations.status?.ACTIVE ??
-            "Active"
+            t.reservations.status?.[
+              reservation.status
+            ] ??
+            reservation.status
           }
         </span>
       </div>
@@ -39,7 +58,10 @@ export default function ReservationItem({
         </p>
 
         <p className="font-medium">
-          {start.toLocaleDateString()}
+          {formatDate(
+            reservation.start_at,
+            locale
+          )}
         </p>
 
         <p className="text-sm text-slate-600 mt-2">
@@ -47,18 +69,14 @@ export default function ReservationItem({
         </p>
 
         <p className="font-medium">
-          {start.toLocaleTimeString([],
-            {
-              hour: "2-digit",
-              minute: "2-digit",
-            }
+          {formatTime(
+            reservation.start_at,
+            locale
           )}
           {" - "}
-          {end.toLocaleTimeString([],
-            {
-              hour: "2-digit",
-              minute: "2-digit",
-            }
+          {formatTime(
+            reservation.end_at,
+            locale
           )}
         </p>
       </div>

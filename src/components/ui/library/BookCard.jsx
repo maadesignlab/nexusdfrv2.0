@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
+import { formatPrice } from "@/lib/intl";
 import BookImage from "./BookImage";
 
 function BookCard({
@@ -148,7 +149,10 @@ function BookCard({
 
         {/* PRICE */}
         <p className="mt-3 text-base font-bold text-slate-950">
-          ${libro.precio?.toLocaleString()}
+          {formatPrice(
+            libro.precio,
+            locale
+          )}
         </p>
 
         {/* ACTIONS */}

@@ -1,4 +1,5 @@
 import { getImageSrc } from "@/lib/getImageSrc";
+import { formatPrice } from "@/lib/intl";
 
 export default function CartItem({
   item,
@@ -6,6 +7,7 @@ export default function CartItem({
   increaseQty,
   decreaseQty,
   removeFromCart,
+  locale,
 }) {
   const precio = Number(
     item.precio || 0
@@ -63,8 +65,10 @@ export default function CartItem({
             </span>
 
             <strong className="mt-2 text-base font-bold text-slate-950">
-              $
-              {precio.toLocaleString()}
+              {formatPrice(
+                precio,
+                locale
+              )}
             </strong>
           </div>
         </div>
@@ -122,8 +126,10 @@ export default function CartItem({
             </span>
 
             <span className="block text-lg font-bold text-slate-950">
-              $
-              {subtotal.toLocaleString()}
+              {formatPrice(
+                subtotal,
+                locale
+              )}
             </span>
           </div>
 

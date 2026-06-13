@@ -1,7 +1,16 @@
+import { formatDate } from "@/lib/intl";
+import { formatPrice } from "@/lib/intl";
+
 export default function OrderItem({
   order, t, locale
 }) {
-  console.log(order.status);
+  console.log("locale", locale);
+console.log(
+  formatPrice(
+    order.total,
+    locale
+  )
+);
   return (
     <div
       className="
@@ -20,9 +29,10 @@ export default function OrderItem({
           </h3>
 
           <p className="text-sm text-slate-500">
-            {new Date(
-              order.created_at
-            ).toLocaleDateString(locale)}
+            {formatDate(
+              order.created_at,
+              locale
+            )}
           </p>
         </div>
 
@@ -47,10 +57,12 @@ export default function OrderItem({
         </p>
 
         <p className="text-xl font-bold">
-          $
-          {Number(
-            order.total
-          ).toLocaleString(locale)}
+          {
+            formatPrice(
+              order.total,
+              locale
+            )
+          }
         </p>
       </div>
     </div>

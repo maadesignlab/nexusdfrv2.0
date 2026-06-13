@@ -72,18 +72,15 @@
 
   "header": {
     "login": "Se connecter",
-
     "navigation": {
-      "library": "Bibliothèque",
+      "library": "Librairie",
       "coworking": "Coworking"
     },
-
     "user": {
       "greeting": "Bonjour",
       "account": "Mon compte",
-      "logout": "Déconnexion"
+      "logout": "Se déconnecter"
     },
-
     "cart": {
       "title": "Panier",
       "empty": "Votre panier est vide.",
@@ -91,9 +88,13 @@
       "clear": "Vider",
       "viewCart": "Voir le panier",
       "remove": "Supprimer",
-      "confirmClear": "Vider le panier ?"
+      "clearModal": {
+        "title": "Vider le panier",
+        "description": "Tous les produits seront supprimés du panier.",
+        "cancel": "Annuler",
+        "confirm": "Vider le panier"
+      }
     },
-
     "mobile": {
       "menu": "Menu"
     }

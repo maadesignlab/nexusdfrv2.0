@@ -72,28 +72,29 @@
 
   "header": {
     "login": "Anmelden",
-
     "navigation": {
       "library": "Bibliothek",
       "coworking": "Coworking"
     },
-
     "user": {
       "greeting": "Hallo",
       "account": "Mein Konto",
       "logout": "Abmelden"
     },
-
     "cart": {
       "title": "Warenkorb",
       "empty": "Ihr Warenkorb ist leer.",
       "total": "Gesamt",
       "clear": "Leeren",
-      "viewCart": "Warenkorb anzeigen",
+      "viewCart": "Warenkorb ansehen",
       "remove": "Entfernen",
-      "confirmClear": "Warenkorb leeren?"
+      "clearModal": {
+        "title": "Warenkorb leeren",
+        "description": "Alle Produkte werden aus dem Warenkorb entfernt.",
+        "cancel": "Abbrechen",
+        "confirm": "Warenkorb leeren"
+      }
     },
-
     "mobile": {
       "menu": "Menü"
     }

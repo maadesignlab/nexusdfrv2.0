@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { useCart } from "@/context/CartContext";
+import { formatPrice } from "@/lib/intl";
 import BookImage from "@/components/ui/library/BookImage";
 
 function BookDetailClient({
   book,
   t = {},
   categories = {},
+  locale,
 }) {
   const { addToCart } = useCart();
 
@@ -176,8 +178,10 @@ function BookDetailClient({
               </p>
 
               <p className="mt-2 text-3xl font-bold text-slate-950">
-                $
-                {book.precio?.toLocaleString()}
+                {formatPrice(
+                  book.precio,
+                  locale
+                )}
               </p>
             </div>
 

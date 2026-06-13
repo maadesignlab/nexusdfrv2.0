@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import AccountSidebar from "./AccountSidebar";
 
@@ -15,11 +15,21 @@ export default function AccountClient({
   reservations,
   t,
   locale,
-  initialTab = "profile",
 }) {
-  
-  const [activeTab, setActiveTab] =
-  useState(initialTab);
+  const router = useRouter();
+
+  const searchParams =
+    useSearchParams();
+
+  const activeTab =
+    searchParams.get("tab") ??
+    "profile";
+
+  const handleTabChange = (tab) => {
+    router.push(
+      `/${locale}/account?tab=${tab}`
+    );
+  };
 
   const handleLogout = () => {
     window.location.href =
@@ -29,13 +39,19 @@ export default function AccountClient({
   const renderTab = () => {
     switch (activeTab) {
       case "profile":
-        return <ProfileTab user={user} t={t} />;
+        return (
+          <ProfileTab
+            user={user}
+            t={t}
+          />
+        );
 
       case "orders":
         return (
           <PurchasesTab
             orders={orders}
             t={t}
+            locale={locale}
           />
         );
 
@@ -51,20 +67,28 @@ export default function AccountClient({
       case "preferences":
         return (
           <PreferencesTab
-            t={t}  
+            t={t}
           />
         );
 
       default:
-        return null;
+        return (
+          <ProfileTab
+            user={user}
+            t={t}
+          />
+        );
     }
   };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-[260px_1fr] max-w-6xl mx-auto w-full px-4 md:px-6 py-8 gap-8">
       <aside className="bg-[#fcfcf9] border border-slate-200 rounded-2xl p-4 shadow-sm h-fit">
         <AccountSidebar
           activeTab={activeTab}
-          onTabChange={setActiveTab}
+          onTabChange={
+            handleTabChange
+          }
           onLogout={handleLogout}
           t={t}
         />

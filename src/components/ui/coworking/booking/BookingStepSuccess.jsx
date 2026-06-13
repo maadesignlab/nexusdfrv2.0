@@ -1,8 +1,11 @@
+import { formatDate, formatTime } from "@/lib/intl";
+
 export default function BookingStepSuccess({
   space,
   bookingData,
   onFinish,
   t,
+  locale,
 }) {
   return (
     <div className="flex flex-col items-center text-center py-6 space-y-4">
@@ -18,8 +21,20 @@ export default function BookingStepSuccess({
       <p className="text-slate-600">
         {t.booking.success.message
           .replace("{space}", space.nombre)
-          .replace("{date}", bookingData.fecha)
-          .replace("{time}", bookingData.hora)}
+          .replace(
+            "{date}",
+            formatDate(
+              bookingData.fecha,
+              locale
+            )
+          )
+          .replace(
+            "{time}",
+            formatTime(
+              `${bookingData.fecha}T${bookingData.hora}`,
+              locale
+            )
+          )}
       </p>
 
       <button

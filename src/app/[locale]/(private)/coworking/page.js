@@ -32,6 +32,7 @@ export default async function CoworkingPage({
       spaces={data.coworking}
       userId={dbUser?.id}
       t={translations.coworking}
+      locale={locale}
     />
   );
 }

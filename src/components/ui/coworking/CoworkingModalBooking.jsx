@@ -12,6 +12,7 @@ import BookingStepSchedule from "./booking/BookingStepSchedule";
 import BookingStepContact from "./booking/BookingStepContact";
 import BookingStepReview from "./booking/BookingStepReview";
 import BookingStepSuccess from "./booking/BookingStepSuccess";
+import BookingStepError from "./booking/BookingStepError";
 
 import {
   createReservationAction,
@@ -22,10 +23,14 @@ function BookingFlow({
   onClose,
   userId,
   t,
+  locale,
 }) {
   const router = useRouter();
 
   const [step, setStep] = useState(1);
+
+  const [errorMessage, setErrorMessage] =
+    useState("");
 
   const [bookingData, setBookingData] =
     useState({
@@ -67,40 +72,42 @@ function BookingFlow({
   const prevStep = () =>
     setStep((prev) => prev - 1);
 
-  const handleConfirm = async () => {
-    startLoading();
+      const handleConfirm = async () => {
+      startLoading();
 
-    try {
-      const startAt = new Date(
-        `${bookingData.fecha}T${bookingData.hora}:00`
-      );
+      setErrorMessage("");
 
-      const endAt = new Date(startAt);
+      try {
+        const startAt = new Date(
+          `${bookingData.fecha}T${bookingData.hora}:00`
+        );
 
-      endAt.setHours(
-        endAt.getHours() +
-          bookingData.duracion
-      );
+        const endAt = new Date(startAt);
 
-      await createReservationAction({
-        userId,
-        coworkingSpaceId: space.id,
-        startAt: startAt.toISOString(),
-        endAt: endAt.toISOString(),
-      });
+        endAt.setHours(
+          endAt.getHours() +
+            bookingData.duracion
+        );
 
-      setStep(4);
-    } catch (error) {
-      console.error(error);
+        await createReservationAction({
+          userId,
+          coworkingSpaceId: space.id,
+          startAt: startAt.toISOString(),
+          endAt: endAt.toISOString(),
+        });
 
-      alert(
-        error.message ||
-          t.booking.errors.createReservation
-      );
-    } finally {
-      stopLoading();
-    }
-  };
+        setStep(4);
+      } catch (error) {
+        setErrorMessage(
+          error?.message ||
+            t.booking.errors.createReservation
+        );
+
+        setStep(5);
+      } finally {
+        stopLoading();
+      }
+    };
 
   return (
     <div
@@ -180,6 +187,7 @@ function BookingFlow({
               handleConfirm
             }
             t={t}
+            locale={locale}
           />
         )}
 
@@ -191,11 +199,21 @@ function BookingFlow({
             }
             onFinish={() => {
               onClose();
-
-              router.push(
-                "/dashboard"
-              );
+              router.push(`/${locale}/account?tab=reservations`);
             }}
+            t={t}
+            locale={locale}
+          />
+        )}
+
+        {step === 5 && (
+          <BookingStepError
+            message={errorMessage}
+            onRetry={() => {
+              setErrorMessage("");
+              setStep(3);
+            }}
+            onClose={onClose}
             t={t}
           />
         )}

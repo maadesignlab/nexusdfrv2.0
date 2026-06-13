@@ -72,28 +72,29 @@
 
   "header": {
     "login": "Sign in",
-
     "navigation": {
       "library": "Library",
       "coworking": "Coworking"
     },
-
     "user": {
       "greeting": "Hello",
       "account": "My account",
       "logout": "Sign out"
     },
-
     "cart": {
       "title": "Cart",
       "empty": "Your cart is empty.",
       "total": "Total",
       "clear": "Clear",
-      "viewCart": "View Cart",
+      "viewCart": "View cart",
       "remove": "Remove",
-      "confirmClear": "Clear cart?"
+      "clearModal": {
+        "title": "Clear cart",
+        "description": "All products will be removed from the cart.",
+        "cancel": "Cancel",
+        "confirm": "Clear cart"
+      }
     },
-
     "mobile": {
       "menu": "Menu"
     }

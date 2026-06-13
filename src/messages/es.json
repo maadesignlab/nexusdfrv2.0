@@ -89,7 +89,12 @@
       "clear": "Vaciar",
       "viewCart": "Ver carrito",
       "remove": "Eliminar",
-      "confirmClear": "¿Vaciar carrito?"
+      "clearModal": {
+        "title": "Vaciar carrito",
+        "description": "Se eliminarán todos los productos del carrito.",
+        "cancel": "Cancelar",
+        "confirm": "Vaciar carrito"
+      }
     },
     "mobile": {
       "menu": "Menú"
@@ -273,8 +278,16 @@
       "loading": {
         "processing": "Procesando reserva..."
       },
+      "error": {
+        "title": "No pudimos completar la reserva",
+        "retry": "Intentar nuevamente",
+        "close": "Cerrar"
+      },
+
       "errors": {
-        "createReservation": "No fue posible crear la reserva."
+        "createReservation": "Ocurrió un error al crear la reserva.",
+        "activeReservation": "Ya tienes una reserva activa.",
+        "slotOccupied": "El horario seleccionado ya no está disponible."
       }
     }
   },

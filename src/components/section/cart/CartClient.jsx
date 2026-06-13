@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import { useCart } from "@/context/CartContext";
+import { formatPrice } from "@/lib/intl";
 
 import CartItem from "./items/CartItem";
 
@@ -40,7 +41,7 @@ function CartClient({ t, locale }) {
           </p>
 
           <Link
-            href="/library"
+            href={`/${locale}/library`}
             className="
               inline-flex items-center justify-center
               rounded-xl bg-slate-950 px-6 py-3
@@ -101,6 +102,7 @@ function CartClient({ t, locale }) {
               increaseQty={increaseQty}
               decreaseQty={decreaseQty}
               removeFromCart={removeFromCart}
+              locale={locale}
             />
           ))}
         </ul>
@@ -138,7 +140,10 @@ function CartClient({ t, locale }) {
             </span>
 
             <span className="block text-2xl font-extrabold text-slate-950">
-              ${total.toLocaleString()}
+              {formatPrice(
+                total,
+                locale
+              )}
             </span>
           </div>
 

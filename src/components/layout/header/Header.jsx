@@ -5,6 +5,7 @@ import Link from "next/link";
 import {
   useRouter,
   usePathname,
+  useSearchParams,
 } from "next/navigation";
 
 import { locales } from "@/lib/i18n";
@@ -21,6 +22,7 @@ function Header({
 }) {
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams =  useSearchParams();
 
   const {
     cart = [],
@@ -103,8 +105,16 @@ function Header({
 
     segments[1] = newLocale;
 
+    const newPath =
+      segments.join("/");
+
+    const query =
+      searchParams.toString();
+
     router.push(
-      segments.join("/")
+      query
+        ? `${newPath}?${query}`
+        : newPath
     );
   };
 

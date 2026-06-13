@@ -1,4 +1,5 @@
 import { getImageSrc } from "@/lib/getImageSrc";
+import { formatPrice } from "@/lib/intl";
 
 export default function CartItemMini({
   item,
@@ -33,7 +34,10 @@ export default function CartItemMini({
       </div>
 
       <span className="font-semibold whitespace-nowrap">
-        ${subtotal.toLocaleString(locale)}
+        {formatPrice(
+          subtotal,
+          locale
+        )}
       </span>
     </div>
   );
