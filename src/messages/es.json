@@ -74,6 +74,8 @@
   "header": {
     "login": "Iniciar sesión",
     "navigation": {
+      "catalog": "Catálogo",
+  "pricing": "Planes",
       "library": "Librería",
       "coworking": "Coworking"
     },

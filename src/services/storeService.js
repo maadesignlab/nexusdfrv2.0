@@ -213,4 +213,91 @@ export const storeService = {
         String(row.published_year)
     );
   },
+
+  async getCatalogLanding(
+    locale = "es"
+  ) {
+    const [
+      top10,
+      clasico,
+      drama,
+      arteCultura,
+      estiloVida,
+      ficcion,
+      economia,
+      top10Ids,
+      { categoryMap },
+    ] = await Promise.all([
+      getTop10Books({}, locale),
+
+      getPublications(
+        { category: "clasico" },
+        locale
+      ),
+
+      getPublications(
+        { category: "drama" },
+        locale
+      ),
+
+      getPublications(
+        {
+          category:
+            "arte-cultura",
+        },
+        locale
+      ),
+
+      getPublications(
+        {
+          category:
+            "estilo-vida",
+        },
+        locale
+      ),
+
+      getPublications(
+        { category: "ficcion" },
+        locale
+      ),
+
+      getPublications(
+        { category: "economia" },
+        locale
+      ),
+
+      getTop10Ids(),
+
+      getCategoryMap(),
+    ]);
+
+    const mapBooks = (books) =>
+      books.map((book) =>
+        mapPublication(
+          book,
+          categoryMap,
+          top10Ids
+        )
+      );
+
+    return {
+      top10: mapBooks(top10),
+
+      clasico: mapBooks(clasico),
+
+      drama: mapBooks(drama),
+
+      arteCultura:
+        mapBooks(arteCultura),
+
+      estiloVida:
+        mapBooks(estiloVida),
+
+      ficcion:
+        mapBooks(ficcion),
+
+      economia:
+        mapBooks(economia),
+    };
+  }
 };

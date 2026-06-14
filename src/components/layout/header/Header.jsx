@@ -5,7 +5,6 @@ import Link from "next/link";
 import {
   useRouter,
   usePathname,
-  useSearchParams,
 } from "next/navigation";
 
 import { locales } from "@/lib/i18n";
@@ -22,7 +21,6 @@ function Header({
 }) {
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams =  useSearchParams();
 
   const {
     cart = [],
@@ -92,31 +90,24 @@ function Header({
   }, []);
 
   const handleLocaleChange = (
-    e
-  ) => {
-    const newLocale =
-      e.target.value;
+  e
+) => {
+  const newLocale =
+    e.target.value;
 
-    document.cookie =
-      `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`;
+  document.cookie =
+    `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`;
 
-    const segments =
-      pathname.split("/");
+  const segments =
+    pathname.split("/");
 
-    segments[1] = newLocale;
+  segments[1] = newLocale;
 
-    const newPath =
-      segments.join("/");
+  const newPath =
+    segments.join("/");
 
-    const query =
-      searchParams.toString();
-
-    router.push(
-      query
-        ? `${newPath}?${query}`
-        : newPath
-    );
-  };
+  router.push(newPath);
+};
 
   const localeSelectClasses =
     "h-9 px-2 rounded-md bg-gray-100 text-sm";
@@ -127,7 +118,11 @@ function Header({
 
         {/* LOGO */}
         <Link
-          href={`/${locale}/dashboard`}
+          href={
+            user
+              ? `/${locale}/dashboard`
+              : `/${locale}/`
+          }
         >
           <img
             src="/img/nexus.svg"
@@ -139,11 +134,21 @@ function Header({
         {/* DESKTOP */}
         <nav className="hidden md:flex items-center gap-6 text-sm">
           {!user ? (
-            <a
-              href={`/auth/login?returnTo=/${locale}/dashboard`}
-            >
-              {t.login}
-            </a>
+            <>
+              <Link href={`/${locale}/catalog`}>
+                {t.navigation.catalog}
+              </Link>
+
+              <Link href={`/${locale}/pricing`}>
+                {t.navigation.pricing}
+              </Link>
+
+              <a
+                href={`/auth/login?returnTo=/${locale}/dashboard`}
+              >
+                {t.login}
+              </a>
+            </>
           ) : (
             <>
               <Link

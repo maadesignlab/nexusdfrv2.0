@@ -18,8 +18,6 @@ export default async function BookDetailPage({
       getTranslations(locale),
     ]);
 
-console.log(book);
-
   return (
     <BookDetailClient
       book={book}

@@ -530,3 +530,4 @@ export async function getPublicationYears() {
     ORDER BY published_year DESC
   `;
 }
+
