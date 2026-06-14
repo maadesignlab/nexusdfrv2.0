@@ -225,6 +225,7 @@ function Header({
         open={openMobile}
         user={user}
         locale={locale}
+        t={t}
         totalItems={
           mounted
             ? totalItems

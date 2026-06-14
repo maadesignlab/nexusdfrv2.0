@@ -21,7 +21,9 @@ export default async function CatalogPage({
   return (
     <CatalogClient
       data={data}
-      t={translations.library}
+      t={translations.catalog}
+      card={translations.library.card}
+      categories={translations.library.categories}
       locale={locale}
     />
   );

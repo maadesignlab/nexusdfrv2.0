@@ -71,11 +71,81 @@
     }
   },
 
+  "pricingPage": {
+    "badge": "Planes Nexus",
+
+    "hero": {
+      "title": "Elige el plan ideal para tu experiencia.",
+      "description": "Accede a la biblioteca digital, espacios de coworking y servicios diseñados para potenciar tu aprendizaje."
+    },
+
+    "plans": {
+      "featured": "Más popular",
+      "period": "/mes",
+      "cta": "Comenzar",
+
+      "basic": {
+        "title": "Basic",
+        "price": "$9",
+        "description": "Acceso esencial a la biblioteca digital.",
+        "features": [
+          "Consulta de catálogo",
+          "Préstamo de libros",
+          "Historial personal",
+          "Soporte estándar"
+        ]
+      },
+
+      "premium": {
+        "title": "Premium",
+        "price": "$19",
+        "description": "La mejor experiencia para estudiantes y profesionales.",
+        "features": [
+          "Todo lo incluido en Basic",
+          "Acceso prioritario",
+          "Reservas de coworking",
+          "Contenido destacado",
+          "Soporte prioritario"
+        ]
+      },
+
+      "enterprise": {
+        "title": "Enterprise",
+        "price": "$49",
+        "description": "Diseñado para organizaciones y equipos.",
+        "features": [
+          "Todo lo incluido en Premium",
+          "Gestión multiusuario",
+          "Espacios exclusivos",
+          "Soporte dedicado",
+          "Analítica avanzada"
+        ]
+      }
+    },
+
+    "comparison": {
+      "title": "Compara los planes",
+      "features": [
+        "Biblioteca digital",
+        "Préstamos",
+        "Coworking",
+        "Soporte prioritario",
+        "Analítica avanzada"
+      ]
+    },
+
+    "cta": {
+      "title": "Comienza hoy mismo",
+      "description": "Miles de usuarios ya aprovechan Nexus para acceder a conocimiento, espacios colaborativos y recursos profesionales.",
+      "button": "Crear cuenta"
+    }
+  },
+
   "header": {
     "login": "Iniciar sesión",
     "navigation": {
       "catalog": "Catálogo",
-  "pricing": "Planes",
+      "pricing": "Planes",
       "library": "Librería",
       "coworking": "Coworking"
     },
@@ -417,6 +487,32 @@
       "order": "Orden",
       "viewPurchases": "Ver mis compras",
       "backLibrary": "Volver a la librería"
+    }
+  },
+
+  "catalog": {
+    "hero": {
+      "badge": "Biblioteca Digital Nexus",
+      "title": "Descubre historias, ideas y conocimiento para impulsar tu futuro.",
+      "description": "Explora los libros más vendidos y cientos de títulos organizados por categorías. Encuentra inspiración, aprendizaje y nuevas perspectivas en un solo lugar.",
+      "explore": "Explorar catálogo",
+      "pricing": "Ver planes"
+    },
+
+    "shelves": {
+      "top10": "Top 10 más vendidos",
+      "drama": "Drama",
+      "fiction": "Ficción",
+      "economy": "Economía",
+      "artCulture": "Arte y Cultura",
+      "lifestyle": "Estilo de vida",
+      "classic": "Clásico"
+    },
+
+    "cta": {
+      "title": "¿Listo para acceder a toda la biblioteca?",
+      "description": "Inicia sesión para consultar detalles, gestionar tus préstamos y acceder a todos los servicios de Nexus.",
+      "button": "Iniciar sesión"
     }
   }
 }

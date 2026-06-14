@@ -1,50 +1,22 @@
 import Link from "next/link";
 
-const plans = [
-  {
-    name: "Basic",
-    price: "$9",
-    description:
-      "Acceso esencial a la biblioteca digital.",
-    features: [
-      "Consulta de catálogo",
-      "Préstamo de libros",
-      "Historial personal",
-      "Soporte estándar",
-    ],
-  },
-  {
-    name: "Premium",
-    price: "$19",
-    featured: true,
-    description:
-      "La mejor experiencia para estudiantes y profesionales.",
-    features: [
-      "Todo lo incluido en Basic",
-      "Acceso prioritario",
-      "Reservas de coworking",
-      "Contenido destacado",
-      "Soporte prioritario",
-    ],
-  },
-  {
-    name: "Enterprise",
-    price: "$49",
-    description:
-      "Diseñado para organizaciones y equipos.",
-    features: [
-      "Todo lo incluido en Premium",
-      "Gestión multiusuario",
-      "Espacios exclusivos",
-      "Soporte dedicado",
-      "Analítica avanzada",
-    ],
-  },
-];
-
 export default function PricingClient({
   locale,
+  t,
 }) {
+  const plans = [
+    {
+      ...t.plans.basic,
+    },
+    {
+      ...t.plans.premium,
+      featured: true,
+    },
+    {
+      ...t.plans.enterprise,
+    },
+  ];
+
   return (
     <main className="max-w-7xl mx-auto px-6 py-10">
 
@@ -96,7 +68,7 @@ export default function PricingClient({
               text-brand-700
             "
           >
-            Planes Nexus
+            {t.badge}
           </span>
 
           <h1
@@ -108,7 +80,7 @@ export default function PricingClient({
               tracking-tight
             "
           >
-            Elige el plan ideal para tu experiencia.
+            {t.hero.title}
           </h1>
 
           <p
@@ -119,9 +91,7 @@ export default function PricingClient({
               leading-relaxed
             "
           >
-            Accede a la biblioteca digital,
-            espacios de coworking y servicios
-            diseñados para potenciar tu aprendizaje.
+            {t.hero.description}
           </p>
         </div>
       </section>
@@ -137,7 +107,7 @@ export default function PricingClient({
         >
           {plans.map((plan) => (
             <article
-              key={plan.name}
+              key={plan.title}
               className={`
                 relative
                 rounded-3xl
@@ -166,12 +136,12 @@ export default function PricingClient({
                     text-white
                   "
                 >
-                  Más popular
+                  {t.plans.featured}
                 </span>
               )}
 
               <h3 className="text-2xl font-bold">
-                {plan.name}
+                {plan.title}
               </h3>
 
               <p className="mt-2 text-slate-600">
@@ -184,7 +154,7 @@ export default function PricingClient({
                 </span>
 
                 <span className="text-slate-500">
-                  /mes
+                  {t.plans.period}
                 </span>
               </div>
 
@@ -214,7 +184,7 @@ export default function PricingClient({
                   py-3
                 "
               >
-                Comenzar
+                {t.plans.cta}
               </Link>
             </article>
           ))}
@@ -233,40 +203,36 @@ export default function PricingClient({
         >
           <div className="p-6 border-b">
             <h2 className="text-3xl font-bold">
-              Compara los planes
+              {t.comparison.title}
             </h2>
           </div>
 
           <table className="w-full">
             <tbody>
-              {[
-                "Biblioteca digital",
-                "Préstamos",
-                "Coworking",
-                "Soporte prioritario",
-                "Analítica avanzada",
-              ].map((feature) => (
-                <tr
-                  key={feature}
-                  className="border-b"
-                >
-                  <td className="p-4 font-medium">
-                    {feature}
-                  </td>
+              {t.comparison.features.map(
+                (feature) => (
+                  <tr
+                    key={feature}
+                    className="border-b"
+                  >
+                    <td className="p-4 font-medium">
+                      {feature}
+                    </td>
 
-                  <td className="text-center">
-                    ✓
-                  </td>
+                    <td className="text-center">
+                      ✓
+                    </td>
 
-                  <td className="text-center">
-                    ✓
-                  </td>
+                    <td className="text-center">
+                      ✓
+                    </td>
 
-                  <td className="text-center">
-                    ✓
-                  </td>
-                </tr>
-              ))}
+                    <td className="text-center">
+                      ✓
+                    </td>
+                  </tr>
+                )
+              )}
             </tbody>
           </table>
         </div>
@@ -285,7 +251,7 @@ export default function PricingClient({
         "
       >
         <h2 className="text-4xl font-bold">
-          Comienza hoy mismo
+          {t.cta.title}
         </h2>
 
         <p
@@ -296,10 +262,7 @@ export default function PricingClient({
             text-slate-600
           "
         >
-          Miles de usuarios ya aprovechan
-          Nexus para acceder a conocimiento,
-          espacios colaborativos y recursos
-          profesionales.
+          {t.cta.description}
         </p>
 
         <Link
@@ -312,9 +275,10 @@ export default function PricingClient({
             py-3
           "
         >
-          Crear cuenta
+          {t.cta.button}
         </Link>
       </section>
+
     </main>
   );
 }

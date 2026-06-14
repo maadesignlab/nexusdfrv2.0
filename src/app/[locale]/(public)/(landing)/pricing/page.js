@@ -19,7 +19,7 @@ export default async function PricingPage({
   return (
     <PricingClient
       locale={locale}
-      t={translations.pricing}
+      t={translations.pricingPage}
     />
   );
 }

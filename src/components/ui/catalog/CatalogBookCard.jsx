@@ -6,6 +6,7 @@ export default function CatalogBookCard({
   locale,
   user,
   categories = {},
+  t,
 }) {
   const categoryLabel =
     categories[
@@ -106,7 +107,7 @@ export default function CatalogBookCard({
             rounded-xl
           "
         >
-          Descubrir más
+          {t.viewDetail}
         </Link>
       </div>
     </article>

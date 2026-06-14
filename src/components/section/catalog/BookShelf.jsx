@@ -9,6 +9,7 @@ export default function BookShelf({
   locale,
   user,
   t,
+  categories,
 }) {
   const scrollRef = useRef(null);
 
@@ -144,7 +145,7 @@ export default function BookShelf({
               locale={locale}
               user={user}
               t={t}
-              categories={t.categories}
+              categories={categories}
             />
           </div>
         ))}

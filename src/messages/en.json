@@ -70,9 +70,81 @@
     }
   },
 
+  "pricingPage": {
+  "badge": "Nexus Plans",
+
+  "hero": {
+    "title": "Choose the ideal plan for your experience.",
+    "description": "Access the digital library, coworking spaces, and services designed to enhance your learning journey."
+  },
+
+  "plans": {
+    "featured": "Most Popular",
+    "period": "/month",
+    "cta": "Get Started",
+
+    "basic": {
+      "title": "Basic",
+      "price": "$9",
+      "description": "Essential access to the digital library.",
+      "features": [
+        "Catalog browsing",
+        "Book borrowing",
+        "Personal history",
+        "Standard support"
+      ]
+    },
+
+    "premium": {
+      "title": "Premium",
+      "price": "$19",
+      "description": "The best experience for students and professionals.",
+      "features": [
+        "Everything included in Basic",
+        "Priority access",
+        "Coworking reservations",
+        "Featured content",
+        "Priority support"
+      ]
+    },
+
+    "enterprise": {
+      "title": "Enterprise",
+      "price": "$49",
+      "description": "Designed for organizations and teams.",
+      "features": [
+        "Everything included in Premium",
+        "Multi-user management",
+        "Exclusive spaces",
+        "Dedicated support",
+        "Advanced analytics"
+      ]
+    }
+  },
+
+  "comparison": {
+    "title": "Compare Plans",
+    "features": [
+      "Digital library",
+      "Book borrowing",
+      "Coworking",
+      "Priority support",
+      "Advanced analytics"
+    ]
+  },
+
+  "cta": {
+    "title": "Get Started Today",
+    "description": "Thousands of users already rely on Nexus to access knowledge, collaborative spaces, and professional resources.",
+    "button": "Create Account"
+  }
+},
+
   "header": {
     "login": "Sign in",
     "navigation": {
+      "catalog": "Catalog",
+      "pricing": "Pricing",
       "library": "Library",
       "coworking": "Coworking"
     },
@@ -410,6 +482,32 @@
       "order": "Order",
       "viewPurchases": "View my purchases",
       "backLibrary": "Back to library"
+    }
+  },
+
+  "catalog": {
+    "hero": {
+      "badge": "Nexus Digital Library",
+      "title": "Discover stories, ideas, and knowledge to power your future.",
+      "description": "Explore bestselling books and hundreds of titles organized by category. Find inspiration, learning opportunities, and new perspectives all in one place.",
+      "explore": "Explore Catalog",
+      "pricing": "View Plans"
+    },
+
+    "shelves": {
+      "top10": "Top 10 Bestsellers",
+      "drama": "Drama",
+      "fiction": "Fiction",
+      "economy": "Economics",
+      "artCulture": "Arts & Culture",
+      "lifestyle": "Lifestyle",
+      "classic": "Classics"
+    },
+
+    "cta": {
+      "title": "Ready to access the entire library?",
+      "description": "Sign in to view detailed information, manage your loans, and access all Nexus services.",
+      "button": "Sign In"
     }
   }
 }

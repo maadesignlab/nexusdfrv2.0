@@ -5,6 +5,8 @@ export default function CatalogClient({
   data,
   t,
   locale,
+  card,
+  categories,
 }) {
   return (
     <main className="max-w-7xl mx-auto px-6 py-10 space-y-12">
@@ -71,7 +73,7 @@ export default function CatalogClient({
               text-brand-700
             "
           >
-            Biblioteca Digital Nexus
+            {t.hero.badge}
           </span>
 
           <h1
@@ -84,9 +86,7 @@ export default function CatalogClient({
               md:text-6xl
             "
           >
-            Descubre historias,
-            ideas y conocimiento
-            para impulsar tu futuro.
+            {t.hero.title}
           </h1>
 
           <p
@@ -98,11 +98,7 @@ export default function CatalogClient({
               text-slate-600
             "
           >
-            Explora los libros más vendidos y
-            cientos de títulos organizados por
-            categorías. Encuentra inspiración,
-            aprendizaje y nuevas perspectivas
-            en un solo lugar.
+            {t.hero.description}
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -114,7 +110,7 @@ export default function CatalogClient({
                 py-3
               "
             >
-              Explorar catálogo
+              {t.hero.explore}
             </a>
 
             <Link
@@ -131,7 +127,7 @@ export default function CatalogClient({
                 hover:bg-slate-50
               "
             >
-              Ver planes
+              {t.hero.pricing}
             </Link>
           </div>
         </div>
@@ -140,73 +136,80 @@ export default function CatalogClient({
       {/* SHELVES */}
       <div id="top10">
         <BookShelf
-          title="Top 10 más vendidos"
+          title={t.shelves.top10}
           books={data.top10}
           locale={locale}
-          t={t.card}
+          t={card}
+          categories={categories}
         />
       </div>
 
       <BookShelf
-        title="Drama"
+        title={t.shelves.drama}
         books={data.drama}
         locale={locale}
-        t={t.card}
+        t={card}
+        categories={categories}
       />
 
       <BookShelf
-        title="Ficción"
+        title={t.shelves.fiction}
         books={data.ficcion}
         locale={locale}
-        t={t.card}
+        t={card}
+        categories={categories}
       />
 
       <BookShelf
-        title="Economía"
+        title={t.shelves.economy}
         books={data.economia}
         locale={locale}
-        t={t.card}
+        t={card}
+        categories={categories}
       />
 
       <BookShelf
-        title="Arte y Cultura"
+        title={t.shelves.artCulture}
         books={data.arteCultura}
         locale={locale}
-        t={t.card}
+        t={card}
+        categories={categories}
       />
 
       <BookShelf
-        title="Estilo de vida"
+        title={t.shelves.lifestyle}
         books={data.estiloVida}
         locale={locale}
-        t={t.card}
+        t={card}
+        categories={categories}
       />
 
       <BookShelf
-        title="Clásico"
+        title={t.shelves.classic}
         books={data.clasico}
         locale={locale}
-        t={t.card}
+        t={card}
+        categories={categories}
       />
 
-      <section className="text-center py-16">
+      {/* CTA */}
+      <section className="py-16 text-center">
         <h2 className="text-3xl font-bold">
-          ¿Listo para acceder a toda la biblioteca?
+          {t.cta.title}
         </h2>
 
         <p className="mt-4 text-slate-600">
-          Inicia sesión para consultar detalles,
-          gestionar tus préstamos y acceder a
-          todos los servicios de Nexus.
+          {t.cta.description}
         </p>
 
         <a
           href={`/auth/login?returnTo=/${locale}/dashboard`}
           className="btn-primary mt-6 inline-flex"
         >
-          Iniciar sesión
+          {t.cta.button}
         </a>
       </section>
+
     </main>
   );
 }
